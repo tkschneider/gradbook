@@ -39,5 +39,3 @@ Once you get it working follow these steps and then check it back in to the repo
 2.  Create your own controller named whatever you want and edit the view so it says your name at least
 3.  Modify config/routes.rb entry created for you.  Make it follow the regular route format
 4.  Create a link in the welcome controller to point to your new page
-
-All of the steps above are covered in the ruby guide link I posted.
