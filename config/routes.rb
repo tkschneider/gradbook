@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  
+
   get 'brad/index' => 'brad#index'
+  get 'max/index' => 'max#index'
   get 'welcome/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
