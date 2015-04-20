@@ -1,0 +1,23 @@
+<h1>Listing users</h1>
+ 
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Middle Initial</th>
+    <th>Last Name</th>
+    <th colspan="2"></th>
+  </tr>
+ 
+  <% @user.each do |f| %>
+    <tr>
+      <td><%= f.First_name %></td>
+      <td><%= f.mi.upcase%></td>
+      <td><%= f.Last_name%></td>
+      <td><%= link_to 'Show', user_path(f) %></td>
+      <td><%= link_to 'Edit', edit_user_path(f) %></td>
+    </tr>
+  <% end %>
+</table><br>
+
+<%= link_to 'Add new user', new_user_path %><br>
+<%= link_to 'Main', controller: 'welcome' %>
