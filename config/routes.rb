@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'max/index' => 'max#index'
   get 'welcome/index'
   
-  resources :users
+  resources :logins
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

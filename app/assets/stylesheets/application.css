@@ -12,4 +12,32 @@
  *
  *= require_tree .
  *= require_self
+ *= require foundation_and_overrides
+
  */
+
+body {
+    background-color: #202020;
+    color: #C00000;
+    padding-top:50px;
+
+}
+
+h1 {
+    color: #C00000;
+}
+h2 {
+    color: #C00000;
+}
+h3 {
+    color: #C00000;
+}
+
+p {
+    color: #C00000;
+}
+
+label
+{
+    color: #C00000;
+}
