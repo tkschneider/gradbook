@@ -20,7 +20,7 @@
         <% end %>
       <% end %>
     </div>
-    
+
 <%= render 'shared/navigation' %>
 
 <div class="row: large 11 align-left">
@@ -31,6 +31,7 @@
         <strong>Admin Menu</strong><br>
         <%= link_to 'User List', controller: 'logins' %><br>
         <%= link_to 'Add new user', new_login_path %><br>
+        <%= link_to 'Login Screen', controller: 'website_login' %>
       </div>
       <div class="large-10 column">
         <%= yield %>
