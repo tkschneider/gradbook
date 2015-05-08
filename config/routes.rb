@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'brett/index' => 'brett#index'
   get 'brad/index' => 'brad#index'
   get 'max/index' => 'max#index'
   get 'welcome/index'
