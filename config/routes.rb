@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'max/index' => 'max#index'
   get 'welcome/index'
   get 'website_login/index' => 'website_login#index'
+  get 'report/index' => 'report#index'
+
+  post 'report/show' => 'report#show'
 
   resources :logins
 
