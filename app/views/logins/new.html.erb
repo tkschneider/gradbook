@@ -16,24 +16,23 @@
     <%= f.text_field :First_name%>
     <%= f.label :"Middle Initial" %>
     <%= f.text_field :mi%>
-    
+
     <%= f.label :"Last Name" %>
     <%= f.text_field :Last_name%>
-    
+
     <%= f.label :"User Name" %>
     <%= f.text_field :User_name%>
-    
+
     <%= f.label :"Password" %>
     <%= f.text_field :Password%>
-    
+
     <%= f.label :"Type" %>
     <%= f.select :Type, [['User', 'user'], ['Admin', 'admin'], ['Super User', 'SU']]%>
   </p>
- 
+
   <p>
     <%= f.submit %>
   </p>
 </div>
-    
-<% end %>
 
+<% end %>

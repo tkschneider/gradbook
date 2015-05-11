@@ -1,7 +1,7 @@
 <h1>Editing users</h1>
- 
+
 <%= form_for :user, url: user_path(@user), method: :patch do |f| %>
- 
+
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -15,7 +15,7 @@
       </ul>
     </div>
   <% end %>
- 
+
 <p>
     <%= f.label :First_name %><br>
     <%= f.text_field :First_name%>
@@ -40,12 +40,11 @@
     <%= f.label :Password %><br>
     <%= f.text_field :Password%>
 </p>
- 
+
   <p>
     <%= f.submit %>
   </p>
- 
-<% end %>
- 
-<%= link_to 'Back', user_path %>
 
+<% end %>
+
+<%= link_to 'Back', user_path %>
