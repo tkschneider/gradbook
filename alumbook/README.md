@@ -1,2 +1,0 @@
-# gradbook
-Graduate Student Resource
