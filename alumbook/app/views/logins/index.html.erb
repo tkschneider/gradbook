@@ -1,0 +1,35 @@
+<dl class="tabs" data-tab data-options="deep_linking: true">
+  <dd>
+    <%= link_to 'List', controller: 'logins' %>
+  </dd>
+  <dd>
+    <%= link_to 'Add', new_login_path %>
+  </dd>
+</dl>
+
+ <p>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Middle Initial</th>
+    <th>Last Name</th>
+    <th>Type</th>
+    <th colspan="3"></th>
+  </tr>
+ 
+  <% @login.each do |f| %>
+    <tr>
+      <td><%= f.First_name %></td>
+      <td><%= f.mi.upcase%></td>
+      <td><%= f.Last_name%></td>
+      <td><%= f.Type%></td>
+      <td><%= link_to 'Details', login_path(f), class: 'button tiny radius' %></td>
+      <td><%= link_to 'Edit', edit_login_path(f), class: 'button tiny radius' %></td>
+      <td><%= link_to 'Delete', f, method: :delete, data: {confirm: "Are you sure?" }, class: 'button tiny radius alert' %></td>
+      </tr>
+  <% end %>
+</table><br>
+
+
+</p>
+

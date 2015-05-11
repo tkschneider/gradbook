@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 
+  opportunity_text: MyText
+  opportunity_id: 1
+
+two:
+  id: 
+  opportunity_text: MyText
+  opportunity_id: 1
