@@ -2,8 +2,8 @@ class CreateGivingBacks < ActiveRecord::Migration
   def change
     create_table :giving_backs do |t|
       t.primary_key :id
-      t.integer :user_id
-      t.integer :company_id
+      t.references :user_id, index: true, foreign_key: true
+      t.references :company_id, index: true, foreign_key: true
       t.string :subject
       t.string :position
       t.text :description

@@ -1,8 +1,8 @@
 zclass CreateSurveys < ActiveRecord::Migration
   def change
     create_table :surveys do |t|
+      #t.references :created_by_login_id, index: true, foreign_key: true
       t.primary_key :id
-      t.integer :created_by_login_id
       t.string :survey_name
       t.text :survey_description
       t.date :date_created

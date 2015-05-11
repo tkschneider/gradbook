@@ -1,9 +1,9 @@
 class CreateUserSurveys < ActiveRecord::Migration
   def change
     create_table :user_surveys do |t|
+      t.references :user_id, index: true, foreign_key: true
+      t.referemces :survey_id, index: true, foreign_key: true
       t.primary_key :id
-      t.integer :user_id
-      t.integer :survey_id
       t.date :date_completed
       t.boolean :anonymous
 
