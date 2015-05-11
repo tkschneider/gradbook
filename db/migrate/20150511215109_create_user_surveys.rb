@@ -4,7 +4,7 @@ class CreateUserSurveys < ActiveRecord::Migration
       t.primary_key :id
       t.integer :user_id
       t.integer :survey_id
-      t.date :date
+      t.date :date_completed
       t.boolean :anonymous
 
       t.timestamps null: false

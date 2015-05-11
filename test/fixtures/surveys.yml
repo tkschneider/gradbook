@@ -2,16 +2,16 @@
 
 one:
   id: 
-  created_by_user_id: 1
+  created_by_login_id: 1
   survey_name: MyString
   survey_description: MyText
-  date_created: 2015-05-09
+  date_created: 2015-05-11
   status: MyString
 
 two:
   id: 
-  created_by_user_id: 1
+  created_by_login_id: 1
   survey_name: MyString
   survey_description: MyText
-  date_created: 2015-05-09
+  date_created: 2015-05-11
   status: MyString

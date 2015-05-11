@@ -4,10 +4,14 @@ one:
   id: 
   user_survey_id: 1
   survey_question_id: 1
-  text_response: MyText
+  survey_question_option_id: 1
+  user_survey_option_choices_id: 1
+  response_text: MyText
 
 two:
   id: 
   user_survey_id: 1
   survey_question_id: 1
-  text_response: MyText
+  survey_question_option_id: 1
+  user_survey_option_choices_id: 1
+  response_text: MyText

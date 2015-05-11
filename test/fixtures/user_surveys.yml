@@ -4,12 +4,12 @@ one:
   id: 
   user_id: 1
   survey_id: 1
-  date: 2015-05-09
+  date_completed: 2015-05-11
   anonymous: false
 
 two:
   id: 
   user_id: 1
   survey_id: 1
-  date: 2015-05-09
+  date_completed: 2015-05-11
   anonymous: false

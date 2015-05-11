@@ -1,9 +1,9 @@
 class CreateSurveyQuestions < ActiveRecord::Migration
   def change
     create_table :survey_questions do |t|
-      t.primary)_key :id
+      t.primary_key :id
       t.integer :survey_id
-      t.string :question_type_id
+      t.string :type
       t.integer :display_order
       t.text :text
       t.boolean :required
