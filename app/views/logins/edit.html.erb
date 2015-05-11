@@ -7,9 +7,9 @@
   </dd>
 </dl>
  <br>
- 
+
 <%= form_for :login, url: login_path(@login), method: :patch do |f| %>
- 
+
   <% if @login.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -47,7 +47,5 @@
   <p>
     <%= f.submit %>
   </p>
- 
+
 <% end %>
-
-
