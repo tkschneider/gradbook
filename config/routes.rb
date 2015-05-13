@@ -5,13 +5,11 @@ Rails.application.routes.draw do
   get 'max/index' => 'max#index'
   get 'survey/index' => 'survey#index'
   get 'welcome/index'
-<<<<<<< HEAD
-=======
+
   get 'website_login/index' => 'website_login#index'
   get 'report/index' => 'report#index'
 
   post 'report/show' => 'report#show'
->>>>>>> c4504945c5ae70008e81dfcbe2063a5fb22d2a5d
 
   resources :logins
 
