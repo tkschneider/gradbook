@@ -16,7 +16,6 @@ default: &default
   username: root
   password: csc495
   host: localhost
-  port: 3366
 
 development:
   <<: *default
