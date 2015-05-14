@@ -5,7 +5,6 @@ class CreateUserSurveyResponses < ActiveRecord::Migration
       t.references :survey_question_id, index: true, foreign_key: true
       t.references :survey_question_option_id, index: true, foreign_key: true
       t.references :user_survey_option_choices_id, index: true, foreign_key: true
-      t.primary_key :id
       t.text :response_text
 
       t.timestamps null: false
