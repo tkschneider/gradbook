@@ -49,7 +49,7 @@ class LoginsController < ApplicationController
 
     private
     def login_params
-        params.require(:login).permit(:First_name, :mi, :Last_name, :User_name, :Password, :Type)
+        params.require(:login).permit(:first_name, :middle_initial, :last_name, :username, :password, :type)
     end
 
 end

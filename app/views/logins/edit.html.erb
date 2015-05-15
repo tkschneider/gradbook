@@ -26,22 +26,22 @@
  <div class="large-2">
 <p>
     <%= f.label :First_name %>
-    <%= f.text_field :First_name%>
+    <%= f.text_field :first_name%>
 
     <%= f.label :Middle_Initial%>
-    <%= f.text_field :mi%>
+    <%= f.text_field :middle_initial%>
 
     <%= f.label :Last_name %>
-    <%= f.text_field :Last_name%>
+    <%= f.text_field :last_name%>
 
     <%= f.label :User_name %>
-    <%= f.text_field :User_name%>
+    <%= f.text_field :username%>
 
     <%= f.label :Password %>
-    <%= f.text_field :Password%>
+    <%= f.text_field :password%>
 
     <%= f.label :Type %>
-    <%= f.select :Type, [['User', 'user'], ['Admin', 'admin'], ['Super User', 'SU']]%>
+    <%= f.select :type, [['User', 'user'], ['Admin', 'admin'], ['Worker', 'worker']]%>
 </p>
  </div>
   <p>

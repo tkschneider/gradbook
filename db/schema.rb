@@ -13,6 +13,12 @@
 
 ActiveRecord::Schema.define(version: 20150511220208) do
 
+  create_table "colleges", force: :cascade do |t|
+    t.string   "college_name", limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string   "company_name", limit: 255
     t.datetime "created_at",               null: false
@@ -35,6 +41,13 @@ ActiveRecord::Schema.define(version: 20150511220208) do
 
   add_index "company_infos", ["company_id_id"], name: "index_company_infos_on_company_id_id", using: :btree
 
+  create_table "degrees", force: :cascade do |t|
+    t.string   "major_name", limit: 255
+    t.string   "type",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "giving_backs", force: :cascade do |t|
     t.integer  "user_id_id",         limit: 4
     t.integer  "company_id_id",      limit: 4
@@ -55,16 +68,52 @@ ActiveRecord::Schema.define(version: 20150511220208) do
   add_index "giving_backs", ["company_id_id"], name: "index_giving_backs_on_company_id_id", using: :btree
   add_index "giving_backs", ["user_id_id"], name: "index_giving_backs_on_user_id_id", using: :btree
 
-  create_table "logins", force: :cascade do |t|
-    t.string   "First_name", limit: 255
-    t.string   "mi",         limit: 255
-    t.string   "Last_name",  limit: 255
-    t.string   "User_name",  limit: 255
-    t.string   "Password",   limit: 255
-    t.string   "Type",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "graduate_degrees", force: :cascade do |t|
+    t.integer  "user_id",         limit: 4
+    t.integer  "degree_id",       limit: 4
+    t.integer  "college_id",      limit: 4
+    t.date     "graduation_date"
+    t.string   "status",          limit: 255
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
+
+  add_index "graduate_degrees", ["college_id"], name: "index_graduate_degrees_on_college_id", using: :btree
+  add_index "graduate_degrees", ["degree_id"], name: "index_graduate_degrees_on_degree_id", using: :btree
+  add_index "graduate_degrees", ["user_id"], name: "index_graduate_degrees_on_user_id", using: :btree
+
+  create_table "logins", force: :cascade do |t|
+    t.string   "username",             limit: 255
+    t.string   "password",             limit: 255
+    t.string   "first_name",           limit: 255
+    t.string   "middle_initial",       limit: 255
+    t.string   "last_name",            limit: 255
+    t.string   "type",                 limit: 255
+    t.datetime "last_login_timestamp"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  create_table "saved_list_users", force: :cascade do |t|
+    t.integer  "saved_list_id", limit: 4
+    t.integer  "user_id",       limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "saved_list_users", ["saved_list_id"], name: "index_saved_list_users_on_saved_list_id", using: :btree
+  add_index "saved_list_users", ["user_id"], name: "index_saved_list_users_on_user_id", using: :btree
+
+  create_table "saved_lists", force: :cascade do |t|
+    t.integer  "login_id",        limit: 4
+    t.string   "list_name",       limit: 255
+    t.boolean  "saved_user_list", limit: 1
+    t.date     "date_saved"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "saved_lists", ["login_id"], name: "index_saved_lists_on_login_id", using: :btree
 
   create_table "survey_question_options", force: :cascade do |t|
     t.integer  "survey_question_id_id", limit: 4
@@ -107,6 +156,30 @@ ActiveRecord::Schema.define(version: 20150511220208) do
     t.datetime "updated_at",                       null: false
   end
 
+  create_table "undergraduate_degrees", force: :cascade do |t|
+    t.integer  "user_id",         limit: 4
+    t.integer  "college_id",      limit: 4
+    t.integer  "degree_id",       limit: 4
+    t.date     "graduation_date"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "undergraduate_degrees", ["college_id"], name: "index_undergraduate_degrees_on_college_id", using: :btree
+  add_index "undergraduate_degrees", ["degree_id"], name: "index_undergraduate_degrees_on_degree_id", using: :btree
+  add_index "undergraduate_degrees", ["user_id"], name: "index_undergraduate_degrees_on_user_id", using: :btree
+
+  create_table "user_phones", force: :cascade do |t|
+    t.integer  "country_code", limit: 4
+    t.integer  "area_code",    limit: 4
+    t.integer  "prefix",       limit: 4
+    t.integer  "suffix",       limit: 4
+    t.integer  "extension",    limit: 4
+    t.string   "type",         limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
   create_table "user_survey_responses", force: :cascade do |t|
     t.integer  "user_survey_id_id",                limit: 4
     t.integer  "survey_question_id_id",            limit: 4
@@ -135,13 +208,40 @@ ActiveRecord::Schema.define(version: 20150511220208) do
   add_index "user_surveys", ["user_id_id"], name: "index_user_surveys_on_user_id_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "First_name", limit: 255
-    t.string   "mi",         limit: 255
-    t.string   "Last_name",  limit: 255
-    t.string   "User_name",  limit: 255
-    t.string   "Password",   limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "login_id",              limit: 4
+    t.integer  "company_id",            limit: 4
+    t.string   "email_addr",            limit: 255
+    t.string   "street",                limit: 255
+    t.string   "city",                  limit: 255
+    t.string   "state",                 limit: 255
+    t.integer  "zip",                   limit: 4
+    t.string   "first_name",            limit: 255
+    t.string   "middle_initial",        limit: 255
+    t.string   "last_name",             limit: 255
+    t.string   "spouse_first_name",     limit: 255
+    t.string   "spouse_middle_initial", limit: 255
+    t.string   "spouse_last_name",      limit: 255
+    t.integer  "number_children",       limit: 4
+    t.integer  "birth_month",           limit: 4
+    t.integer  "birth_day",             limit: 4
+    t.integer  "birth_year",            limit: 4
+    t.string   "ethnicity",             limit: 255
+    t.boolean  "general_opt_in",        limit: 1
+    t.boolean  "email_opt_in",          limit: 1
+    t.boolean  "phone_opt_in",          limit: 1
+    t.boolean  "badges_opt_in",         limit: 1
+    t.string   "status",                limit: 255
+    t.string   "salary_range",          limit: 255
+    t.string   "job_title",             limit: 255
+    t.date     "start_date"
+    t.date     "end_date"
+    t.boolean  "searchable",            limit: 1
+    t.string   "subscription_type",     limit: 255
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
+
+  add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
+  add_index "users", ["login_id"], name: "index_users_on_login_id", using: :btree
 
 end
