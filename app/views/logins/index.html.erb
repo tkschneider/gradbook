@@ -19,10 +19,10 @@
 
   <% @login.each do |f| %>
     <tr>
-      <td><%= f.First_name %></td>
-      <td><%= f.mi.upcase%></td>
-      <td><%= f.Last_name%></td>
-      <td><%= f.Type%></td>
+      <td><%= f.first_name %></td>
+      <td><%= f.middle_initial.upcase%></td>
+      <td><%= f.last_name%></td>
+      <td><%= f.type%></td>
       <td><%= link_to 'Details', login_path(f), class: 'button tiny radius' %></td>
       <td><%= link_to 'Edit', edit_login_path(f), class: 'button tiny radius' %></td>
       <td><%= link_to 'Delete', f, method: :delete, data: {confirm: "Are you sure?" }, class: 'button tiny radius alert' %></td>
