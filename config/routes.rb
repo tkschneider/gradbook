@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  resources :searchadmins do
+    collection { post :search, to: 'searchadmins#index'}
+  end
+  
   get 'brett/index' => 'brett#index'
   get 'brad/index' => 'brad#index'
   get 'max/index' => 'max#index'
