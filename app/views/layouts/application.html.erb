@@ -23,18 +23,27 @@
 
 <%= render 'shared/navigation' %>
 
+<% if login_signed_in? %>
+  Logged in as <strong><%= current_login.email %></strong>.
+  <%= link_to 'Edit profile', edit_login_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_login_session_path, method: :delete, :class => 'navbar-link'  %>
+<% else %>
+  <%= link_to "Sign up", new_login_registration_path, :class => 'navbar-link'  %> |
+  <%= link_to "Login", new_login_session_path, :class => 'navbar-link'  %>
+<% end %>
+
 <div class="row: large 11 align-left">
       <div class="large-2 column">
         <strong>Test Pages</strong><br>
-        <%= link_to 'Brad Bilter', controller: 'brad' %><br>
-        <%= link_to 'Max Barvian', controller: 'max' %><br>
-        <%= link_to 'Brett Bush', controller: 'brett' %><br><br>
+        <%= link_to 'Brad Bilter', controller: '/brad' %><br>
+        <%= link_to 'Max Barvian', controller: '/max' %><br>
+        <%= link_to 'Brett Bush', controller: '/brett' %><br><br>
         <strong>More test pages</strong><br>
-        <%= link_to 'User List', controller: 'logins' %><br>
+        <%= link_to 'User List', controller: '/logins' %><br>
         <%= link_to 'Add new user', new_login_path %><br>
-        <%= link_to 'Login Screen', controller: 'website_login' %><br>
-        <%= link_to 'Report', controller: 'report' %><br>
-        <%= link_to 'Surveys', controller: 'survey' %><br>
+        <%= link_to 'Login Screen', controller: '/website_login' %><br>
+        <%= link_to 'Report', controller: '/report' %><br>
+        <%= link_to 'Surveys', controller: '/survey' %><br>
 
       </div>
       <div class="large-10 column">

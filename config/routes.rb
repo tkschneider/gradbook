@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :logins
   get 'brett/index' => 'brett#index'
   get 'brad/index' => 'brad#index'
   get 'max/index' => 'max#index'
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-    root 'website_login#index'
+    root 'logins#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
