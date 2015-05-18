@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150515203615) do
+=======
+ActiveRecord::Schema.define(version: 20150516232003) do
+>>>>>>> f96b2f8edf30d50dc060478c66b107c715add93b
 
   create_table "colleges", force: :cascade do |t|
     t.string   "college_name", limit: 255
@@ -114,6 +118,11 @@ ActiveRecord::Schema.define(version: 20150515203615) do
   end
 
   add_index "saved_lists", ["login_id"], name: "index_saved_lists_on_login_id", using: :btree
+
+  create_table "searchadmins", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "survey_question_options", force: :cascade do |t|
     t.integer  "survey_question_id", limit: 4
