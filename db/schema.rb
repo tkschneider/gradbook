@@ -11,11 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
+
 ActiveRecord::Schema.define(version: 20150515203615) do
-=======
-ActiveRecord::Schema.define(version: 20150516232003) do
->>>>>>> f96b2f8edf30d50dc060478c66b107c715add93b
 
   create_table "colleges", force: :cascade do |t|
     t.string   "college_name", limit: 255
