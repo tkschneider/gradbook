@@ -128,6 +128,11 @@ ActiveRecord::Schema.define(version: 20150518003408) do
 
   add_index "saved_lists", ["login_id"], name: "index_saved_lists_on_login_id", using: :btree
 
+  create_table "searchadmins", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "survey_question_options", force: :cascade do |t|
     t.integer  "survey_question_id", limit: 4
     t.integer  "display_order",      limit: 4

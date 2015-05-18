@@ -1,0 +1,17 @@
+<%= form_for(@searchadmin) do |f| %>
+  <% if @searchadmin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@searchadmin.errors.count, "error") %> prohibited this searchadmin from being saved:</h2>
+
+      <ul>
+      <% @searchadmin.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
