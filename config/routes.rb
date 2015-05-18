@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   resources :searchadmins do
     collection { post :search, to: 'searchadmins#index'}
   end
