@@ -7,6 +7,7 @@ class CreateUserPhones < ActiveRecord::Migration
       t.integer :suffix
       t.integer :extension
       t.string :type
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end

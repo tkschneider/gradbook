@@ -1,7 +1,7 @@
 class CreateCompanyInfos < ActiveRecord::Migration
   def change
     create_table :company_infos do |t|
-      t.references :company_id, index: true, foreign_key: true
+      t.references :company, index: true, foreign_key: true
       t.string :street
       t.string :city
       t.string :state

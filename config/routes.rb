@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   devise_for :logins
   get 'brett/index' => 'brett#index'
   get 'brad/index' => 'brad#index'
-  get 'max/index' => 'max#index'
   get 'survey/index' => 'survey#index'
   get 'welcome/index'
 
@@ -13,6 +12,7 @@ Rails.application.routes.draw do
   post 'report/show' => 'report#show'
 
   resources :logins
+  resources :giving_back, :except => :show
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

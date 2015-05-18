@@ -26,20 +26,20 @@ ActiveRecord::Schema.define(version: 20150518003408) do
   end
 
   create_table "company_infos", force: :cascade do |t|
-    t.integer  "company_id_id", limit: 4
-    t.string   "street",        limit: 255
-    t.string   "city",          limit: 255
-    t.string   "state",         limit: 255
-    t.integer  "zip",           limit: 4
-    t.integer  "country_code",  limit: 4
-    t.integer  "area_code",     limit: 4
-    t.string   "prefix",        limit: 255
-    t.string   "suffix",        limit: 255
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "company_id",   limit: 4
+    t.string   "street",       limit: 255
+    t.string   "city",         limit: 255
+    t.string   "state",        limit: 255
+    t.integer  "zip",          limit: 4
+    t.integer  "country_code", limit: 4
+    t.integer  "area_code",    limit: 4
+    t.string   "prefix",       limit: 255
+    t.string   "suffix",       limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
-  add_index "company_infos", ["company_id_id"], name: "index_company_infos_on_company_id_id", using: :btree
+  add_index "company_infos", ["company_id"], name: "index_company_infos_on_company_id", using: :btree
 
   create_table "degrees", force: :cascade do |t|
     t.string   "major_name", limit: 255
@@ -49,8 +49,8 @@ ActiveRecord::Schema.define(version: 20150518003408) do
   end
 
   create_table "giving_backs", force: :cascade do |t|
-    t.integer  "user_id_id",         limit: 4
-    t.integer  "company_id_id",      limit: 4
+    t.integer  "user_id",            limit: 4
+    t.integer  "company_id",         limit: 4
     t.string   "subject",            limit: 255
     t.string   "position",           limit: 255
     t.text     "description",        limit: 65535
@@ -65,8 +65,8 @@ ActiveRecord::Schema.define(version: 20150518003408) do
     t.datetime "updated_at",                       null: false
   end
 
-  add_index "giving_backs", ["company_id_id"], name: "index_giving_backs_on_company_id_id", using: :btree
-  add_index "giving_backs", ["user_id_id"], name: "index_giving_backs_on_user_id_id", using: :btree
+  add_index "giving_backs", ["company_id"], name: "index_giving_backs_on_company_id", using: :btree
+  add_index "giving_backs", ["user_id"], name: "index_giving_backs_on_user_id", using: :btree
 
   create_table "graduate_degrees", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -129,27 +129,27 @@ ActiveRecord::Schema.define(version: 20150518003408) do
   add_index "saved_lists", ["login_id"], name: "index_saved_lists_on_login_id", using: :btree
 
   create_table "survey_question_options", force: :cascade do |t|
-    t.integer  "survey_question_id_id", limit: 4
-    t.integer  "display_order",         limit: 4
-    t.text     "text",                  limit: 65535
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "survey_question_id", limit: 4
+    t.integer  "display_order",      limit: 4
+    t.text     "text",               limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
-  add_index "survey_question_options", ["survey_question_id_id"], name: "index_survey_question_options_on_survey_question_id_id", using: :btree
+  add_index "survey_question_options", ["survey_question_id"], name: "index_survey_question_options_on_survey_question_id", using: :btree
 
   create_table "survey_question_options_choices", force: :cascade do |t|
-    t.integer  "survey_question_id_id", limit: 4
-    t.integer  "display_order",         limit: 4
-    t.text     "text",                  limit: 65535
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "survey_question_id", limit: 4
+    t.integer  "display_order",      limit: 4
+    t.text     "text",               limit: 65535
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
-  add_index "survey_question_options_choices", ["survey_question_id_id"], name: "index_survey_question_options_choices_on_survey_question_id_id", using: :btree
+  add_index "survey_question_options_choices", ["survey_question_id"], name: "index_survey_question_options_choices_on_survey_question_id", using: :btree
 
   create_table "survey_questions", force: :cascade do |t|
-    t.integer  "survey_id_id",  limit: 4
+    t.integer  "survey_id",     limit: 4
     t.string   "type",          limit: 255
     t.integer  "display_order", limit: 4
     t.text     "text",          limit: 65535
@@ -158,9 +158,10 @@ ActiveRecord::Schema.define(version: 20150518003408) do
     t.datetime "updated_at",                  null: false
   end
 
-  add_index "survey_questions", ["survey_id_id"], name: "index_survey_questions_on_survey_id_id", using: :btree
+  add_index "survey_questions", ["survey_id"], name: "index_survey_questions_on_survey_id", using: :btree
 
   create_table "surveys", force: :cascade do |t|
+    t.integer  "login_id",           limit: 4
     t.string   "survey_name",        limit: 255
     t.text     "survey_description", limit: 65535
     t.date     "date_created"
@@ -168,6 +169,8 @@ ActiveRecord::Schema.define(version: 20150518003408) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
   end
+
+  add_index "surveys", ["login_id"], name: "index_surveys_on_login_id", using: :btree
 
   create_table "undergraduate_degrees", force: :cascade do |t|
     t.integer  "user_id",         limit: 4
@@ -189,36 +192,39 @@ ActiveRecord::Schema.define(version: 20150518003408) do
     t.integer  "suffix",       limit: 4
     t.integer  "extension",    limit: 4
     t.string   "type",         limit: 255
+    t.integer  "user_id",      limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
 
+  add_index "user_phones", ["user_id"], name: "index_user_phones_on_user_id", using: :btree
+
   create_table "user_survey_responses", force: :cascade do |t|
-    t.integer  "user_survey_id_id",                limit: 4
-    t.integer  "survey_question_id_id",            limit: 4
-    t.integer  "survey_question_option_id_id",     limit: 4
-    t.integer  "user_survey_option_choices_id_id", limit: 4
-    t.text     "response_text",                    limit: 65535
-    t.datetime "created_at",                                     null: false
-    t.datetime "updated_at",                                     null: false
+    t.integer  "user_survey_id",                    limit: 4
+    t.integer  "survey_question_id",                limit: 4
+    t.integer  "survey_question_option_id",         limit: 4
+    t.integer  "survey_question_options_choice_id", limit: 4
+    t.text     "response_text",                     limit: 65535
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
   end
 
-  add_index "user_survey_responses", ["survey_question_id_id"], name: "index_user_survey_responses_on_survey_question_id_id", using: :btree
-  add_index "user_survey_responses", ["survey_question_option_id_id"], name: "index_user_survey_responses_on_survey_question_option_id_id", using: :btree
-  add_index "user_survey_responses", ["user_survey_id_id"], name: "index_user_survey_responses_on_user_survey_id_id", using: :btree
-  add_index "user_survey_responses", ["user_survey_option_choices_id_id"], name: "index_user_survey_responses_on_user_survey_option_choices_id_id", using: :btree
+  add_index "user_survey_responses", ["survey_question_id"], name: "index_user_survey_responses_on_survey_question_id", using: :btree
+  add_index "user_survey_responses", ["survey_question_option_id"], name: "index_user_survey_responses_on_survey_question_option_id", using: :btree
+  add_index "user_survey_responses", ["survey_question_options_choice_id"], name: "index_user_survey_responses_on_survey_question_options_choice_id", using: :btree
+  add_index "user_survey_responses", ["user_survey_id"], name: "index_user_survey_responses_on_user_survey_id", using: :btree
 
   create_table "user_surveys", force: :cascade do |t|
-    t.integer  "user_id_id",     limit: 4
-    t.integer  "survey_id_id",   limit: 4
+    t.integer  "user_id",        limit: 4
+    t.integer  "survey_id",      limit: 4
     t.date     "date_completed"
     t.boolean  "anonymous",      limit: 1
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
 
-  add_index "user_surveys", ["survey_id_id"], name: "index_user_surveys_on_survey_id_id", using: :btree
-  add_index "user_surveys", ["user_id_id"], name: "index_user_surveys_on_user_id_id", using: :btree
+  add_index "user_surveys", ["survey_id"], name: "index_user_surveys_on_survey_id", using: :btree
+  add_index "user_surveys", ["user_id"], name: "index_user_surveys_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.integer  "login_id",              limit: 4
@@ -257,4 +263,29 @@ ActiveRecord::Schema.define(version: 20150518003408) do
   add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
   add_index "users", ["login_id"], name: "index_users_on_login_id", using: :btree
 
+  add_foreign_key "company_infos", "companies"
+  add_foreign_key "giving_backs", "companies"
+  add_foreign_key "giving_backs", "users"
+  add_foreign_key "graduate_degrees", "colleges"
+  add_foreign_key "graduate_degrees", "degrees"
+  add_foreign_key "graduate_degrees", "users"
+  add_foreign_key "saved_list_users", "saved_lists"
+  add_foreign_key "saved_list_users", "users"
+  add_foreign_key "saved_lists", "logins"
+  add_foreign_key "survey_question_options", "survey_questions"
+  add_foreign_key "survey_question_options_choices", "survey_questions"
+  add_foreign_key "survey_questions", "surveys"
+  add_foreign_key "surveys", "logins"
+  add_foreign_key "undergraduate_degrees", "colleges"
+  add_foreign_key "undergraduate_degrees", "degrees"
+  add_foreign_key "undergraduate_degrees", "users"
+  add_foreign_key "user_phones", "users"
+  add_foreign_key "user_survey_responses", "survey_question_options"
+  add_foreign_key "user_survey_responses", "survey_question_options_choices"
+  add_foreign_key "user_survey_responses", "survey_questions"
+  add_foreign_key "user_survey_responses", "user_surveys"
+  add_foreign_key "user_surveys", "surveys"
+  add_foreign_key "user_surveys", "users"
+  add_foreign_key "users", "companies"
+  add_foreign_key "users", "logins"
 end
