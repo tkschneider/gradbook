@@ -2,23 +2,33 @@ class ReportController < ApplicationController
   def index
   end
   def show
-    @report_type = params[:report_type]
+    @report_id = params[:report_id]
+    @report_header = params[:report_name]
 
-    case @report_type
+    # Switch case by report_id
+    case @report_id
+
+    # Date Entered Report
     when "1"
-      @report_header = "Date Entered"
+
+    # Graduation Class Year Report
     when "2"
-      @report_header = "Graduation Class Year"
+
+    # Graduate Degree Program Report
     when "3"
-      @report_header = "Graduate Degree Program"
+
+    # Employer Name Report
     when "4"
-      @report_header = "Employer Name"
+
+    # Survey Taken Report
     when "5"
-      @report_header = "Survey Taken"
+
+    # Users Giving Back Report
     when "6"
-      @report_header = "Users Giving Back"
+
+    # Unknown Report
     else
-      @report_header = "Unknown"
+
     end
 
   end

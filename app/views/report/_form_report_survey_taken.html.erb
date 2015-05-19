@@ -1,0 +1,11 @@
+<%= form_tag("/report/show", method:"post") do %>
+  <h3>Report by Survey Taken</h3>
+  <p>Make a list of users who have taken a particular survey.</p>
+  <%= hidden_field_tag(:report_id, 5) %>
+  <%= hidden_field_tag(:report_name, "Survey Taken") %>
+  <%= label_tag(:survey_select, 'Select a survey: ') %>
+  <%= select_tag(:survey_select, options_for_select([['Select a Survey', 0], ['Survey 01', 1], ['Survey 02', 2]], 0)) %>
+  <%= label_tag(:saved_list_type, 'Run report on: ') %>
+  <%= select_tag(:saved_list_type, options_for_select([['All Users', 0], ['Saved List 01', 1], ['Saved List 02', 2]], 0)) %>
+  <%= submit_tag('Submit', :class => 'button') %>
+<% end %>

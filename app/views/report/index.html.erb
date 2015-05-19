@@ -10,7 +10,6 @@
         var div_to_hide = "report_type_form_" + i;
         document.getElementById(div_to_hide).style.display = "none";
       }
-      document.getElementById('report_footer').style.display = "none";
     }
 
     function onchange_report_type_handler()
@@ -18,55 +17,27 @@
       hide_all_divs();
       var div_to_show = "report_type_form_" + document.getElementById('report_type').value;
       document.getElementById(div_to_show).style.display = "block";
-
-      if(document.getElementById('report_type').value != 0)
-      {
-        document.getElementById('report_footer').style.display = "block";
-      }
     }
   </script>
   <%= label_tag(:report_type, 'Report by:') %>
   <%= select_tag(:report_type, options_for_select([['Choose Report Type', 0], ['Date Entered', 1], ['Graduation Year', 2], ['Graduate Degree Program', 3], ["Employeer Name", 4], ["Survey Taken", 5], ["User Giving Back", 6]], 0), :onchange => "onchange_report_type_handler()")%>
 
   <div id="report_type_form_1" style="display: none;">
-    <h3>Report by Date Entered</h3>
-    <p>Make a list of users by when they have entered the system.</p>
-    <%= label_tag(:month_entered, 'Month entered:') %>
-    <%= select_month(1, field_name: 'month_entered', use_short_month: true) %>
-    <%= label_tag(:year_entered, 'Year entered:') %>
-    <%= select_year(Date.today, field_name: 'year_entered', start_year: Date.today.year, end_year: 2014) %>
+    <%= render partial: 'report/form_date_entered' %>
   </div>
   <div id="report_type_form_2" style="display: none;">
-    <h3>Report by Graduation Class Year</h3>
-    <p>Make a list of users by their graduating class year.</p>
-    <%= label_tag(:year_graduated, 'Graduation year:') %>
-    <%= select_year(Date.today, field_name: 'year_graduate', start_year: Date.today.year, end_year: 1960) %>
+    <%= render partial: 'report/form_grad_class_year' %>
   </div>
   <div id="report_type_form_3" style="display: none;">
-    <h3>Report by Graduate Degree Program</h3>
-    <p>Make a list of users by their graduate degree program.</p>
-    <%= label_tag(:survey_select, 'Select a program: ') %>
-    <%= select_tag(:survey_select, options_for_select([['Select a program', 0], ['Accounting', 1], ['Computer Science', 2]], 0)) %>
+    <%= render partial: 'report/form_grad_degree_program' %>
   </div>
   <div id="report_type_form_4" style="display: none;">
-    <h3>Report by Employer Name</h3>
-    <p>Make a list of users by their employer name.</p>
-    <%= label_tag(:employer_name, 'Employer name:') %>
-    <%= text_field_tag(:employer_name) %>
+    <%= render partial: 'report/form_employer_name' %>
   </div>
   <div id="report_type_form_5" style="display: none;">
-    <h3>Report by Survey Taken</h3>
-    <p>Make a list of users who have taken a particular survey.</p>
-    <%= label_tag(:survey_select, 'Select a survey: ') %>
-    <%= select_tag(:survey_select, options_for_select([['Select a Survey', 0], ['Survey 01', 1], ['Survey 02', 2]], 0)) %>
+    <%= render partial: 'report/form_report_survey_taken' %>
   </div>
   <div id="report_type_form_6" style="display: none;">
-    <h3>Report by Users Giving Back</h3>
-    <p>Make a list of users who have given back.</p>
-  </div>
-  <div id="report_footer" style="display: none;">
-    <%= label_tag(:saved_list_type, 'Run report on: ') %>
-    <%= select_tag(:saved_list_type, options_for_select([['All Users', 0], ['Saved List 01', 1], ['Saved List 02', 2]], 0)) %>
-    <%= submit_tag('Submit', :class => 'button') %>
+    <%= render partial: 'report/form_users_giving_back' %>
   </div>
 <% end %>
