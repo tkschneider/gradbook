@@ -18,14 +18,17 @@ Rails.application.routes.draw do
   post 'report/show' => 'report#show'
 
   resources :logins
-  resources :giving_back, :except => :show
+
+  namespace :admin do
+    resources :giving_back, :except => :show
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
-    root 'logins#index'
+  root 'logins#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,3 +1,4 @@
+# author: Max Barvian
 class GivingBackController < ApplicationController
   def index
     @opportunities = GivingBack.all
