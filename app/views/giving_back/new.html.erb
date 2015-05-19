@@ -1,0 +1,21 @@
+<h1>New Opportunity</h1>
+<%= form_for :giving_back, url: giving_back_index_path do |f| %>
+  <p>
+    <%= f.label :subject %><br>
+    <%= f.text_field :subject %>
+  </p>
+
+  <p>
+    <%= f.label :position %><br>
+    <%= f.text_field :position %>
+  </p>
+
+  <p>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

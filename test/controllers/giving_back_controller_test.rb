@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MaxControllerTest < ActionController::TestCase
+class GivingBackControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

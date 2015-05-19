@@ -1,46 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <html lang="en">
+      <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "AlumBook" %></title>
+        <title><%= content_for?(:title) ? yield(:title) : "AlumBook" %></title>
 
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
+        <%= stylesheet_link_tag    "application" %>
+        <%= javascript_include_tag "vendor/modernizr" %>
+        <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+      </head>
 
-  <body>
-    <div class="row large-1">
-          <% flash.each do |name, msg| %>
-        <% if msg.is_a?(String) %>
-          <%= content_tag :div, msg, class: "alert-box #{name} radius" %>
+      <%= render 'shared/navigation' %>
+
+      <body>
+        <div class="row large-1">
+              <% flash.each do |name, msg| %>
+            <% if msg.is_a?(String) %>
+              <%= content_tag :div, msg, class: "alert-box #{name} radius" %>
+            <% end %>
+          <% end %>
+        </div>
+
+        <% if login_signed_in? %>
+          Logged in as <strong><%= current_login.email %></strong>.
+          <%= link_to 'Edit profile', edit_login_registration_path, :class => 'navbar-link' %> |
+          <%= link_to "Logout", destroy_login_session_path, method: :delete, :class => 'navbar-link'  %>
+        <% else %>
+          <%= link_to "Sign up", new_login_registration_path, :class => 'navbar-link'  %> |
+          <%= link_to "Login", new_login_session_path, :class => 'navbar-link'  %>
         <% end %>
-      <% end %>
-    </div>
 
-<%= render 'shared/navigation' %>
 
-<div class="row: large 11 align-left">
-      <div class="large-2 column">
-        <strong>Test Pages</strong><br>
-        <%= link_to 'Brad Bilter', controller: 'brad' %><br>
-        <%= link_to 'Max Barvian', controller: 'max' %><br>
-        <%= link_to 'Brett Bush', controller: 'brett' %><br><br>
-        <strong>More test pages</strong><br>
-        <%= link_to 'User List', controller: 'logins' %><br>
-        <%= link_to 'Add new user', new_login_path %><br>
-        <%= link_to 'Login Screen', controller: 'website_login' %><br>
-        <%= link_to 'Report', controller: 'report' %><br>
-        <%= link_to 'Surveys', controller: 'survey' %><br>
+    <div class="row: large 11 align-left">
+          <div class="large-2 column"><br>
+            <strong>Helpful INFO</strong><br>
+            <%= link_to 'DB stuff', controller: '/brad' %><br>
+            <%= link_to 'Gem stuff', controller: '/brett' %><br><br>
+            <strong>More test pages</strong><br>
+            <%= link_to 'User List', controller: '/logins' %><br>
+            <%= link_to 'Add new user', new_login_path %><br>
+            <%= link_to 'Login Screen', controller: '/website_login' %><br>
+            <%= link_to 'Report', controller: '/report' %><br>
+            <%= link_to 'Surveys', controller: '/survey' %><br>
+            <%= link_to 'New Opportunity', new_giving_back_path %><br>
+            <%= link_to 'Giving Back', controller: '/giving_back' %><br>
 
-      </div>
-      <div class="large-10 column">
-        <%= yield %>
-      </div>
-    </div>
+          </div>
+          <div class="large-10 column">
+            <%= yield %>
+          </div>
+        </div>
 
-  </body>
-</html>
+      </body>
+    </html>
