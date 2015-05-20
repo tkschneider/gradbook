@@ -1,7 +1,11 @@
 class ApplicationController < ActionController::Base
+  # Joe and Tim added code for Devise functionality
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  #before_action: authenticate_login!
+
+  #Allows sign_up to accept more login fields besides
   before_filter :configure_devise_params, if: :devise_controller?
 
   def configure_devise_params

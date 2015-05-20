@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150519195150) do
+ActiveRecord::Schema.define(version: 20150520021706) do
 
   create_table "colleges", force: :cascade do |t|
     t.string   "college_name", limit: 255
@@ -84,12 +84,10 @@ ActiveRecord::Schema.define(version: 20150519195150) do
 
   create_table "logins", force: :cascade do |t|
     t.string   "username",               limit: 255
-    t.string   "password",               limit: 255
     t.string   "first_name",             limit: 255
     t.string   "middle_initial",         limit: 255
     t.string   "last_name",              limit: 255
     t.integer  "type",                   limit: 4
-    t.datetime "last_login_timestamp"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
     t.string   "email",                  limit: 255, default: "", null: false
