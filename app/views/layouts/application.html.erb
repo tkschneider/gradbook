@@ -14,7 +14,7 @@
 
       <%= render 'shared/navigation' %>
 
-      <body>
+      <body data-no-turbolink="true">
         <div class="row large-1">
               <% flash.each do |name, msg| %>
             <% if msg.is_a?(String) %>
@@ -41,12 +41,10 @@
             <strong>More test pages</strong><br>
             <%= link_to 'User List', controller: '/logins' %><br>
             <%= link_to 'Add new user', new_login_path %><br>
-            <%= link_to 'Login Screen', controller: '/website_login' %><br>
             <%= link_to 'Report', controller: '/report' %><br>
             <%= link_to 'Surveys', controller: '/survey' %><br>
             <%= link_to 'New Opportunity', new_giving_back_path %><br>
             <%= link_to 'Giving Back', controller: '/giving_back' %><br>
-
           </div>
           <div class="large-10 column">
             <%= yield %>

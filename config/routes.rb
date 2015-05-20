@@ -11,8 +11,6 @@ Rails.application.routes.draw do
   get 'brad/index' => 'brad#index'
   get 'survey/index' => 'survey#index'
   get 'welcome/index'
-
-  get 'website_login/index' => 'website_login#index'
   get 'report/index' => 'report#index'
 
   post 'report/show' => 'report#show'
