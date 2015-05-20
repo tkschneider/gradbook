@@ -5,4 +5,6 @@ class Login < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_one :user
   self.inheritance_column = nil
+
+  enum type: [ :worker, :admin, :user ]
 end
