@@ -1,57 +1,66 @@
 <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <title><%= content_for?(:title) ? yield(:title) : "AlumBook" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "AlumBook" %></title>
 
-        <%= stylesheet_link_tag    "application" %>
-        <%= javascript_include_tag "vendor/modernizr" %>
-        <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
-        <%= csrf_meta_tags %>
-      </head>
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body data-no-turbolink="true">
+    <nav class="top-bar" data-topbar role="navigation">
+      <ul class="title-area">
+        <li class="name">
+          <h1><%= link_to 'Capstone Project', root_path %></h1>
+        </li>
+         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      </ul>
 
-      <%= render 'shared/navigation' %>
+      <% if login_signed_in? %>
+        <%= render current_login.user? ? 'shared/navigation/user' : 'shared/navigation/admin' %>
+      <% end %>
+    </nav>
 
-      <body>
-        <div class="row large-1">
-              <% flash.each do |name, msg| %>
-            <% if msg.is_a?(String) %>
-              <%= content_tag :div, msg, class: "alert-box #{name} radius" %>
-            <% end %>
-          <% end %>
-        </div>
-
-        <% if login_signed_in? %>
-          Logged in as <strong><%= current_login.email %></strong>.
-          <%= link_to 'Edit profile', edit_login_registration_path, :class => 'navbar-link' %> |
-          <%= link_to "Logout", destroy_login_session_path, method: :delete, :class => 'navbar-link'  %>
-        <% else %>
-          <%= link_to "Sign up", new_login_registration_path, :class => 'navbar-link'  %> |
-          <%= link_to "Login", new_login_session_path, :class => 'navbar-link'  %>
+    <div class="row large-1">
+      <% flash.each do |name, msg| %>
+        <% if msg.is_a?(String) %>
+          <%= content_tag :div, msg, class: "alert-box #{name} radius" %>
         <% end %>
+      <% end %>
+    </div>
+
+    <% if login_signed_in? %>
+    Logged in as <strong><%= current_login.email %></strong> with role <strong><%= current_login.type.to_s %></strong>.
+      <%= link_to 'Edit profile', edit_login_registration_path, :class => 'navbar-link' %> |
+      <%= link_to "Logout", destroy_login_session_path, method: :delete, :class => 'navbar-link'  %>
+    <% else %>
+      <%= link_to "Sign up", new_login_registration_path, :class => 'navbar-link'  %> |
+      <%= link_to "Login", new_login_session_path, :class => 'navbar-link'  %>
+    <% end %>
 
 
     <div class="row: large 11 align-left">
-          <div class="large-2 column"><br>
-            <strong>Helpful INFO</strong><br>
-            <%= link_to 'DB stuff', controller: '/brad' %><br>
-            <%= link_to 'Gem stuff', controller: '/brett' %><br><br>
-            <strong>More test pages</strong><br>
-            <%= link_to 'User List', controller: '/logins' %><br>
-            <%= link_to 'Add new user', new_login_path %><br>
-            <%= link_to 'Login Screen', controller: '/website_login' %><br>
-            <%= link_to 'Report', controller: '/report' %><br>
-            <%= link_to 'Surveys', controller: '/survey' %><br>
-            <%= link_to 'New Opportunity', new_giving_back_path %><br>
-            <%= link_to 'Giving Back', controller: '/giving_back' %><br>
+      <div class="large-2 column"><br>
+        <strong>Helpful INFO</strong><br>
+        <%= link_to 'DB stuff', controller: '/brad' %><br>
+        <%= link_to 'Gem stuff', controller: '/brett' %><br><br>
+        <strong>More test pages</strong><br>
+        <%= link_to 'User List', controller: '/logins' %><br>
+        <%= link_to 'Add new user', new_login_path %><br>
+        <%= link_to 'Report', controller: '/report' %><br>
+        <%= link_to 'Surveys', controller: '/survey' %><br>
+        <%= link_to 'Giving Back', controller: 'admin/giving_back' %><br>
 
-          </div>
-          <div class="large-10 column">
-            <%= yield %>
-          </div>
-        </div>
+      </div>
+      <div class="large-10 column">
+        <%= yield %>
+      </div>
+    </div>
 
-      </body>
-    </html>
+  </body>
+</html>

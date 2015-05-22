@@ -11,21 +11,23 @@ Rails.application.routes.draw do
   get 'brad/index' => 'brad#index'
   get 'survey/index' => 'survey#index'
   get 'welcome/index'
-
-  get 'website_login/index' => 'website_login#index'
   get 'report/index' => 'report#index'
 
   post 'report/show' => 'report#show'
 
   resources :logins
-  resources :giving_back, :except => :show
+
+  resources :giving_back, only: [:new, :create]
+
+  namespace :admin do
+    resources :giving_back, only: :index
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
-    root 'welcome#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

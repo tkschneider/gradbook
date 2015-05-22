@@ -1,8 +1,5 @@
+# author: Max Barvian
 class GivingBackController < ApplicationController
-  def index
-    @opportunities = GivingBack.all
-  end
-
   def new
 
   end
@@ -12,7 +9,7 @@ class GivingBackController < ApplicationController
     @opportunity = GivingBack.new(opportunity_params)
 
     @opportunity.save
-    redirect_to action: 'index'
+    redirect_to action: 'new'
   end
 
   private
