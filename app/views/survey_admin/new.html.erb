@@ -1,0 +1,27 @@
+<h1>Create a new Survey</h1>
+
+<%= form_for :survey, url: survey_admin_index_path do |f| %>
+
+<p>
+  <%= f.label :survey_name %><br>
+  <%= f.text_field :survey_name %>
+
+</p>
+<p>
+ =
+  <%= f.label :survey_description %><br>
+  <%= f.text_field :survey_description %>
+
+
+
+
+
+
+
+
+
+
+
+</p>
+  <%= f.submit %>
+<% end %>

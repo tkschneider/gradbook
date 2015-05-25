@@ -8,10 +8,10 @@
     <%= f.condition_fields do |c| %>
       <%= render "condition_fields", f: c %>
     <% end %>
-    
-    
+
+
   <% end %>
-  
+
   <p><%= link_to_add_fields "Add Conditions", f, :condition, class: "button" %></p>
   <%= f.submit "search", :class => "button" %>
 <% end %>
