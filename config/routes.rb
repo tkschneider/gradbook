@@ -2,8 +2,18 @@ Rails.application.routes.draw do
 
   devise_for :logins
 
+  get 'searchadmins/index'
+  
   resources :searchadmins do
     collection { post :search, to: 'searchadmins#index'}
+  end
+
+  get 'searchusers/index' -> 'searchusers#index'
+  
+  resources :searchusers do
+    collection do
+      match 'search' => 'searchusers#search', :via => [:get, :post], :as => :search
+    end
   end
 
 
