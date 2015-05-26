@@ -14,8 +14,10 @@ default: &default
   encoding: utf8
   pool: 5
   username: root
-  password: csc495
+
+  password: password
   host: localhost
+  port: 3366
 
 development:
   <<: *default

@@ -13,11 +13,17 @@ Rails.application.routes.draw do
   get 'welcome/index'
   get 'report/index' => 'report#index'
 
+
+
   post 'report/show' => 'report#show'
 
   resources :logins
 
   resources :giving_back, only: [:new, :create]
+
+  resources :survey_admin, only: [:new, :add, :create, :edit, :index]
+
+
 
   namespace :admin do
     resources :giving_back, only: :index
