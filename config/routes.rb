@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+<<<<<<< HEAD
 
   devise_for :logins
 
   get 'searchadmins/index'
   
+=======
+>>>>>>> 8e5d60c3ff0035bf62ee222568dc670e1b4d3803
   resources :searchadmins do
     collection { post :search, to: 'searchadmins#index'}
   end
