@@ -1,17 +1,20 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
+#<<<<<<< HEAD
 
   devise_for :logins
 
+  
+  
+#=======
+#>>>>>>> 8e5d60c3ff0035bf62ee222568dc670e1b4d3803
+
   get 'searchadmins/index'
   
-=======
->>>>>>> 8e5d60c3ff0035bf62ee222568dc670e1b4d3803
   resources :searchadmins do
     collection { post :search, to: 'searchadmins#index'}
   end
 
-  get 'searchusers/index' -> 'searchusers#index'
+  get 'searchusers/index' => 'searchusers#index'
   
   resources :searchusers do
     collection do
