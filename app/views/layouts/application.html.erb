@@ -21,12 +21,7 @@
          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
       </ul>
-
-      <% if login_signed_in? %>
-        <%= render current_login.user? ? 'shared/navigation/user' : 'shared/navigation/admin' %>
-      <% else %>
-        <%= render 'shared/navigation/nonMem' %>
-      <% end %>
+      <%= render "shared/navigation/#{ login_signed_in? ? current_login.user? ? 'user' : 'admin' : 'nonMem'}" %>
     </nav>
 
     <div class="row large-1">
@@ -39,7 +34,6 @@
 
     <% if login_signed_in? %>
     Logged in as <strong><%= current_login.first_name.camelize %> <%= current_login.last_name.camelize %></strong> as <strong><%= current_login.type.to_s.upcase %></strong>.
-    
     <% end %>
 
 

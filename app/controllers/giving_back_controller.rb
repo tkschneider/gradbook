@@ -8,7 +8,7 @@ class GivingBackController < ApplicationController
     @opportunity = GivingBack.new(opportunity_params)
 
     if @opportunity.save
-        flash[:success] = "Opportunity submitted!"
+      flash[:success] = "Opportunity submitted!"
       redirect_to '/giving_back/new'
     else
         flash[:alert] = "The opportunity could not be submitted at this time. Please try again."
