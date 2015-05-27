@@ -24,6 +24,8 @@
 
       <% if login_signed_in? %>
         <%= render current_login.user? ? 'shared/navigation/user' : 'shared/navigation/admin' %>
+      <% else %>
+        <%= render 'shared/navigation/nonMem' %>
       <% end %>
     </nav>
 
@@ -36,12 +38,8 @@
     </div>
 
     <% if login_signed_in? %>
-    Logged in as <strong><%= current_login.email %></strong> with role <strong><%= current_login.type.to_s %></strong>.
-      <%= link_to 'Edit profile', edit_login_registration_path, :class => 'navbar-link' %> |
-      <%= link_to "Logout", destroy_login_session_path, method: :delete, :class => 'navbar-link'  %>
-    <% else %>
-      <%= link_to "Sign up", new_login_registration_path, :class => 'navbar-link'  %> |
-      <%= link_to "Login", new_login_session_path, :class => 'navbar-link'  %>
+    Logged in as <strong><%= current_login.first_name %> <%= current_login.last_name %></strong> with role <strong><%= current_login.type.to_s %></strong>.
+    
     <% end %>
 
 
