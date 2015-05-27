@@ -1,7 +1,7 @@
 <section class="top-bar-section">
   <!-- Right Nav Section -->
   <ul class="right">
-    <li class="has-dropdown <%= 'active' if current_page?(new_giving_back_path) %>">
+    <li class="has-dropdown <%= 'active' if params[:controller] == 'giving_back' %>">
       <a href="#">Give Back</a>
       <ul class="dropdown">
         <li><%= link_to 'Internship', new_giving_back_path('internship') %></li>
