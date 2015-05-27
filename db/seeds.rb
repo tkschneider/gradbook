@@ -4,6 +4,7 @@ Login.create!([
   {username: "aaadmin", first_name: "admin", middle_initial: "a", last_name: "admin", type: 1, email: "admin@mail.com", password: "password", password_confirmation: "password", encrypted_password: "$2a$10$ENH/39txtGu1bp9p8lNfu.NlVluvqfNG38Wa.jJa.l2MIM7vEG4sO", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-05-25 19:34:44", last_sign_in_at: "2015-05-25 19:34:44", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"},
   {username: "uuuser", first_name: "user", middle_initial: "u", last_name: "user", type: 2, email: "user@mail.com", password: "password", password_confirmation: "password", encrypted_password: "$2a$10$ENH/39txtGu1bp9p8lNfu.NlVluvqfNG38Wa.jJa.l2MIM7vEG4sO", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 1, current_sign_in_at: "2015-05-25 19:34:44", last_sign_in_at: "2015-05-25 19:34:44", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"}
 ])
+Survey.destroy_all
 Survey.create!([
   {login_id: nil, survey_name: "Test Survey_1", survey_description: "Test Survey_1", date_created: nil, status: nil},
   {login_id: nil, survey_name: "Test Survey_2", survey_description: "Test Survey_2", date_created: nil, status: nil},
@@ -11,4 +12,16 @@ Survey.create!([
   {login_id: nil, survey_name: "Test Survey_4", survey_description: "Test Survey_4", date_created: nil, status: nil},
   {login_id: nil, survey_name: "Test Survey_5", survey_description: "Test Survey_5", date_created: nil, status: nil},
   {login_id: nil, survey_name: "Test Survey_6", survey_description: "Test Survey_6", date_created: nil, status: nil}
+])
+User.destroy_all
+User.create!([
+  {login_id: 1, company_id: nil, email_addr: nil, street: "123 Front St", city: "Naperville", state: "IL", zip: 60504, first_name: nil, middle_initial: nil, last_name: nil, spouse_first_name: nil, spouse_middle_initial: nil, spouse_last_name: nil, number_children: nil, birth_month: 0, birth_day: nil, birth_year: nil, ethnicity: nil, general_opt_in: nil, email_opt_in: nil, phone_opt_in: nil, badges_opt_in: nil, status: nil, salary_range: nil, job_title: nil, start_date: nil, end_date: nil, searchable: nil, subscription_type: nil},
+  {login_id: 2, company_id: nil, email_addr: nil, street: "345 Circle Dr", city: "Wheaton", state: "IL", zip: 60538, first_name: nil, middle_initial: nil, last_name: nil, spouse_first_name: nil, spouse_middle_initial: nil, spouse_last_name: nil, number_children: nil, birth_month: 0, birth_day: nil, birth_year: nil, ethnicity: nil, general_opt_in: nil, email_opt_in: nil, phone_opt_in: nil, badges_opt_in: nil, status: nil, salary_range: nil, job_title: nil, start_date: nil, end_date: nil, searchable: nil, subscription_type: nil},
+  {login_id: 3, company_id: nil, email_addr: nil, street: "11212 Jefferson", city: "Sugar Grove", state: "IL", zip: 60554, first_name: nil, middle_initial: nil, last_name: nil, spouse_first_name: nil, spouse_middle_initial: nil, spouse_last_name: nil, number_children: nil, birth_month: 0, birth_day: nil, birth_year: nil, ethnicity: nil, general_opt_in: nil, email_opt_in: nil, phone_opt_in: nil, badges_opt_in: nil, status: nil, salary_range: nil, job_title: nil, start_date: nil, end_date: nil, searchable: nil, subscription_type: nil}
+])
+
+GivingBack.destroy_all
+GivingBack.create!([
+  {user_id: nil, company_id: nil, subject: "Guest Speaker", position: "QA", description: "I'd like to be a guest speaker", requirements: nil, approved: nil, completed: nil, type: 2, contact_first_name: nil, contact_last_name: nil, contact_email: nil},
+  {user_id: nil, company_id: nil, subject: "Tutor", position: "Tutor", description: "I'd like to tutor", requirements: nil, approved: nil, completed: nil, type: 0, contact_first_name: nil, contact_last_name: nil, contact_email: nil}
 ])

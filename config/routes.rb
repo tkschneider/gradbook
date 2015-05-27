@@ -12,12 +12,23 @@ Rails.application.routes.draw do
   get 'survey/index' => 'survey#index'
   get 'welcome/index'
   get 'report/index' => 'report#index'
+  get 'survey_admin/edit' => 'survey_admin#edit'
+  get 'survey_admin/index' => 'survey_admin#index'
 
 
 
   post 'report/show' => 'report#show'
 
   resources :logins
+
+
+  #resources :giving_back, only: [:new, :create]
+
+  resources :survey_admin
+  resources :survey_admin, :index
+  resources :survey_admin, :new
+  resources :survey_admin, :edit
+
 
 
   resources :giving_back, only: [:create] do
@@ -31,7 +42,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :giving_back, only: :index
-  end
+    end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

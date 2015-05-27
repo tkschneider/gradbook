@@ -5,6 +5,9 @@ class LoginsController < ApplicationController
 
     def show
         @login = Login.find(params[:id])
+        if User.exists?(params[:id])
+            @user = User.find(params[:id])
+            end
         end
 
     def new
@@ -12,6 +15,9 @@ class LoginsController < ApplicationController
 
     def edit
         @login = Login.find(params[:id])
+        if User.exists?(params[:id])
+            @user = User.find(params[:id])
+        end
         end
 
     def create
@@ -27,18 +33,24 @@ class LoginsController < ApplicationController
 
     def update
       @login = Login.find(params[:id])
-
+     
       if @login.update(login_params)
          flash[:success] = "Login updated"
           redirect_to :action => 'index'
       else
-        flash[:alert] = "Login NOT created"
+        flash[:alert] = "Login NOT updated"
       end
     end
 
     def destroy
-      @login = Login.find(params[:id])
-
+      
+      
+        if User.exists?(params[:id])
+            @user = User.find(params[:id])
+            @user.destroy
+        end
+        
+        @login = Login.find(params[:id])
       if @login.destroy
           flash[:success] = "Login deleted"
           redirect_to :action => 'index'
