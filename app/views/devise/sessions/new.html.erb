@@ -13,7 +13,7 @@
           <div class="large-12 columns">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="field">
-              <%= f.email_field :email, :placeholder => 'Email', autofocus: true %>
+              <%= f.text_field :logon, :placeholder => 'Username', autofocus: true %>
             </div>
           </div>
         </div>
