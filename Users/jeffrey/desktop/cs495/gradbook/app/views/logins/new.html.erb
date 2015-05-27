@@ -1,0 +1,40 @@
+<h1>Login Create</h1>
+<%= form_for :login, url: logins_path do |f| %>
+
+ <div class="large-2">
+
+  <p>
+    <%= f.label :"First Name" %>
+    <%= f.text_field :first_name%>
+    
+    <%= f.label :"Middle Initial" %>
+    <%= f.text_field :middle_initial%>
+
+    <%= f.label :"Last Name" %>
+    <%= f.text_field :last_name%>
+  
+    <%= f.label :"Email" %>
+    <%= f.text_field :email%>
+
+    <%= f.label :"User Name" %>
+    <%= f.text_field :username%>
+
+    <%= f.label :password %>
+    <% if @validatable %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, autocomplete: "off" %>
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+
+    <%= f.label :"Type" %>
+    <%= f.select :type, [['User', 'user'], ['Admin', 'admin'], ['Worker', 'worker']]%>
+  </p>
+
+  <p>
+    <%= f.submit "Add Login"%>
+  </p>
+</div>
+
+<% end %>

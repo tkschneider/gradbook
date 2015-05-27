@@ -1,0 +1,17 @@
+<p>
+  <h1 style="color:red"> Header </h1>
+</p>
+
+<%= search_form_for @search, url: search_searchadmins_path, method: :post do |f| %>
+
+  <% (0..3).each do |i| %>
+    <%= f.condition_fields do |c| %>
+      <%= render "condition_fields", f: c %>
+    <% end %>
+
+
+  <% end %>
+
+  <p><%= link_to_add_fields "Add Conditions", f, :condition, class: "button" %></p>
+  <%= f.submit "search", :class => "button" %>
+<% end %>
