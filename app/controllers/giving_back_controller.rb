@@ -1,23 +1,23 @@
+# author: Max Barvian
 class GivingBackController < ApplicationController
-  def index
-    @opportunities = GivingBack.all
-  end
-
   def new
 
   end
 
   def create
-    # render plain: params[:giving_back].inspect
     @opportunity = GivingBack.new(opportunity_params)
 
-    @opportunity.save
-    redirect_to action: 'index'
+    if @opportunity.save
+        flash[:success] = "Opportunity submitted!"
+      redirect_to '/giving_back/new'
+    else
+        flash[:alert] = "The opportunity could not be submitted at this time. Please try again."
+    end
   end
 
   private
 
   def opportunity_params
-    params.require(:giving_back).permit(:subject, :position, :description)
+    params.require(:giving_back).permit(:subject, :position, :description, :type)
   end
 end
