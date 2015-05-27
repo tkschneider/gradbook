@@ -16,12 +16,16 @@ class Login < ActiveRecord::Base
       :case_sensitive => false
     }
 
-    def self.find_for_database_authentication(warden_conditions)
-      conditions = warden_conditions.dup
-      if logon = conditions.delete(:logon)
-        where(conditions.to_hash).where(["username = :value OR email = :value", { :value => logon.downcase }]).first
-      else
-        where(conditions.to_hash).first
-      end
+  def self.find_for_database_authentication(warden_conditions)
+    conditions = warden_conditions.dup
+    if logon = conditions.delete(:logon)
+      where(conditions.to_hash).where(["username = :value OR email = :value", { :value => logon.downcase }]).first
+    else
+      where(conditions.to_hash).first
     end
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
