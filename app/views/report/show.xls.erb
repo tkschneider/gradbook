@@ -10,11 +10,13 @@
         <Cell><Data ss:Type="String">ID</Data></Cell>
         <Cell><Data ss:Type="String">Name</Data></Cell>
       </Row>
-    <% @users.each do |user| %>
-      <Row>
-        <Cell><Data ss:Type="Number"><%= user.id %></Data></Cell>
-        <Cell><Data ss:Type="String"><%= user.name %></Data></Cell>
-      </Row>
+    <% if @users != nil %>
+      <% @users.each do |user| %>
+        <Row>
+          <Cell><Data ss:Type="Number"><%= user.id %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= user.name %></Data></Cell>
+        </Row>
+      <% end %>
     <% end %>
     </Table>
   </Worksheet>

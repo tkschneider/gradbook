@@ -1,3 +1,4 @@
+# Created by Brett Bush
 class ReportController < ApplicationController
 
   def index
