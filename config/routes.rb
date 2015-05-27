@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'survey/index' => 'survey#index'
   get 'welcome/index'
   get 'report/index' => 'report#index'
+  get 'user_profile/index' => 'user_profile#index'
 
 
 
