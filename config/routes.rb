@@ -2,11 +2,6 @@ Rails.application.routes.draw do
 
   devise_for :logins
 
-  resources :searchadmins do
-    collection { post :search, to: 'searchadmins#index'}
-  end
-
-
   get 'brett/index' => 'brett#index'
   get 'brad/index' => 'brad#index'
   get 'survey/index' => 'survey#index'
