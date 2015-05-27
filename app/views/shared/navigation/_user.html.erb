@@ -8,7 +8,7 @@
       <a href="#">Profile</a>
       <ul class="dropdown">
         <li>
-          <a href="#">View My Profile</a>
+          <%= link_to 'My Profile', controller: '/user_profile' %>
         </li>
         <li>
           <%= link_to 'Edit My Profile', edit_login_registration_path %>
