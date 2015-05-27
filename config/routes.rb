@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   resources :logins
 
 
+  resources :internships, only: [:index]
+  get 'internships/new', to: redirect('/giving_back/new/internship')
   resources :giving_back, only: [:create] do
     new do
       get ':type', to: 'giving_back#new', as: ''
