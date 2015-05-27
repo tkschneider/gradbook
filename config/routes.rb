@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   resources :survey_admin, only: [:new, :add, :create, :edit, :index]
 
   namespace :admin do
-    resources :giving_back, only: :index
+    resources :giving_back, only: [:index, :update]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
