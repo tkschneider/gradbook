@@ -22,15 +22,20 @@ Rails.application.routes.draw do
   resources :logins
 
 
+#<<<<<<< HEAD
   #resources :giving_back, only: [:new, :create]
 
-  resources :survey_admin
-  resources :survey_admin, :index
-  resources :survey_admin, :new
-  resources :survey_admin, :edit
+#  resources :survey_admin
+#  resources :survey_admin, :index
+#  resources :survey_admin, :new
+#  resources :survey_admin, :edit
 
 
 
+#=======
+  resources :internships, only: [:index]
+  get 'internships/new', to: redirect('/giving_back/new/internship')
+#>>>>>>> f03186844032ab7ecf009a5e07a0de5e8af46c6b
   resources :giving_back, only: [:create] do
     new do
       get ':type', to: 'giving_back#new', as: ''
@@ -41,8 +46,13 @@ Rails.application.routes.draw do
   resources :survey_admin, only: [:new, :add, :create, :edit, :index]
 
   namespace :admin do
-    resources :giving_back, only: :index
-    end
+#<<<<<<< HEAD
+#    resources :giving_back, only: :index
+#    end
+#=======
+    resources :giving_back, only: [:index, :update]
+  end
+#>>>>>>> f03186844032ab7ecf009a5e07a0de5e8af46c6b
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
