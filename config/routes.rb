@@ -12,15 +12,12 @@ Rails.application.routes.draw do
   get 'survey/index' => 'survey#index'
   get 'welcome/index'
   get 'report/index' => 'report#index'
-  get 'survey_admin/edit' => 'survey_admin#edit'
-  get 'survey_admin/index' => 'survey_admin#index'
 
 
 
   post 'report/show' => 'report#show'
 
   resources :logins
-
 
 #<<<<<<< HEAD
   #resources :giving_back, only: [:new, :create]
@@ -32,10 +29,10 @@ Rails.application.routes.draw do
 
 
 
-#=======
+
   resources :internships, only: [:index]
   get 'internships/new', to: redirect('/giving_back/new/internship')
-#>>>>>>> f03186844032ab7ecf009a5e07a0de5e8af46c6b
+
   resources :giving_back, only: [:create] do
     new do
       get ':type', to: 'giving_back#new', as: ''
@@ -46,6 +43,7 @@ Rails.application.routes.draw do
   resources :survey_admin, only: [:new, :add, :create, :edit, :index]
 
   namespace :admin do
+
 #<<<<<<< HEAD
 #    resources :giving_back, only: :index
 #    end

@@ -34,7 +34,6 @@
 
     <% if login_signed_in? %>
     Logged in as <strong><%= current_login.first_name.camelize %> <%= current_login.last_name.camelize %></strong> as <strong><%= current_login.type.to_s.upcase %></strong>.
-
     <% end %>
 
 
