@@ -19,11 +19,15 @@ Rails.application.routes.draw do
 
   resources :logins
 
-  resources :giving_back, only: [:new, :create]
+
+  resources :giving_back, only: [:create] do
+    new do
+      get ':type', to: 'giving_back#new', as: ''
+    end
+  end
+  get 'giving_back/new', to: redirect('/giving_back/new/other')
 
   resources :survey_admin, only: [:new, :add, :create, :edit, :index]
-
-
 
   namespace :admin do
     resources :giving_back, only: :index
