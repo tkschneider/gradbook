@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+ruby '2.0.0'
 
 # Prawn for PDF Generation
 gem 'prawn'
