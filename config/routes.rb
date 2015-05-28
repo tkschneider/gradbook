@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'survey/index' => 'survey#index'
   get 'welcome/index'
   get 'report/index' => 'report#index'
+  get 'survey_admin/edit' => 'survey_admin#edit'
 
 
   post 'report/show' => 'report#show'
