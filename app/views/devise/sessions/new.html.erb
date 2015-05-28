@@ -1,16 +1,25 @@
 <%-# Edited by Joe and Tim-%>
-
-<div style="background: url('/assets/nccJeff.jpg');">
+<body style="background-image: url(/assets/nccJeff.jpg);">
+<div style="vertical-align: middle">
 <div class="large-4 large-centered columns">
   <br><br><br><br><br><br>
+  <div class="row">
+    <div class="large-12 large-centered columns">
+    <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+        <%= content_tag :div, msg, class: "alert-box #{name} radius" %>
+      <% end %>
+    <% end %>
+  </div>
+  </div>
   <div class="login-box" style="background: #fff;
                                 border: 1px solid #ddd;
-                                margin: 200px 0;
+                                margin: 0 0;
                                 padding: 40px 20px 20px 20px;">
     <div class="row">
-      <div class="large-12 columns">
+      <div class="large-12 large-centered columns">
         <div class="row">
-          <div class="large-12 columns">
+          <div class="large-12 large-centered columns">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="field">
               <%= f.text_field :logon, :placeholder => 'Username', autofocus: true %>
@@ -19,7 +28,7 @@
         </div>
 
         <div class="row">
-          <div class="large-12 columns">
+          <div class="large-12 large-centered columns">
             <div class="field">
               <%= f.password_field :password, :placeholder => 'Password', autocomplete: "off" %>
             </div>
@@ -48,3 +57,4 @@
   <br><br><br><br><br>
 </div>
 </div>
+</body>
