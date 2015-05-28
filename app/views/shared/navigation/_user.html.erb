@@ -1,6 +1,9 @@
 <section class="top-bar-section">
   <!-- Right Nav Section -->
   <ul class="right">
+    <li class="<%= 'active' if params[:controller] == 'survey' %>">
+      <%= link_to 'Surveys', survey_index_path %>
+    </li>
     <li class="<%= 'active' if params[:controller] == 'internships' %>">
       <%= link_to 'Internships', internships_path %>
     </li>

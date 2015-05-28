@@ -12,7 +12,7 @@
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body data-no-turbolink="true" class="<%= controller.controller_name %>">
+  <body data-no-turbolink="true" class="<%= controller.controller_name %>-page">
     <div class="contain-to-grid">
       <nav class="top-bar" data-topbar role="navigation">
         <ul class="title-area">
@@ -44,9 +44,9 @@
       </div>
     </div>
 
-    <% if login_signed_in? %>
+    <!-- <% if login_signed_in? %>
     Logged in as <strong><%= current_login.first_name.camelize %> <%= current_login.last_name.camelize %></strong> as <strong><%= current_login.type.to_s.upcase %></strong>.
-    <% end %>
+    <% end %> -->
 
     <main role="main">
       <%= yield %>
@@ -60,7 +60,6 @@
         <%= link_to 'Login Manager', controller: '/logins' %><br>
         <%= link_to 'Report', controller: '/report' %><br>
         <%= link_to 'Surveys', controller: '/survey' %><br>
-        <%= link_to 'Giving Back', controller: 'admin/giving_back' %><br>
 
       </div>
       <div class="large-10 column">
