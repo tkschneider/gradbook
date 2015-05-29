@@ -1,4 +1,5 @@
 class LoginsController < ApplicationController
+    before_filter :authorize_admin
     def index
         @login = Login.all
         end
@@ -33,7 +34,7 @@ class LoginsController < ApplicationController
 
     def update
       @login = Login.find(params[:id])
-     
+
       if @login.update(login_params)
          flash[:success] = "Login updated"
           redirect_to :action => 'index'
@@ -43,13 +44,13 @@ class LoginsController < ApplicationController
     end
 
     def destroy
-      
-      
+
+
         if User.exists?(params[:id])
             @user = User.find(params[:id])
             @user.destroy
         end
-        
+
         @login = Login.find(params[:id])
       if @login.destroy
           flash[:success] = "Login deleted"
