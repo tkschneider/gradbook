@@ -1,4 +1,6 @@
-<h1>Login Edit</h1><br>
+<div class="row">
+  <div class="large-12 columns">
+  <h1>Login Edit</h1><br>
 
   <strong>Name: </strong><br><span style="margin-left:2em"><%= @login.first_name.camelize%> <%= @login.middle_initial.upcase%> <%= @login.last_name.camelize%></span><br>
   <strong>Email: </strong><br><span style="margin-left:2em"><%= @login.email.upcase%></span><br>
@@ -9,10 +11,10 @@
   <% else %>
      <span style="margin-left:2em"><strong>Not Found</strong><br><br><br>
   <% end %>
-    
+
   <strong>Username: </strong><%= @login.username.upcase%><br>
   <strong>Type: </strong><%= @login.type.upcase%>  <br><br>
-  
+
 <%= form_for :login, url: login_path(@login), method: :patch do |f| %>
 
   <% if @login.errors.any? %>
@@ -38,7 +40,7 @@
 
     <%= f.label :Last_name %>
     <%= f.text_field :last_name%>
-    
+
     <!DOCTYPE%= f.label :Email %>
     <!DOCTYPE%= f.text_field :email%>
 
@@ -57,3 +59,5 @@
   </p>
 
 <% end %>
+  </div>
+  </div>
