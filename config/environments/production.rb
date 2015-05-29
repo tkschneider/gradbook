@@ -1,5 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -19,7 +20,6 @@ Rails.application.configure do
   # NGINX, varnish or squid.
   # config.action_dispatch.rack_cache = true
 
-  config.serve_static_assets = true
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
   config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
@@ -29,7 +29,7 @@ Rails.application.configure do
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Asset digests allow you to set far-future HTTP expiration dates on all assets,
   # yet still be able to expire them through the digest params.

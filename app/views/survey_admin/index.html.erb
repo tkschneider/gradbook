@@ -1,21 +1,24 @@
-<table>
-  <tr>
-    <th>Status</th>
-    <th>Survey</th>
-    <th>Date Created</th>
-
-    <th colspan="4"></th>
-  </tr>
-
+<div class="row">
+  <div class="large-12 columns">
+    <table>
+      <tr>
+        <th>Status</th>
+        <th>Survey</th>
+        <th>Date Created</th>
+        <th colspan="4"></th>
+      </tr>
   <% @survey.each do |s| %>
     <tr>
       <td><%= s.status %></td>
       <td><%= s.survey_name%></td>
       <td><%= s.date_created%></td>
+      <td><%= link_to 'edit', action: 'edit', :id => s, :survey_id => s %></td>
+          </tr>
+      <% end %>
+    </table><br>
+          </tr>
 
-
-      </tr>
-  <% end %>
-</table><br>
-
-<%= link_to 'Create', {controller: "survey_admin", action: 'new'} %>
+    </table><br>
+    <%= link_to 'Create', {controller: "survey_admin", action: 'new'} %>
+  </div>
+</div>

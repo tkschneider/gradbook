@@ -1,4 +1,6 @@
-<h1>Login Create</h1>
+<div class="row">
+  <div class="large-12 columns">
+  <h1>Login Create</h1>
 <%= form_for :login, url: logins_path do |f| %>
 
  <div class="large-2">
@@ -6,7 +8,7 @@
   <p>
     <%= f.label :"First Name" %>
     <%= f.text_field :first_name%>
-    
+
     <%= f.label :"Middle Initial" %>
     <%= f.text_field :middle_initial%>
 
@@ -38,3 +40,5 @@
 </div>
 
 <% end %>
+    </div>
+    </div>
