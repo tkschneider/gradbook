@@ -6,7 +6,7 @@
   <strong>Name: </strong><br><span style="margin-left:2em"><%= @login.first_name.camelize%> <%= @login.middle_initial.upcase%> <%= @login.last_name.camelize%></span><br>
   <strong>Email: </strong><br><span style="margin-left:2em"><%= @login.email.upcase%></span><br>
   <strong>Address: </strong><br>
-    <%if (defined? @user.city)%>
+    <%if (defined? @user)%>
     <span style="margin-left:2em"><%= @user.street.camelize%></span><br>
     <span style="margin-left:2em"><%= @user.city.camelize%>, <%= @user.state.camelize%>  <%= @user.zip%></span><br><br>
   <% else %>
