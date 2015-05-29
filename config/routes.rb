@@ -2,11 +2,6 @@ Rails.application.routes.draw do
 
   devise_for :logins
 
-  resources :searchadmins do
-    collection { post :search, to: 'searchadmins#index'}
-  end
-
-
   get 'brett/index' => 'brett#index'
   get 'brad/index' => 'brad#index'
   get 'survey/index' => 'survey#index'
@@ -15,19 +10,22 @@ Rails.application.routes.draw do
   get 'user_profile/index' => 'user_profile#index'
 
 
-
   post 'report/show' => 'report#show'
 
   resources :logins
-
-  resources :giving_back, only: [:new, :create]
-
   resources :survey_admin, only: [:new, :add, :create, :edit, :index]
 
-
+  resources :internships, only: [:index]
+  get 'internships/new', to: redirect('/giving_back/new/internship')
+  resources :giving_back, only: [:create] do
+    new do
+      get ':type', to: 'giving_back#new', as: ''
+    end
+  end
+  get 'giving_back/new', to: redirect('/giving_back/new/other')
 
   namespace :admin do
-    resources :giving_back, only: :index
+    resources :giving_back, only: [:index, :update]
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

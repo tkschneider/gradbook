@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "AlumBook" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "ALUMBOOK" %></title>
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
     <%= stylesheet_link_tag    "application" %>
@@ -16,17 +16,12 @@
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><%= link_to 'Capstone Project', root_path %></h1>
+          <h1><%= link_to 'North Central College ALUMBOOK', root_path %></h1>
         </li>
          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
         <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
       </ul>
-
-      <% if login_signed_in? %>
-        <%= render current_login.user? ? 'shared/navigation/user' : 'shared/navigation/admin' %>
-      <% else %>
-        <%= render 'shared/navigation/nonMem' %>
-      <% end %>
+      <%= render "shared/navigation/#{ login_signed_in? ? current_login.user? ? 'user' : 'admin' : 'nonMem'}" %>
     </nav>
 
     <div class="row large-1">
@@ -38,8 +33,7 @@
     </div>
 
     <% if login_signed_in? %>
-    Logged in as <strong><%= current_login.first_name %> <%= current_login.last_name %></strong> with role <strong><%= current_login.type.to_s %></strong>.
-    
+    Logged in as <strong><%= current_login.first_name.camelize %> <%= current_login.last_name.camelize %></strong> as <strong><%= current_login.type.to_s.upcase %></strong>.
     <% end %>
 
 
@@ -49,8 +43,7 @@
         <%= link_to 'DB stuff', controller: '/brad' %><br>
         <%= link_to 'Gem stuff', controller: '/brett' %><br><br>
         <strong>More test pages</strong><br>
-        <%= link_to 'User List', controller: '/logins' %><br>
-        <%= link_to 'Add new user', new_login_path %><br>
+        <%= link_to 'Login Manager', controller: '/logins' %><br>
         <%= link_to 'Report', controller: '/report' %><br>
         <%= link_to 'Surveys', controller: '/survey' %><br>
         <%= link_to 'Giving Back', controller: 'admin/giving_back' %><br>

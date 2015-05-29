@@ -74,6 +74,11 @@ Devise.setup do |config|
   # Does not affect registerable.
   # config.paranoid = true
 
+  #Added for devise username login
+  config.authentication_keys = [ :logon ]
+  config.scoped_views = true
+
+
   # By default Devise will store the user in session. You can skip storage for
   # particular strategies by setting this option.
   # Notice that if you are skipping storage for all authentication paths, you

@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
-
+# Prawn for PDF Generation
+gem 'prawn'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use mysql as the database for Active Record
@@ -50,3 +51,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'ransack'
+
+gem 'seed_dump'

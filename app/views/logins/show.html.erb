@@ -1,15 +1,22 @@
-<dl class="tabs" data-tab data-options="deep_linking: true">
-  <dd>
-    <%= link_to 'List', controller: 'logins' %>
-  </dd>
-  <dd>
-    <%= link_to 'Add', new_login_path %>
-  </dd>
-</dl>
+<h1>Login Details</h1>
 <br>
 <p>
-  <strong>Name: </strong><%= @login.first_name%> <%= @login.middle_initial.upcase%> <%= @login.last_name%><br>
+  <strong>Name: </strong><br><span style="margin-left:2em"><%= @login.first_name.camelize%> <%= @login.middle_initial.upcase%> <%= @login.last_name.camelize%></span><br>
+  <strong>Email: </strong><br><span style="margin-left:2em"><%= @login.email.upcase%></span><br>
+  <strong>Address: </strong><br>
+    <%if (defined? @user.city)%>
+    <span style="margin-left:2em"><%= @user.street.camelize%></span><br>
+    <span style="margin-left:2em"><%= @user.city.camelize%>, <%= @user.state.camelize%>  <%= @user.zip%></span><br><br>
+  <% else %>
+     <span style="margin-left:2em"><strong>Not Found</strong><br><br><br>
+  <% end %>
+  
+  
+  
   <strong>Username: </strong><%= @login.username.upcase%><br>
-  <strong>Password: </strong><%= @login.password%>  <br>
-  <strong>Type: </strong><%= @login.type%>  <br>
+  <strong>Type: </strong><%= @login.type.upcase%>  <br>
+  <strong>Account Created: </strong><%= @login.created_at%><br>
+  <strong>Last Updated: </strong><%= @login.updated_at%><br>
+  <strong>Last Logged in: </strong><%= @login.last_sign_in_at%><br>
+  <strong>Number of Logins: </strong><%= @login.sign_in_count%><br>
 </p>
