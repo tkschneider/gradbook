@@ -1,0 +1,12 @@
+<div class="panel radius">
+  <% unless giving_back.approved? %>
+    <%= link_to 'Approve', admin_giving_back_path(
+        giving_back,
+        giving_back: { approved: true }
+      ),
+      method: :put,
+      confirm: "Are you sure?" %>
+  <% end %>
+  <h5><%= giving_back.subject %></h5>
+  <span><%= giving_back.position %></span>
+</div>
