@@ -1,2 +1,0 @@
-module GivingBackHelper
-end
