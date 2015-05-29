@@ -20,12 +20,8 @@
       <%= link_to 'Profile', login_path(current_login) %>
       <ul class="dropdown">
         <li>
-          <%= link_to 'View', login_path(current_login) %>
-        </li>
-        <!--<li>
-        Tim - Uncomment this link and you'll see the error.  Check with Max how he's doing the 'View' above and use that path to get to your profile view
           <%= link_to 'My Profile', controller: '/user_profile' %>
-        </li> -->
+        </li> 
         <li>
           <%= link_to 'Edit', edit_login_path(current_login) %>
         </li>
