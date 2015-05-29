@@ -2,19 +2,27 @@ Rails.application.routes.draw do
 
   devise_for :logins
 
+  get 'searchadmins/index'
+  
+  resources :searchadmins do
+    collection { post :search, to: 'searchadmins#index'}
+  end
+
+  get 'searchusers/index' => 'searchusers#index'
+  
+  resources :searchusers do
+    collection do
+      match 'search' => 'searchusers#search', :via => [:get, :post], :as => :search
+    end
+  end
+
   get 'brett/index' => 'brett#index'
   get 'brad/index' => 'brad#index'
   get 'survey/index' => 'survey#index'
   get 'welcome/index'
   get 'report/index' => 'report#index'
-#<<<<<<< HEAD
   get 'survey_admin/edit' => 'survey_admin#edit'
-#=======
   get 'user_profile/index' => 'user_profile#index'
-
-#>>>>>>> b21af6f108dd410606faab91b6a29277dc01625b
-
-
   post 'report/show' => 'report#show'
 
   resources :logins
