@@ -14,10 +14,18 @@
       <a href="#">Profile</a>
       <ul class="dropdown">
         <li>
+<!--<<<<<<< HEAD-->
           <%= link_to 'View', login_path(current_login) %>
         </li>
+		<!--<li>
+        Tim - Uncomment this link and you'll see the error.  Check with Max how he's doing the 'View' above and use that path to get to your profile view
+          	<%= link_to 'My Profile', controller: '/user_profile' %>
+		<!-- b21af6f108dd410606faab91b6a29277dc01625b-->
+		
         <li>
           <%= link_to 'Edit My Profile', edit_login_path(current_login) %>
+		</li>
+
         </li>
         <li>
           <%= link_to 'Manage User Profiles', logins_path %>

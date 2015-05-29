@@ -7,7 +7,12 @@ Rails.application.routes.draw do
   get 'survey/index' => 'survey#index'
   get 'welcome/index'
   get 'report/index' => 'report#index'
+#<<<<<<< HEAD
   get 'survey_admin/edit' => 'survey_admin#edit'
+#=======
+  get 'user_profile/index' => 'user_profile#index'
+
+#>>>>>>> b21af6f108dd410606faab91b6a29277dc01625b
 
 
   post 'report/show' => 'report#show'
