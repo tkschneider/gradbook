@@ -16,7 +16,7 @@ default: &default
   username: root
 
   #password: password
-  password: csc495
+  password: mypass
   host: localhost
   #port: 3366
 
