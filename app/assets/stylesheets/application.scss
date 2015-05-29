@@ -1,0 +1,67 @@
+//
+// This is a manifest file that'll be compiled into application.css, which will include all the files
+// listed below.
+//
+// Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+// or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+//
+// You're free to add application-wide styles to this file and they'll appear at the bottom of the
+// compiled file so the styles you add here take precedence over styles defined in any styles
+// defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+// file per style scope.
+//
+
+@import "**/*";
+
+body {
+  -webkit-font-smoothing: $font-smoothing;
+  @if $font-smoothing == antialiased {
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+.contain-to-grid {
+  margin-bottom: $topbar-margin-bottom;
+
+  .top-bar {
+    margin-bottom: 0;
+  }
+}
+
+.top-bar .name {
+  a {
+    color: $topbar-link-color;
+    display: block;
+    height: $topbar-height;
+    padding: 0 rem-calc(15);
+  }
+  .title, .subtitle {
+    display: block;
+    line-height: 1.25;
+  }
+
+  .title {
+    font-size: $topbar-title-font-size;
+    font-weight: $topbar-title-weight;
+    padding-top: rem-calc(5);
+  }
+
+  .subtitle {
+    font-size: $topbar-subtitle-font-size;
+    font-weight: $topbar-subtitle-weight;
+  }
+}
+
+.alerts {
+  position: absolute;
+  width: 100%;
+  z-index: 9999;
+
+  .alert-box {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.panel {
+  box-shadow: $panel-box-shadow;
+}
