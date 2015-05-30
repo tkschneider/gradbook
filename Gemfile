@@ -1,4 +1,5 @@
 source 'http://rubygems.org'
+ruby '2.0.0'
 
 # Prawn for PDF Generation
 gem 'prawn'
@@ -15,7 +16,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
+#heroku
+gem 'rails_12factor', group: :production
 #login Authentication
 gem 'devise'
 
