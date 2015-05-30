@@ -1,13 +1,34 @@
-<div class="panel radius">
-  <% unless giving_back.approved? %>
-    <%= link_to 'Approve', admin_giving_back_path(
-        giving_back,
-        giving_back: { approved: true }
-      ),
-      method: :put,
-      confirm: "Are you sure?",
-      class: 'right success button' %>
-  <% end %>
-  <h5><%= giving_back.subject %></h5>
-  <span><%= giving_back.position %></span>
+<div class="opportunity panel radius pack pack-middle">
+  <div class="pack-item pack-full">
+    <h5><%= giving_back.subject %></h5>
+    <span><%= giving_back.position %></span>
+  </div>
+  <div class="pack-item">
+    <ul class="button-group opportunity-actions">
+      <li>
+        <%= link_to admin_giving_back_path(
+            giving_back,
+            giving_back: { hidden: true }
+          ),
+          method: :put,
+          confirm: "Are you sure?",
+          class: 'tiny alert button icon' do %>
+          <i class="fi-x large"></i>
+        <% end %>
+      </li>
+      <% unless giving_back.approved? %>
+        <li>
+          <%= link_to admin_giving_back_path(
+              giving_back,
+              giving_back: { approved: true }
+            ),
+            method: :put,
+            confirm: "Are you sure?",
+            class: 'tiny success button icon' do %>
+            <i class="fi-check large"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
