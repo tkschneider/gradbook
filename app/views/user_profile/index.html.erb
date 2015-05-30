@@ -3,9 +3,9 @@
 <div class="row">
 	
 	<div class="medium-5 columns">
-	<h2><%= @user.first_name%> 
-	<%= @user.middle_initial.upcase%>
-	<%= @user.last_name%>
+	<h2><%= current_login.first_name%> 
+	<%= current_login.middle_initial.upcase%>
+	<%= current_login.last_name%>
 	</h2>
 	</div>
 	
@@ -32,7 +32,7 @@
 	  <section role="tabpanel" aria-hidden="false" class="content active" id="panel2-1">
 		<p>
 		<h3> Alumni of North Central College </h3> 
-		<%=@user.email_addr%> <br> 
+		<%=current_login.email%> <br> 
 		<h4>Degrees</h4> <br>
 		<br>
 		Degree Earned <br>
