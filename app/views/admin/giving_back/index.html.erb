@@ -1,7 +1,11 @@
-<div class="row">
-  <div class="medium-10 large-8 small-centered columns">
-    <% @opportunities.each do |giving_back| %>
-      <%= render giving_back %>
-    <% end %>
+<% unless @opportunities.blank? %>
+  <div class="row">
+    <div class="medium-10 large-8 small-centered columns">
+      <% @opportunities.each do |giving_back| %>
+        <%= render giving_back %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% else %>
+  <%= render 'shared/empty', message: "No opportunities." %>
+<% end %>
