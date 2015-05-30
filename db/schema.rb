@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150527022015) do
+ActiveRecord::Schema.define(version: 20150528223157) do
 
   create_table "colleges", force: :cascade do |t|
     t.string   "college_name", limit: 255
@@ -232,14 +232,10 @@ ActiveRecord::Schema.define(version: 20150527022015) do
   create_table "users", force: :cascade do |t|
     t.integer  "login_id",              limit: 4
     t.integer  "company_id",            limit: 4
-    t.string   "email_addr",            limit: 255
     t.string   "street",                limit: 255
     t.string   "city",                  limit: 255
     t.string   "state",                 limit: 255
     t.integer  "zip",                   limit: 4
-    t.string   "first_name",            limit: 255
-    t.string   "middle_initial",        limit: 255
-    t.string   "last_name",             limit: 255
     t.string   "spouse_first_name",     limit: 255
     t.string   "spouse_middle_initial", limit: 255
     t.string   "spouse_last_name",      limit: 255
