@@ -1,3 +1,11 @@
-// Place all the styles related to the logins controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.sessions-page {
+  background: image-url("ncc_3.JPG") no-repeat center;
+  background-size: cover;
+
+  [role="main"] {
+    @extend .vcenter;
+
+    padding-top: $topbar-height + $topbar-margin-bottom;
+    margin-top: -($topbar-height + $topbar-margin-bottom);
+  }
+}

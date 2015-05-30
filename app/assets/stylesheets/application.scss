@@ -108,3 +108,20 @@ body {
       vertical-align: bottom;
     }
   }
+
+.vcenter {
+  height: 100%;
+}
+
+  .vcenter-item {
+    display: inline-block;
+    vertical-align: middle;
+
+    &.vcenter-full {
+      height: 100%;
+    }
+
+    &.vcenter-stretch {
+      width: 100%;
+    }
+  }
