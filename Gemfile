@@ -38,6 +38,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Foundation 5
 gem 'foundation-rails'
+gem 'foundation-icons-sass-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

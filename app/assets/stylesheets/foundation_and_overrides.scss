@@ -229,6 +229,9 @@ $header-font-weight: $font-weight-medium;
 // $subheader-top-margin: .2rem;
 // $subheader-bottom-margin: .5rem;
 
+// Large styling
+$large-font-size: 150%;
+
 // A general <small> styling
 // $small-font-size: 60%;
 // $small-font-color: scale-color($header-font-color, $lightness: 35%);
@@ -442,7 +445,7 @@ $alert-transition-ease: ease-out;
 // $button-font-sml: rem-calc(13);
 // $button-font-med: rem-calc(16);
 // $button-font-lrg: rem-calc(20);
-$button-font-weight: $font-weight-bold;
+$button-font-weight: $font-weight-medium;
 // $button-font-align: center;
 
 // We use these to control various hover effects.
