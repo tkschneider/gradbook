@@ -22,7 +22,7 @@ class LoginsController < ApplicationController
 
     def create
         @login = Login.new(login_params)
-
+		
         if @login.save
             flash[:success] = "Login created"
           redirect_to :action => 'index'
