@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  #Allows sign_up to accept more login fields besides
+  # Allows sign_up to accept more login fields besides
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:first_name, :middle_initial, :last_name, :username, :type, :email, :password, :password_confirmation) }
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:logon, :username, :email, :password, :remember_me) }
