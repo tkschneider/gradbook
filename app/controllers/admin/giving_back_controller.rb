@@ -1,7 +1,7 @@
 # author: Max Barvian
 class Admin::GivingBackController < AdminController
   def index
-    @opportunities = GivingBack.all
+    @opportunities = GivingBack.where(hidden: false)
   end
 
   def update
@@ -19,6 +19,6 @@ class Admin::GivingBackController < AdminController
   private
 
   def opportunity_params
-    params.require(:giving_back).permit(:approved, :completed)
+    params.require(:giving_back).permit(:approved, :completed, :hidden)
   end
 end

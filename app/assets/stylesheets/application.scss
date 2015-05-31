@@ -12,6 +12,7 @@
 //
 
 @import "**/*";
+@import 'foundation-icons';
 
 body {
   -webkit-font-smoothing: $font-smoothing;
@@ -65,3 +66,62 @@ body {
 .panel {
   box-shadow: $panel-box-shadow;
 }
+
+.large {
+  font-size: $large-font-size;
+}
+
+.button-group {
+  white-space: nowrap;
+
+  > li {
+    white-space: normal;
+  }
+}
+
+.button.icon {
+  background-color: $gainsboro;
+  padding: rem-calc(8) rem-calc(14);
+}
+
+.pack {
+  display: table;
+  width: 100%;
+}
+
+  .pack-equal {
+    table-layout: fixed;
+  }
+
+  .pack-item {
+    display: table-cell;
+
+    &.pack-full {
+      width: 100%;
+    }
+
+    .pack-middle > & {
+      vertical-align: middle;
+    }
+
+    .pack-bottom > & {
+      vertical-align: bottom;
+    }
+  }
+
+.vcenter {
+  height: 100%;
+}
+
+  .vcenter-item {
+    display: inline-block;
+    vertical-align: middle;
+
+    &.vcenter-full {
+      height: 100%;
+    }
+
+    &.vcenter-stretch {
+      width: 100%;
+    }
+  }
