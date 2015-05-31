@@ -13,7 +13,9 @@ body {
 }
 
 [role="main"] {
-  @extend .vcenter;
+  padding-bottom: $footer-height + $footer-margin-top;
+  margin-bottom: -$footer-height;
+  min-height: 100%;
 }
 
 .contain-to-grid {
@@ -56,7 +58,7 @@ body {
 .alerts {
   position: absolute;
   width: 100%;
-  z-index: 9999;
+  z-index: 90;
 
   .alert-box {
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
@@ -110,21 +112,10 @@ body {
   }
 
 .vcenter {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-
-  .vcenter-item {
-    display: inline-block;
-    vertical-align: middle;
-
-    &.vcenter-full {
-      height: 100%;
-    }
-
-    &.vcenter-stretch {
-      width: 100%;
-    }
-  }
 
 .empty {
   margin-bottom: rem-calc(15);
@@ -143,3 +134,45 @@ body {
   .empty-message {
     color: $jumbo;
   }
+
+.pipe-list {
+  list-style-type: none;
+  margin-left: 0;
+
+  > li {
+    display: inline-block;
+
+    + li {
+      &::before {
+        content: '|';
+        display: inline-block;
+        font-weight: $font-weight-medium;
+        margin-left: 0.35em;
+        margin-right: 0.55em;
+      }
+    }
+  }
+}
+
+.site-footer {
+  height: $footer-height;
+  text-align: center;
+  white-space: nowrap;
+
+  a {
+    color: $footer-link-color;
+    font-weight: $footer-link-weight;
+
+    &:hover {
+      color: $footer-link-color-hover;
+    }
+
+    %invert-page & {
+      color: $white;
+
+      &:hover {
+        color: rgba($white, 0.75);
+      }
+    }
+  }
+}

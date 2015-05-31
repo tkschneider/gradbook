@@ -7,5 +7,6 @@
     </div>
   </div>
 <% else %>
+  <% @vcenter = true %>
   <%= render 'shared/empty', message: "No opportunities." %>
 <% end %>

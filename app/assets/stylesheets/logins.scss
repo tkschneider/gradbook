@@ -1,4 +1,6 @@
 .sessions-page {
+  @extend %invert-page;
+
   background: image-url("ncc_3.JPG") no-repeat center;
   background-size: cover;
 }
