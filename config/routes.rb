@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'report/index' => 'report#index'
   get 'survey_admin/edit' => 'survey_admin#edit'
   get 'user_profile/index' => 'user_profile#index'
+  get 'user_profile/edit' => 'user_profile#edit'
   post 'report/show' => 'report#show'
 
   resources :logins

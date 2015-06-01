@@ -15,7 +15,7 @@ default: &default
   pool: 5
   username: root
 
-  password: csc495
+  password: mypass
   #password: csc495
   host: localhost
   #port: 3366
