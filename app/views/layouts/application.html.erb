@@ -12,47 +12,46 @@
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body data-no-turbolink="true">
-    <nav class="top-bar" data-topbar role="navigation">
-      <ul class="title-area">
-        <li class="name">
-          <h1><%= link_to 'North Central College ALUMBOOK', root_path %></h1>
-        </li>
-         <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-        <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-      </ul>
-      <%= render "shared/navigation/#{ login_signed_in? ? current_login.user? ? 'user' : 'admin' : 'nonMem'}" %>
-    </nav>
-
-    <div class="row large-1">
-      <% flash.each do |name, msg| %>
-        <% if msg.is_a?(String) %>
-          <%= content_tag :div, msg, class: "alert-box #{name} radius" %>
-        <% end %>
-      <% end %>
+  <body data-no-turbolink="true" class="<%= controller.controller_name %>-page">
+    <div class="contain-to-grid">
+      <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+          <li class="name">
+            <%= link_to '/' do %>
+              <span class="title">North Central College</span>
+              <span class="subtitle">Office of Graduate and Continuing Education</span>
+            <% end %>
+          </li>
+           <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+          <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+        </ul>
+        <%= render "shared/navigation/#{ login_signed_in? ? current_login.user? ? 'user' : 'admin' : 'nonMem'}" %>
+      </nav>
     </div>
 
-    <% if login_signed_in? %>
+    <div class="alerts">
+      <div class="row">
+        <div class="small-10 small-centered medium-9 large-8 columns">
+          <% flash.each do |name, msg| %>
+            <% if msg.is_a?(String) %>
+              <div data-alert class="alert-box <%= name %> radius">
+                <%= msg %>
+                <a href="#" class="close">&times;</a>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <!-- <% if login_signed_in? %>
     Logged in as <strong><%= current_login.first_name.camelize %> <%= current_login.last_name.camelize %></strong> as <strong><%= current_login.type.to_s.upcase %></strong>.
-    <% end %>
+    <% end %> -->
 
+    <main role="main" class="<%= 'vcenter' if defined?(:vcenter) && @vcenter %>">
+      <%= yield %>
+    </main>
 
-    <div class="row: large 11 align-left">
-      <div class="large-2 column"><br>
-        <strong>Helpful INFO</strong><br>
-        <%= link_to 'DB stuff', controller: '/brad' %><br>
-        <%= link_to 'Gem stuff', controller: '/brett' %><br><br>
-        <strong>More test pages</strong><br>
-        <%= link_to 'Login Manager', controller: '/logins' %><br>
-        <%= link_to 'Report', controller: '/report' %><br>
-        <%= link_to 'Surveys', controller: '/survey' %><br>
-        <%= link_to 'Giving Back', controller: 'admin/giving_back' %><br>
-
-      </div>
-      <div class="large-10 column">
-        <%= yield %>
-      </div>
-    </div>
-
+    <%= render 'shared/footer' %>
   </body>
 </html>

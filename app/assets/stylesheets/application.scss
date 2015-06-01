@@ -1,0 +1,178 @@
+//
+// Author: Maxwell Barvian
+//
+
+@import "**/*";
+@import 'foundation-icons';
+
+body {
+  -webkit-font-smoothing: $font-smoothing;
+  @if $font-smoothing == antialiased {
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+[role="main"] {
+  padding-bottom: $footer-height + $footer-margin-top;
+  margin-bottom: -$footer-height;
+  min-height: 100%;
+}
+
+.contain-to-grid {
+  margin-bottom: $topbar-margin-bottom;
+
+  .top-bar {
+    margin-bottom: 0;
+  }
+
+  ~ [role="main"] {
+    padding-top: $topbar-height + $topbar-margin-bottom;
+    margin-top: -($topbar-height + $topbar-margin-bottom);
+  }
+}
+
+.top-bar .name {
+  a {
+    color: $topbar-link-color;
+    display: block;
+    height: $topbar-height;
+    padding: 0 rem-calc(15);
+  }
+  .title, .subtitle {
+    display: block;
+    line-height: 1.25;
+  }
+
+  .title {
+    font-size: $topbar-title-font-size;
+    font-weight: $topbar-title-weight;
+    padding-top: rem-calc(5);
+  }
+
+  .subtitle {
+    font-size: $topbar-subtitle-font-size;
+    font-weight: $topbar-subtitle-weight;
+  }
+}
+
+.alerts {
+  position: absolute;
+  width: 100%;
+  z-index: 90;
+
+  .alert-box {
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.panel {
+  box-shadow: $panel-box-shadow;
+}
+
+.large {
+  font-size: $large-font-size;
+}
+
+.button-group {
+  white-space: nowrap;
+
+  > li {
+    white-space: normal;
+  }
+}
+
+.button.icon {
+  background-color: $gainsboro;
+  padding: rem-calc(8) rem-calc(14);
+}
+
+.pack {
+  display: table;
+  width: 100%;
+}
+
+  .pack-equal {
+    table-layout: fixed;
+  }
+
+  .pack-item {
+    display: table-cell;
+
+    &.pack-full {
+      width: 100%;
+    }
+
+    .pack-middle > & {
+      vertical-align: middle;
+    }
+
+    .pack-bottom > & {
+      vertical-align: bottom;
+    }
+  }
+
+.vcenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.empty {
+  margin-bottom: rem-calc(15);
+  text-align: center;
+  text-shadow: 0 -1px 1px rgba($white, 0.75);
+}
+
+  .empty-icon {
+    color: $base;
+    display: inline-block;
+    font-size: rem-calc(140);
+    line-height: 1;
+    margin-bottom: rem-calc(20);
+  }
+
+  .empty-message {
+    color: $jumbo;
+  }
+
+.pipe-list {
+  list-style-type: none;
+  margin-left: 0;
+
+  > li {
+    display: inline-block;
+
+    + li {
+      &::before {
+        content: '|';
+        display: inline-block;
+        font-weight: $font-weight-medium;
+        margin-left: 0.35em;
+        margin-right: 0.55em;
+      }
+    }
+  }
+}
+
+.site-footer {
+  height: $footer-height;
+  text-align: center;
+  white-space: nowrap;
+
+  a {
+    color: $footer-link-color;
+    font-weight: $footer-link-weight;
+
+    &:hover {
+      color: $footer-link-color-hover;
+    }
+
+    %invert-page & {
+      color: $white;
+
+      &:hover {
+        color: rgba($white, 0.75);
+      }
+    }
+  }
+}

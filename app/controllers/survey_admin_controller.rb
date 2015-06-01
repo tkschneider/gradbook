@@ -3,13 +3,18 @@ class SurveyAdminController < ApplicationController
     @survey = Survey.all
   end
   def add
-    
+
   end
 
 
   def new
   end
+  def edit
+      @survey = Survey.find(params[:id])
+      @question = SurveyQuestion.find(params[:survey_id]) rescue nil
 
+
+    end
 
 
   def create

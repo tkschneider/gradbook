@@ -1,0 +1,12 @@
+<%= search_form_for @search, url: search_searchusers_path, html: { method: :post } do |f| %>
+    <div class="row">
+      <div class="large-8 small-8 columns">
+        <%= f.text_field :first_name_or_last_name_or_email_cont %>
+      </div>
+      <div class="large-4 small-4 columns">
+        <%= f.submit "search", :class => "button" %>
+      </div>
+    </div>
+<% end %>
+  
+<%= render 'results' %>

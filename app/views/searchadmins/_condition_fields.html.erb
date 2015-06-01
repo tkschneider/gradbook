@@ -2,7 +2,7 @@
   <div class="field">
     <div class="large-3 small-3 columns">
       <%= f.attribute_fields do |a| %>
-        <%= a.attribute_select %>
+        <%= a.attribute_select associations: :user %>
       <% end %>
     </div>
     <div class="large-3 small-3 columns">

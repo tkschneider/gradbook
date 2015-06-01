@@ -1,12 +1,49 @@
-<div class="panel radius">
-  <% unless giving_back.approved? %>
-    <%= link_to 'Approve', admin_giving_back_path(
-        giving_back,
-        giving_back: { approved: true }
-      ),
-      method: :put,
-      confirm: "Are you sure?" %>
-  <% end %>
-  <h5><%= giving_back.subject %></h5>
-  <span><%= giving_back.position %></span>
+<div class="opportunity panel radius pack pack-middle">
+  <div class="pack-item pack-full">
+    <h5><%= giving_back.subject %></h5>
+    <span><%= giving_back.position %></span>
+  </div>
+  <div class="pack-item">
+    <ul class="button-group opportunity-actions">
+      <li>
+        <%= link_to admin_giving_back_path(
+            giving_back,
+            giving_back: { hidden: true }
+          ),
+          method: :put,
+          data: { confirm: 'Are you sure you want to delete this opportunity?' },
+          title: 'Delete',
+          class: 'tiny alert button icon' do %>
+          <i class="fi-x large"></i>
+        <% end %>
+      </li>
+      <% if !giving_back.approved? %>
+        <li>
+          <%= link_to admin_giving_back_path(
+              giving_back,
+              giving_back: { approved: true }
+            ),
+            method: :put,
+            data: { confirm: 'Are you sure you want to approve this opportunity?' },
+            title: 'Approve',
+            class: 'tiny success button icon' do %>
+            <i class="fi-like large"></i>
+          <% end %>
+        </li>
+      <% elsif !giving_back.completed? %>
+        <li>
+          <%= link_to admin_giving_back_path(
+              giving_back,
+              giving_back: { completed: true }
+            ),
+            method: :put,
+            data: { confirm: 'Are you sure you want to mark this opportunity as completed?' },
+            title: 'Mark as complete',
+            class: 'tiny success button icon' do %>
+            <i class="fi-check large"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

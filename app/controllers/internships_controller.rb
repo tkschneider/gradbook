@@ -1,5 +1,6 @@
-class InternshipsController < ApplicationController
+# author: Max Barvian
+class InternshipsController < AuthenticatedController
   def index
-    @internships  = GivingBack.where(approved: true)
+    @internships = GivingBack.internship.where(approved: true, hidden: false)
   end
 end

@@ -1,24 +1,28 @@
 <!-- Created by Brett Bush -->
-<h1><%= @report_header %> Report Results</h1>
+<div class="row">
+  <div class="large-12 columns">
+    <h1><%= @report_header %> Report Results</h1>
 
-<%= link_to "Excel (.xls)", params.merge(:format => 'xls'), :class => "button small", method: :post %>
-<%= link_to "PDF (.pdf)", params.merge(:format => 'pdf'), :class => "button small", method: :post %>
-<%= link_to "Save List", "#", :class => "button small", method: :post %>
-<div class="user_listing" style="overflow-y:scroll;height:400px">
-  <table style="width:100%;">
-    <thead>
-    <tr><th>Id</th><th>First Name</th><th>Last Name</th></tr>
-    </thead>
-    <tbody>
-      <% if @users != nil %>
-      <% @users.each do |user| %>
-        <tr>
-          <td><%= user.id %></td>
-          <td><%= user.first_name %></td>
-          <td><%= user.last_name %></td>
-        </tr>
-      <% end %>
-      <% end %>
-    </tbody>
-  </table>
+    <%= link_to "Excel (.xls)", params.merge(:format => 'xls'), :class => "button small", method: :post %>
+    <%= link_to "PDF (.pdf)", params.merge(:format => 'pdf'), :class => "button small", method: :post %>
+    <%= link_to "Save List", "#", :class => "button small", method: :post %>
+    <div class="user_listing" style="overflow-y:scroll;height:400px">
+      <table style="width:100%;">
+        <thead>
+        <tr><th>Id</th><th>First Name</th><th>Last Name</th></tr>
+        </thead>
+        <tbody>
+          <% if @users != nil %>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= user.first_name %></td>
+              <td><%= user.last_name %></td>
+            </tr>
+          <% end %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
