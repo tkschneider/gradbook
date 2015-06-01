@@ -19,6 +19,7 @@ default: &default
   #password: csc495
   host: localhost
   #port: 3366
+  port: 3606
 
 
 development:
