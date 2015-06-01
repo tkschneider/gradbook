@@ -4,9 +4,8 @@ class SearchadminsController < ApplicationController
   # GET /searchadmins
   # GET /searchadmins.json
   def index
-    @search = User.search(params[:q])
+    @search = Login.search(params[:q])
     @searchadmin = @search.result
     @search.build_condition if @search.conditions.empty?
-    #respond_with @searchadmin
   end
 end
