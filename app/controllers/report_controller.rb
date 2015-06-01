@@ -1,4 +1,24 @@
 # Created by Brett Bush
+
+# Report SQL Queries
+# (1) Date Entered Query
+# User.where('orders.created_at' => (params[:month])..Time.now.midnight))
+#
+# (2) Graduation Class Year Query
+#
+#
+# (3) Graduate Degree Program Query
+#
+#
+# (4) Employer Name Query
+#
+#
+# (5) Survey Taken Query
+#
+#
+# (6) Users Giving Back Query
+#
+#
 class ReportController < ApplicationController
 
   def index
