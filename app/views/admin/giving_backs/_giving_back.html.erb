@@ -11,19 +11,34 @@
             giving_back: { hidden: true }
           ),
           method: :put,
-          confirm: "Are you sure?",
+          data: { confirm: 'Are you sure you want to delete this opportunity?' },
+          title: 'Delete',
           class: 'tiny alert button icon' do %>
           <i class="fi-x large"></i>
         <% end %>
       </li>
-      <% unless giving_back.approved? %>
+      <% if !giving_back.approved? %>
         <li>
           <%= link_to admin_giving_back_path(
               giving_back,
               giving_back: { approved: true }
             ),
             method: :put,
-            confirm: "Are you sure?",
+            data: { confirm: 'Are you sure you want to approve this opportunity?' },
+            title: 'Approve',
+            class: 'tiny success button icon' do %>
+            <i class="fi-like large"></i>
+          <% end %>
+        </li>
+      <% elsif !giving_back.completed? %>
+        <li>
+          <%= link_to admin_giving_back_path(
+              giving_back,
+              giving_back: { completed: true }
+            ),
+            method: :put,
+            data: { confirm: 'Are you sure you want to mark this opportunity as completed?' },
+            title: 'Mark as complete',
             class: 'tiny success button icon' do %>
             <i class="fi-check large"></i>
           <% end %>
