@@ -13,39 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150529215034) do
 
-  create_table "Users", force: :cascade do |t|
-    t.integer  "login_id",              limit: 4
-    t.integer  "company_id",            limit: 4
-    t.string   "street",                limit: 255
-    t.string   "city",                  limit: 255
-    t.string   "state",                 limit: 255
-    t.integer  "zip",                   limit: 4
-    t.string   "spouse_first_name",     limit: 255
-    t.string   "spouse_middle_initial", limit: 255
-    t.string   "spouse_last_name",      limit: 255
-    t.integer  "number_children",       limit: 4
-    t.integer  "birth_month",           limit: 4
-    t.integer  "birth_day",             limit: 4
-    t.integer  "birth_year",            limit: 4
-    t.string   "ethnicity",             limit: 255
-    t.boolean  "general_opt_in",        limit: 1
-    t.boolean  "email_opt_in",          limit: 1
-    t.boolean  "phone_opt_in",          limit: 1
-    t.boolean  "badges_opt_in",         limit: 1
-    t.string   "status",                limit: 255
-    t.string   "salary_range",          limit: 255
-    t.string   "job_title",             limit: 255
-    t.date     "start_date"
-    t.date     "end_date"
-    t.boolean  "searchable",            limit: 1
-    t.string   "subscription_type",     limit: 255
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-  end
-
-  add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
-  add_index "users", ["login_id"], name: "index_users_on_login_id", using: :btree
-
   create_table "colleges", force: :cascade do |t|
     t.string   "college_name", limit: 255
     t.datetime "created_at",               null: false
@@ -263,8 +230,39 @@ ActiveRecord::Schema.define(version: 20150529215034) do
   add_index "user_surveys", ["survey_id"], name: "index_user_surveys_on_survey_id", using: :btree
   add_index "user_surveys", ["user_id"], name: "index_user_surveys_on_user_id", using: :btree
 
-  add_foreign_key "Users", "companies"
-  add_foreign_key "Users", "logins"
+  create_table "users", force: :cascade do |t|
+    t.integer  "login_id",              limit: 4
+    t.integer  "company_id",            limit: 4
+    t.string   "street",                limit: 255
+    t.string   "city",                  limit: 255
+    t.string   "state",                 limit: 255
+    t.integer  "zip",                   limit: 4
+    t.string   "spouse_first_name",     limit: 255
+    t.string   "spouse_middle_initial", limit: 255
+    t.string   "spouse_last_name",      limit: 255
+    t.integer  "number_children",       limit: 4
+    t.integer  "birth_month",           limit: 4
+    t.integer  "birth_day",             limit: 4
+    t.integer  "birth_year",            limit: 4
+    t.string   "ethnicity",             limit: 255
+    t.boolean  "general_opt_in",        limit: 1
+    t.boolean  "email_opt_in",          limit: 1
+    t.boolean  "phone_opt_in",          limit: 1
+    t.boolean  "badges_opt_in",         limit: 1
+    t.string   "status",                limit: 255
+    t.string   "salary_range",          limit: 255
+    t.string   "job_title",             limit: 255
+    t.date     "start_date"
+    t.date     "end_date"
+    t.boolean  "searchable",            limit: 1
+    t.string   "subscription_type",     limit: 255
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
+  add_index "users", ["login_id"], name: "index_users_on_login_id", using: :btree
+
   add_foreign_key "company_infos", "companies"
   add_foreign_key "giving_backs", "companies"
   add_foreign_key "giving_backs", "users"

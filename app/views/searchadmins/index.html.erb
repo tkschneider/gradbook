@@ -1,9 +1,9 @@
-<%= search_form_for @search, url: search_searchadmins_path, method: :post do |f| %>
-  <%= f.condition_fields do |c| %>
-    <% for i in 0..3 %>
+<%= search_form_for @search, url: search_searchadmins_path, html: { method: :post } do |f| %>
+  
+    <%= f.condition_fields do |c| %>
       <%= render "condition_fields", f: c %>
     <% end %>
-  <% end %>
+  
   <p>
     <%= link_to_add_fields "Add Conditions", f, :condition, class: "button" %>
   </p>

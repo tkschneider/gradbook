@@ -10,7 +10,7 @@ module SearchadminsHelper
   
   def model_fields
     # which fields to display and sort by
-    [:login_id, :first_name, :last_name, :email_addr]
+    [:first_name, :last_name, :email]
   end
   
   def display_query_sql(users)
