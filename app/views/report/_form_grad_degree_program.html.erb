@@ -5,8 +5,8 @@
   <%= hidden_field_tag(:report_id, 4) %>
   <%= hidden_field_tag(:report_name, "Graduate Degree Program") %>
   <%= label_tag(:survey_select, 'Select a program: ') %>
-  <%= select_tag(:survey_select, options_for_select([['Select a program', 0], ['Accounting', 1], ['Computer Science', 2]], 0)) %>
+  <%= select_tag(:survey_select, (options_from_collection_for_select(Degree.all, :id, :major_name))) %>
   <%= label_tag(:saved_list_type, 'Run report on: ') %>
-  <%= select_tag(:saved_list_type, (options_from_collection_for_select(SavedList.where("login_id = ?", session[:user_id]), :id, :list_name))) %>
+  <%= select_tag(:saved_list_type, (options_from_collection_for_select(SavedList.where("login_id = ?", session[:user_id]), :id, :list_name)), {:include_blank => 'All Users'}) %>
   <%= submit_tag('Submit', :class => 'button') %>
 <% end %>

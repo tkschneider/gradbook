@@ -2,22 +2,26 @@
 <div class="row">
   <div class="large-12 columns">
     <h1><%= @report_header %> Report Results</h1>
-
-    <%= link_to "Excel (.xls)", params.merge(:format => 'xls'), :class => "button small", method: :post %>
-    <%= link_to "PDF (.pdf)", params.merge(:format => 'pdf'), :class => "button small", method: :post %>
-    <%= link_to "Save List", "#", :class => "button small", method: :post %>
+    <h3 id="print_date"></h3>
+    <%= link_to "Excel (.xls)", params.merge(:format => 'xls'), :class => "button small noprint", method: :post %>
+    <!--<%= link_to "PDF (.pdf)", params.merge(:format => 'pdf'), :class => "button small noprint", method: :post %>-->
+    <button type="button" class="button small noprint" onclick="print_page();">Print</button>
+    <button type="button" class="button small noprint" onclick="toggle_saved_list_form();">Save List</button>
+    <div id="saved_list_form" class="noprint" style="display: none;">
+      <%= render partial: 'report/form_new_saved_list' %>
+    </div>
     <div class="user_listing" style="overflow-y:scroll;height:400px">
-      <table style="width:100%;">
+      <table class="report_results_table" style="width:100%;">
         <thead>
-        <tr><th>Id</th><th>First Name</th><th>Last Name</th></tr>
+        <tr><th class="report_results_td">ID</th><th class="report_results_td">Street</th><th class="report_results_td">City</th></tr>
         </thead>
         <tbody>
           <% if @users != nil %>
           <% @users.each do |user| %>
             <tr>
-              <td><%= user.id %></td>
-              <td><%= user.first_name %></td>
-              <td><%= user.last_name %></td>
+              <td class="report_results_td"><%= user.id %></td>
+              <td class="report_results_td"><%= user.street %></td>
+              <td class="report_results_td"><%= user.city %></td>
             </tr>
           <% end %>
           <% end %>
