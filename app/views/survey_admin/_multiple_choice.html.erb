@@ -1,0 +1,20 @@
+<%= form_for :survey_question, url: survey_admin_index_path do |f| %>
+
+
+
+
+<%= f.hidden_field :survey_id, value: @survey.id %>
+<!%= f.hidden_field :type, value: "multiple_choice," %>
+<%= f.hidden_field :display_order, value: @count %>
+
+
+<div>
+  <%= f.label "Question text" %>
+  <%= f.text_field :text %>
+  <%= f.label "Required?" %>
+  <%= f.check_box :required%>
+
+
+</div>
+<%= f.submit %>
+<% end %>
