@@ -286,4 +286,6 @@ ActiveRecord::Schema.define(version: 20150529215034) do
   add_foreign_key "user_survey_responses", "user_surveys"
   add_foreign_key "user_surveys", "surveys"
   add_foreign_key "user_surveys", "users"
+  add_foreign_key "users", "companies"
+  add_foreign_key "users", "logins"
 end
