@@ -1,0 +1,10 @@
+<!-- Created by Brett Bush -->
+<%= form_tag("/report/show", method:"post") do %>
+  <h3>Report by Survey Results</h3>
+  <p>Display survey results for all users.</p>
+  <%= hidden_field_tag(:report_id, 7) %>
+  <%= hidden_field_tag(:report_name, "Survey Results") %>
+  <%= label_tag(:survey_select, 'Select a survey: ') %>
+  <%= select_tag(:survey_select, (options_from_collection_for_select(Survey.all, :id, :survey_name))) %>
+  <%= submit_tag('Submit', :class => 'button') %>
+<% end %>

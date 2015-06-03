@@ -35,24 +35,30 @@ Rails.application.routes.draw do
   get 'survey_admin/publish' => 'survey_admin#publish'
   get 'survey/take' => 'survey#take'
   post 'report/show' => 'report#show'
+
+  post 'report/create' => 'report#create'
+
   post 'survey_admin/edit' =>'survey_admin#edit'
   post 'survey/index' => 'survey#index'
+
 
 
   resources :logins
   resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]
 
   resources :internships, only: [:index]
-  get 'internships/new', to: redirect('/giving_back/new/internship')
-  resources :giving_back, only: [:create] do
-    new do
-      get ':type', to: 'giving_back#new', as: ''
+  get 'internships/new', to: redirect('giving_back/new/internship')
+  resources :giving_back, only: [:new, :create] do
+    GivingBack.types.each do |type, i|
+      get type, on: :new
     end
   end
-  get 'giving_back/new', to: redirect('/giving_back/new/other')
 
   namespace :admin do
-    resources :giving_back, only: [:index, :update]
+    resources :giving_back, only: [:index, :update] do
+      get 'completed', on: :collection
+      get 'hidden', on: :collection
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
