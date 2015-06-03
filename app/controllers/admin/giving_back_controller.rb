@@ -1,7 +1,7 @@
 # author: Max Barvian
 class Admin::GivingBackController < AdminController
   def index
-    @opportunities = GivingBack.where(hidden: false)
+    @opportunities = GivingBack.where(hidden: false, completed: false)
   end
 
   def update

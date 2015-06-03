@@ -109,6 +109,10 @@ body {
     .pack-bottom > & {
       vertical-align: bottom;
     }
+
+    .panel & + & {
+      padding-left: $panel-padding;
+    }
   }
 
 .vcenter {
