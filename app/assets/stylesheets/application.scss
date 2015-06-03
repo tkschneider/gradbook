@@ -176,3 +176,15 @@ body {
     }
   }
 }
+
+.photo-credit {
+  @extend .small;
+
+  bottom: rem-calc(15);
+  position: absolute;
+  right: rem-calc(15);
+
+  %invert-page & {
+    color: rgba($white, 0.3);
+  }
+}
