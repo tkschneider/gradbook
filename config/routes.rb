@@ -32,8 +32,12 @@ Rails.application.routes.draw do
   get 'survey_admin/edit' => 'survey_admin#edit'
   get 'user_profile' => 'user_profile#index'
   get 'survey_admin/new_q' => 'survey_admin#new_q'
+  get 'survey_admin/publish' => 'survey_admin#publish'
+  get 'survey/take' => 'survey#take'
   post 'report/show' => 'report#show'
   post 'survey_admin/edit' =>'survey_admin#edit'
+  post 'survey/index' => 'survey#index'
+
 
   resources :logins
   resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]

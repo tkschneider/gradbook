@@ -1,7 +1,15 @@
-<%=@Survey.survey_name %>
+<%=@survey.survey_name %>
 
-<%=@Question.text %>
 
-for <%= form_for :survey_question, url: survey_admin_index_path do |f| %>
 
-f.text_field();
+  <% @question.each do |q|%>
+  <%= q.text %>
+
+<%= form_for :user_survey_responses, url: survey_index_path do |f| %>
+
+
+<%= f.text_area :response_text %>
+<%= f.submit %>
+
+<% end %>
+<% end %>

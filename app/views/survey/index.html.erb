@@ -7,18 +7,20 @@
 
         <th colspan="4"></th>
       </tr>
-  <% @survey.each do |s| %>
+  <% @survey.each do |s|%>
     <tr>
 
+<% if s.status == "published"  %>
       <td><%= s.survey_name%></td>
 
       <td><%= link_to 'take', action: 'take', :id => s, :survey_id => s %></td>
           </tr>
       <% end %>
+      <% end %>
     </table><br>
           </tr>
 
     </table><br>
-    <%= link_to 'Create', {controller: "survey_admin", action: 'new'} %>
+
   </div>
 </div>
