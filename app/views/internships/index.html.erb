@@ -8,5 +8,9 @@
   </div>
 <% else %>
   <% @vcenter = true %>
-  <%= render 'shared/empty', message: "No internships." %>
+  <div class="row">
+    <div class="small-12 columns">
+      <%= render 'shared/empty', message: "No internships." %>
+    </div>
+  </div>
 <% end %>
