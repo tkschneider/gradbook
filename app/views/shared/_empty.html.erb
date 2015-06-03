@@ -1,13 +1,8 @@
-<% # author: Max Barvian %>
+<% # author: Maxwell Barvian %>
 <% icon = 'minus-circle' if local_assigns[:icon].nil? %>
 <% message = "There isn't anything here." if local_assigns[:message].nil? %>
 
-<div class="vcenter-item vcenter-full"></div><!--
---><div class="vcenter-item vcenter-stretch">
-  <div class="row">
-    <div class="large-4 medium-6 small-centered columns empty">
-      <i class="empty-icon fi-<%= icon %>"></i>
-      <h4 class="empty-message"><%= message %></h4>
-    </div>
-  </div>
+<div class="empty">
+  <i class="empty-icon fi-<%= icon %>"></i>
+  <h4 class="empty-message"><%= message %></h4>
 </div>

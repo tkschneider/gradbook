@@ -1,7 +1,7 @@
-# author: Max Barvian
+# author: Maxwell Barvian
 class GivingBackController < AuthenticatedController
   def new
-
+    redirect_to action: 'other'
   end
 
   def create

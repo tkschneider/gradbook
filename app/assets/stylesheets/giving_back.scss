@@ -9,5 +9,9 @@
 .opportunity-actions {
   > li .button {
     margin-bottom: 0;
+
+    &:not(:hover) {
+      background-color: $gainsboro;
+    }
   }
 }

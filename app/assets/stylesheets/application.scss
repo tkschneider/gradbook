@@ -82,7 +82,6 @@ body {
 }
 
 .button.icon {
-  background-color: $gainsboro;
   padding: rem-calc(8) rem-calc(14);
 }
 
@@ -192,3 +191,55 @@ body {
     color: rgba($white, 0.3);
   }
 }
+
+.filter-bar {
+  @extend .clearfix;
+
+  border-bottom: $filter-bar-border-bottom-width solid scale-color($filter-bar-label-color, $lightness: 50%);
+  margin: $filter-bar-margin 0;
+
+  + .empty {
+    margin-top: rem-calc(40);
+  }
+}
+
+  .filter-bar-label {
+    color: $filter-bar-label-color;
+    float: left;
+    text-transform: uppercase;
+  }
+
+  .filter-bar-filters {
+    @include inline-list();
+
+    float: right;
+    margin-bottom: 0;
+    position: relative;
+    bottom: -$filter-bar-border-bottom-width;
+
+    > li {
+      margin-left: 0;
+
+      > a {
+        border-bottom: $filter-bar-border-bottom-width solid transparent;
+        color: $filter-bar-link-color;
+        font-size: $filter-bar-link-font-size;
+        font-weight: $filter-bar-link-font-weight;
+        padding: 0 ($filter-bar-link-spacing / 2) $filter-bar-padding-bottom;
+        text-transform: $filter-bar-link-text-transform;
+
+        &:hover {
+          color: $filter-bar-link-color-hover;
+        }
+      }
+
+      &.active {
+        > a {
+          &, &:hover {
+            border-bottom-color: $filter-bar-link-color-active;
+            color: $filter-bar-link-color-active;
+          }
+        }
+      }
+    }
+  }

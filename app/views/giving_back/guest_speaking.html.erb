@@ -1,5 +1,5 @@
 <%= form_for :giving_back, url: giving_back_index_path do |f| %>
-  <%= f.hidden_field :type, value: (params[:type] || 'other') %>
+  <%= f.hidden_field :type, value: :guest_speaking %>
 
   <div class="row">
     <div class="small-8 small-centered columns">
