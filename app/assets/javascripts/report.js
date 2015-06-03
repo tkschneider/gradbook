@@ -1,7 +1,7 @@
 // Created by: Brett Bush
 
 // Hides the divs of the report forms
-function hide_all_divs()
+function hide_all_report_form_divs()
 {
   for(var i = 1; i <= 9; i++)
   {
@@ -13,7 +13,7 @@ function hide_all_divs()
 // Displays the chosen div in a report type
 function onchange_report_type_handler()
 {
-  hide_all_divs();
+  hide_all_report_form_divs();
   var div_to_show = "report_type_form_" + document.getElementById('report_type').value;
   document.getElementById(div_to_show).style.display = "block";
 }
