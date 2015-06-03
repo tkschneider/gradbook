@@ -1,6 +1,8 @@
 .sessions-page {
   @extend %invert-page;
 
+  // NOTE: If you change the photo underneath you might have to remove
+  // the copyright from the page markup.
   background: image-url("ncc_3.JPG") no-repeat center;
   background-size: cover;
 }

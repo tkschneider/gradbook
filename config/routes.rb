@@ -39,13 +39,13 @@ Rails.application.routes.draw do
   resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]
 
   resources :internships, only: [:index]
-  get 'internships/new', to: redirect('/giving_back/new/internship')
+  get 'internships/new', to: redirect('giving_back/new/internship')
   resources :giving_back, only: [:create] do
     new do
       get ':type', to: 'giving_back#new', as: ''
     end
   end
-  get 'giving_back/new', to: redirect('/giving_back/new/other')
+  get 'giving_back/new', to: redirect('giving_back/new/other')
 
   namespace :admin do
     resources :giving_back, only: [:index, :update]
