@@ -15,10 +15,11 @@ default: &default
   pool: 5
   username: root
 
-  password: csc495
+  password: password
   #password: csc495
   host: localhost
-  #port: 3366
+  port: 3366
+  #port: 3606
 
 
 development:

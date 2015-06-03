@@ -1,10 +1,22 @@
-<h1><%=@survey.survey_name%></h1>
-<p>
+
+<div class="row">
+  <div class="large-12 columns">
+    <h1><%=@survey.survey_name%></h1>
+    <% @count = 0 %>
   <table>
     <tr>
       <th>Question</th>
       <th>Type</th>
-      <th>Required</th>
+
+      <% @question.each do |q| %>
+      <% @count = @count + 1 %>
+      <tr>
+        <td><%= q.text %></td>
+        <td><%= q.type%></td>
+
+      </tr>
+      <% end %>
+
 
 
 
@@ -22,6 +34,4 @@
 
 
 
-  </table><br>
-
-</p>
+    <%= link_to 'New Question', {controller: "survey_admin", action: 'new_q', :id => @survey, :display_order => @count} %>
