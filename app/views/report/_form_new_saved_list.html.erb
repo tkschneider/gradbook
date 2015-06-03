@@ -1,0 +1,7 @@
+<%= form_tag("/report/create", method:"post") do %>
+  <h3>Create Saved List</h3>
+  <p>Make a list of users by their employer name.</p>
+  <%= label_tag(:saved_list_name, 'Saved list name:') %>
+  <%= text_field_tag(:saved_list_name) %>
+  <%= submit_tag('Submit', :class => 'button') %>
+<% end %>
