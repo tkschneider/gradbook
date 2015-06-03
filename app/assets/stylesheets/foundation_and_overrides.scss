@@ -1480,4 +1480,20 @@ $footer-link-color: $jet;
 $footer-link-color-hover: $oil;
 $footer-link-weight: $font-weight-medium;
 
+// 38. Filter bar
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$filter-bar-margin-bottom: rem-calc(20);
+$filter-bar-padding-bottom: rem-calc(15);
+$filter-bar-border-bottom-width: 1.5px;
+$filter-bar-label-color: $aluminum;
+$filter-bar-link-spacing: rem-calc(15);
+$filter-bar-link-font-size: rem-calc(14);
+$filter-bar-link-font-weight: $font-weight-medium;
+$filter-bar-link-text-transform: uppercase;
+$filter-bar-link-color: $jumbo;
+$filter-bar-link-color-hover: $oil;
+$filter-bar-link-color-active: $jet;
+
 @import 'foundation';
+@import 'foundation-icons';

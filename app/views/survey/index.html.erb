@@ -1,44 +1,24 @@
-
-
-<!-- Disabled Class -->
 <div class="row">
-<div class="large-12 columns">
+  <div class="large-12 columns">
+    <table>
+      <tr>
 
-<h1>Survey Test Page</h1>
-<h2> Capstone Survey</h2>
-</div>
+        <th>Survey</th>
 
-</br>
-<div class="row">
-<a> On a scale of 1 to 10, please rate the Chicago Bears Playoff hopes. </a>
-</br>
-<a href="#" class="button round">1</a>
-<a href="#" class="button round">2</a>
-<a href="#" class="button round">3</a>
-<a href="#" class="button round">4</a>
-<a href="#" class="button round">5</a>
-<a href="#" class="button round">6</a>
-<a href="#" class="button round">7</a>
-<a href="#" class="button round">8</a>
-<a href="#" class="button round">9</a>
-<a href="#" class="button round">10</a>
+        <th colspan="4"></th>
+      </tr>
+  <% @survey.each do |s| %>
+    <tr>
 
-</br></br>
+      <td><%= s.survey_name%></td>
 
-<a> Please explain your reasonings: </a>
+      <td><%= link_to 'take', action: 'take', :id => s, :survey_id => s %></td>
+          </tr>
+      <% end %>
+    </table><br>
+          </tr>
 
-
-     <div class="large-12 columns">
-     <textarea placeholder="Type Here"></textarea>
-     </div>
-
-
-</br></br></br>
-<a href="#" class="button success">Next Page</a>
-
-</div>
-</div>
-<div align="center">
-<p align="center"> Page 2 of 5 </p>
-</div>
+    </table><br>
+    <%= link_to 'Create', {controller: "survey_admin", action: 'new'} %>
+  </div>
 </div>
