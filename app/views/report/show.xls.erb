@@ -8,13 +8,15 @@
     <Table>
       <Row>
         <Cell><Data ss:Type="String">ID</Data></Cell>
-        <Cell><Data ss:Type="String">Name</Data></Cell>
+        <Cell><Data ss:Type="String">Street</Data></Cell>
+        <Cell><Data ss:Type="String">City</Data></Cell>
       </Row>
     <% if @users != nil %>
       <% @users.each do |user| %>
         <Row>
           <Cell><Data ss:Type="Number"><%= user.id %></Data></Cell>
-          <Cell><Data ss:Type="String"><%= user.name %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= user.street %></Data></Cell>
+          <Cell><Data ss:Type="String"><%= user.city %></Data></Cell>
         </Row>
       <% end %>
     <% end %>

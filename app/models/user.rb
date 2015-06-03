@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+
+  # Generates CSV of 
   def self.to_csv(options = {})
     CSV.generate(options) do |csv|
       csv << column_names
