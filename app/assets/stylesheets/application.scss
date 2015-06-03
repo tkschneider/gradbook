@@ -196,7 +196,7 @@ body {
   @extend .clearfix;
 
   border-bottom: $filter-bar-border-bottom-width solid scale-color($filter-bar-label-color, $lightness: 50%);
-  margin: $filter-bar-margin 0;
+  margin-bottom: $filter-bar-margin-bottom;
 
   + .empty {
     margin-top: rem-calc(40);
