@@ -1,6 +1,6 @@
 class SurveyAdminController < ApplicationController
   def index
-    @survey = Survey.all
+    @survey = Survey.all rescue nil
   end
   def add
 
@@ -22,14 +22,24 @@ class SurveyAdminController < ApplicationController
     end
 
 
+    def publish
+  survey = Survey.find(params[:id]) rescue nil
+  survey.update_attributes(status: 'published')
+  redirect_to(survey_admin_index_path)
+
+end
+
+
+
   def create
     # render plain: params[:survey].inspect
 
     @survey = Survey.new(survey_params) rescue nil
     @survey.save rescue nil
     redirect_to action: 'index'
-    @question = SurveyQuestion.new(question_params)
-    @question.save
+
+    @question = SurveyQuestion.new(question_params) rescue nil
+    @question.save rescue nil
 
 
 
