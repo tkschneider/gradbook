@@ -1,7 +1,7 @@
-# author: Max Barvian
+# author: Maxwell Barvian
 class GivingBackController < AuthenticatedController
   def new
-
+    redirect_to action: 'other'
   end
 
   def create
@@ -9,7 +9,7 @@ class GivingBackController < AuthenticatedController
 
     if @opportunity.save
       flash[:success] = "Opportunity submitted!"
-      redirect_to '/giving_back/new'
+      render 'submitted'
     else
         flash[:alert] = "The opportunity could not be submitted at this time. Please try again."
     end
