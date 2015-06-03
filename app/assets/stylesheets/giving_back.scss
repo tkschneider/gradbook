@@ -1,3 +1,17 @@
-// Place all the styles related to the GivingBack controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.opportunity-avatar {
+  width: 12.5%;
+
+  > img {
+    border-radius: 100%;
+  }
+}
+
+.opportunity-actions {
+  > li .button {
+    margin-bottom: 0;
+
+    &:not(:hover) {
+      background-color: $gainsboro;
+    }
+  }
+}

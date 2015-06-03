@@ -44,15 +44,17 @@ Rails.application.routes.draw do
 
   resources :internships, only: [:index]
   get 'internships/new', to: redirect('giving_back/new/internship')
-  resources :giving_back, only: [:create] do
-    new do
-      get ':type', to: 'giving_back#new', as: ''
+  resources :giving_back, only: [:new, :create] do
+    GivingBack.types.each do |type, i|
+      get type, on: :new
     end
   end
-  get 'giving_back/new', to: redirect('giving_back/new/other')
 
   namespace :admin do
-    resources :giving_back, only: [:index, :update]
+    resources :giving_back, only: [:index, :update] do
+      get 'completed', on: :collection
+      get 'hidden', on: :collection
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,7 +1,17 @@
-# author: Max Barvian
+# author: Maxwell Barvian
 class Admin::GivingBackController < AdminController
   def index
-    @opportunities = GivingBack.where(hidden: false)
+    @opportunities = GivingBack.pending
+  end
+
+  def completed
+    @opportunities = GivingBack.completed
+    render 'index'
+  end
+
+  def hidden
+    @opportunities = GivingBack.hidden
+    render 'index'
   end
 
   def update

@@ -1,4 +1,4 @@
-# author: Max Barvian
+# author: Maxwell Barvian
 class AdminController < AuthenticatedController
   before_filter :authorized?
 
