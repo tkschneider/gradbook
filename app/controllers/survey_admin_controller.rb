@@ -6,12 +6,17 @@ class SurveyAdminController < ApplicationController
 
   end
 
+  def new_q
+    @survey = Survey.find(params[:id]) rescue nil
+    @count = :display_order
+  end
+
 
   def new
   end
   def edit
-      @survey = Survey.find(params[:id])
-      @question = SurveyQuestion.find(params[:survey_id]) rescue nil
+      @survey = Survey.find(params[:id]) rescue nil
+      @question = SurveyQuestion.where(survey_id: params[:survey_id]) rescue nil
 
 
     end
@@ -20,12 +25,14 @@ class SurveyAdminController < ApplicationController
   def create
     # render plain: params[:survey].inspect
 
-    @survey = Survey.new(survey_params)
-
-
-    @survey.save
-
+    @survey = Survey.new(survey_params) rescue nil
+    @survey.save rescue nil
     redirect_to action: 'index'
+    @question = SurveyQuestion.new(question_params)
+    @question.save
+
+
+
 
   end
 
@@ -36,9 +43,13 @@ class SurveyAdminController < ApplicationController
     :survey_description , :status, :date_created, :status,
     :created_at, :updated_at)
 
-
-
   end
+
+  def question_params
+    params.require(:survey_question).permit(:survey_id, :type,
+    :display_order, :text, :required)
+  end
+
 
 
 

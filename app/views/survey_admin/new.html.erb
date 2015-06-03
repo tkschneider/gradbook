@@ -1,6 +1,6 @@
 <div class="row">
   <div class="large-12 columns">
-  <h1>Create a new Survey</h1>
+  <h1>Create a New Survey</h1>
 
 <%= form_for :survey, url: survey_admin_index_path do |f| %>
 
@@ -15,12 +15,12 @@
   <%= f.text_field :survey_description %>
 
   <p>
-  <%= f.label :date_created %><br>
-  <%= f.date_field :date_created, value: Date.today%>
+
+  <%= f.hidden_field :date_created, value: Date.today%>
 </p>
 <p>
-  <%= f.label :status %> <br>
-  <%= f.text_field :status, value: "new" %>
+
+  <%= f.hidden_field :status, value: "new" %>
 
 
 

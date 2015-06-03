@@ -31,20 +31,25 @@ Rails.application.routes.draw do
   get 'report/index' => 'report#index'
   get 'survey_admin/edit' => 'survey_admin#edit'
   get 'user_profile' => 'user_profile#index'
+  get 'survey_admin/new_q' => 'survey_admin#new_q'
   post 'report/show' => 'report#show'
+
   post 'report/create' => 'report#create'
 
+  post 'survey_admin/edit' =>'survey_admin#edit'
+
+
   resources :logins
-  resources :survey_admin, only: [:new, :add, :create, :edit, :index]
+  resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]
 
   resources :internships, only: [:index]
-  get 'internships/new', to: redirect('/giving_back/new/internship')
+  get 'internships/new', to: redirect('giving_back/new/internship')
   resources :giving_back, only: [:create] do
     new do
       get ':type', to: 'giving_back#new', as: ''
     end
   end
-  get 'giving_back/new', to: redirect('/giving_back/new/other')
+  get 'giving_back/new', to: redirect('giving_back/new/other')
 
   namespace :admin do
     resources :giving_back, only: [:index, :update]
