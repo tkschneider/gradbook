@@ -1,11 +1,6 @@
 .sessions-page {
+  @extend %invert-page;
+
   background: image-url("ncc_3.JPG") no-repeat center;
   background-size: cover;
-
-  [role="main"] {
-    @extend .vcenter;
-
-    padding-top: $topbar-height + $topbar-margin-bottom;
-    margin-top: -($topbar-height + $topbar-margin-bottom);
-  }
 }

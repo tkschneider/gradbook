@@ -1,5 +1,5 @@
 # author: Max Barvian
-class GivingBackController < ApplicationController
+class GivingBackController < AuthenticatedController
   def new
 
   end

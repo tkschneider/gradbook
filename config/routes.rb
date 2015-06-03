@@ -1,29 +1,36 @@
 Rails.application.routes.draw do
 
   devise_for :logins
+  devise_scope :login do
+    authenticated do
+      root to: 'user_profile#index', as: :authenticated_root
+    end
+
+    unauthenticated do
+      root to: 'devise/sessions#new', as: :unauthenticated_root
+    end
+  end
 
   get 'searchadmins/index'
-  
+
   resources :searchadmins do
     collection { post :search, to: 'searchadmins#index'}
   end
 
   get 'searchusers/index' => 'searchusers#index'
-  
+
   resources :searchusers do
     collection do
       match 'search' => 'searchusers#search', :via => [:get, :post], :as => :search
     end
   end
 
-  get 'brett/index' => 'brett#index'
-  get 'brad/index' => 'brad#index'
+  get 'privacy' => 'privacy#index'
+  get 'contact' => 'contact#index'
   get 'survey/index' => 'survey#index'
-  get 'welcome/index'
   get 'report/index' => 'report#index'
   get 'survey_admin/edit' => 'survey_admin#edit'
-  get 'user_profile/index' => 'user_profile#index'
-  get 'user_profile/edit' => 'user_profile#edit'
+  get 'user_profile' => 'user_profile#index'
   post 'report/show' => 'report#show'
 
   resources :logins
@@ -46,7 +53,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  # root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

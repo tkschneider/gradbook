@@ -1,14 +1,5 @@
 //
-// This is a manifest file that'll be compiled into application.css, which will include all the files
-// listed below.
-//
-// Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
-// or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
-//
-// You're free to add application-wide styles to this file and they'll appear at the bottom of the
-// compiled file so the styles you add here take precedence over styles defined in any styles
-// defined in the other CSS/SCSS files in this directory. It is generally better to create a new
-// file per style scope.
+// Author: Maxwell Barvian
 //
 
 @import "**/*";
@@ -21,11 +12,22 @@ body {
   }
 }
 
+[role="main"] {
+  padding-bottom: $footer-height + $footer-margin-top;
+  margin-bottom: -$footer-height;
+  min-height: 100%;
+}
+
 .contain-to-grid {
   margin-bottom: $topbar-margin-bottom;
 
   .top-bar {
     margin-bottom: 0;
+  }
+
+  ~ [role="main"] {
+    padding-top: $topbar-height + $topbar-margin-bottom;
+    margin-top: -($topbar-height + $topbar-margin-bottom);
   }
 }
 
@@ -56,7 +58,7 @@ body {
 .alerts {
   position: absolute;
   width: 100%;
-  z-index: 9999;
+  z-index: 90;
 
   .alert-box {
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
@@ -110,18 +112,67 @@ body {
   }
 
 .vcenter {
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-  .vcenter-item {
+.empty {
+  margin-bottom: rem-calc(15);
+  text-align: center;
+  text-shadow: 0 -1px 1px rgba($white, 0.75);
+}
+
+  .empty-icon {
+    color: $base;
     display: inline-block;
-    vertical-align: middle;
+    font-size: rem-calc(140);
+    line-height: 1;
+    margin-bottom: rem-calc(20);
+  }
 
-    &.vcenter-full {
-      height: 100%;
-    }
+  .empty-message {
+    color: $jumbo;
+  }
 
-    &.vcenter-stretch {
-      width: 100%;
+.pipe-list {
+  list-style-type: none;
+  margin-left: 0;
+
+  > li {
+    display: inline-block;
+
+    + li {
+      &::before {
+        content: '|';
+        display: inline-block;
+        font-weight: $font-weight-medium;
+        margin-left: 0.35em;
+        margin-right: 0.55em;
+      }
     }
   }
+}
+
+.site-footer {
+  height: $footer-height;
+  text-align: center;
+  white-space: nowrap;
+
+  a {
+    color: $footer-link-color;
+    font-weight: $footer-link-weight;
+
+    &:hover {
+      color: $footer-link-color-hover;
+    }
+
+    %invert-page & {
+      color: $white;
+
+      &:hover {
+        color: rgba($white, 0.75);
+      }
+    }
+  }
+}

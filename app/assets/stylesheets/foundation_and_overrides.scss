@@ -355,7 +355,7 @@ $alert-function-factor: -14%;
 
 // We use these to control border styles.
 $alert-border-style: solid;
-$alert-border-width: 1px;
+$alert-border-width: 0;
 $alert-border-color: scale-color($primary-color, $lightness: $alert-function-factor);
 $alert-bottom-margin: rem-calc(20);
 
@@ -629,9 +629,9 @@ $button-font-weight: $font-weight-medium;
 // We use these to style the labels in different ways
 // $form-label-pointer: pointer;
 // $form-label-font-size: rem-calc(14);
-// $form-label-font-weight: $font-weight-normal;
+$form-label-font-weight: $font-weight-medium;
 // $form-label-line-height: 1.5;
-// $form-label-font-color: scale-color($black, $lightness: 30%);
+$form-label-font-color: $jumbo;
 // $form-label-small-transform: capitalize;
 // $form-label-bottom-margin: 0;
 // $input-font-family: inherit;
@@ -1389,7 +1389,7 @@ $topbar-bg: $topbar-bg-color;
 
 // Height and margin
 $topbar-height: rem-calc(46);
-$topbar-margin-bottom: rem-calc(25);
+$topbar-margin-bottom: rem-calc(24);
 
 // Controlling the styles for the title in the top bar
 $topbar-title-weight: $font-weight-medium;
@@ -1470,5 +1470,14 @@ $topbar-dropdown-bg: $topbar-bg-color;
 // $include-accessibility-classes: true;
 // $include-table-visibility-classes: true;
 // $include-legacy-visibility-classes: true;
+
+// 37. Footer
+// - - - - - - - - - - - - - - - - - - - - - - - - -
+
+$footer-height: rem-calc(55);
+$footer-margin-top: $topbar-margin-bottom;
+$footer-link-color: $jet;
+$footer-link-color-hover: $oil;
+$footer-link-weight: $font-weight-medium;
 
 @import 'foundation';
