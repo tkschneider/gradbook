@@ -5,14 +5,16 @@
         <th>Status</th>
         <th>Survey</th>
         <th>Date Created</th>
-        <th colspan="4"></th>
+        <th colspan="5"></th>
       </tr>
   <% @survey.each do |s| %>
     <tr>
       <td><%= s.status %></td>
       <td><%= s.survey_name%></td>
       <td><%= s.date_created%></td>
-      <td><%= link_to 'edit', action: 'edit', :id => s, :survey_id => s %></td>
+      <td><%= link_to 'Edit', action: 'edit', :id => s, :survey_id => s %></td>
+      <td><%= link_to 'Publish', action: 'publish',  :id => s%></td>
+
           </tr>
       <% end %>
     </table><br>
