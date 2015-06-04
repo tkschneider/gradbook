@@ -10,6 +10,15 @@
     <ul class="button-group opportunity-actions">
       <% if giving_back.hidden? %>
         <li>
+          <%= link_to admin_giving_back_path(giving_back),
+            method: :delete,
+            title: 'Delete',
+            data: { confirm: 'Are you sure you want to permanently delete this opportunity?' },
+            class: 'tiny alert button icon' do %>
+            <i class="fi-x large"></i>
+          <% end %>
+        </li>
+        <li>
           <%= link_to admin_giving_back_path(
               giving_back,
               giving_back: { hidden: false }

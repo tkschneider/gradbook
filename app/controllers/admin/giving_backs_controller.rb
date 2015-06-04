@@ -26,6 +26,14 @@ class Admin::GivingBacksController < AdminController
     redirect_to :back
   end
 
+  def destroy
+    @opportunity = GivingBack.find(params[:id])
+    @opportunity.destroy()
+
+    flash[:success] = "Opportunity deleted."
+    redirect_to :back
+  end
+
   private
 
   def opportunity_params
