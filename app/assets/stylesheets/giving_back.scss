@@ -1,6 +1,6 @@
 .opportunity {
   .js & {
-    :not(.expand) {
+    > :not(.expand) {
       user-select: none;
     }
   }
