@@ -34,7 +34,7 @@
         <div class="small-10 small-centered medium-9 large-8 columns">
           <% flash.each do |name, msg| %>
             <% if msg.is_a?(String) %>
-              <div data-alert class="alert-box <%= name %> radius">
+              <div data-alert <%= 'data-timeout="1.75"'.html_safe unless name == 'alert' %> class="alert-box <%= name %> radius">
                 <%= msg %>
                 <a href="#" class="close">&times;</a>
               </div>
