@@ -15,3 +15,24 @@
     }
   }
 }
+
+.opportunity-type {
+  text-align: center;
+  width: 20%;
+}
+
+  .opportunity-type-icon {
+    color: $iron;
+    line-height: 1;
+    font-size: rem-calc(36);
+  }
+
+  .opportunity-type-label {
+    color: $base;
+    display: block;
+    font-size: rem-calc(12);
+    line-height: 1.15;
+    margin-top: 0.25em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }

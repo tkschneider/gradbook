@@ -18,6 +18,6 @@ class GivingBacksController < AuthenticatedController
   private
 
   def opportunity_params
-    params.require(:giving_back).permit(:subject, :position, :description, :type, :contact_first_name, :contact_last_name, :contact_email)
+    params.require(:giving_back).permit(:type, :subject, :position, :requirements, :description, :contact_first_name, :contact_last_name, :contact_email)
   end
 end

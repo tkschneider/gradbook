@@ -2,11 +2,15 @@
   <div class="pack-item opportunity-avatar">
     <img src="http://placehold.it/300x300" alt="User avatar" />
   </div>
-  <div class="pack-item pack-full">
+  <div class="pack-item">
     <h5><%= giving_back.subject %></h5>
     <span><%= giving_back.position %></span>
   </div>
-  <div class="pack-item">
+  <div class="pack-item opportunity-type">
+    <i class="fi-<%= icon_for_giving_back_type giving_back.type %> opportunity-type-icon"></i>
+    <span class="opportunity-type-label"><%= humanize_giving_back_type giving_back.type %></span>
+  </div>
+  <div class="pack-item pack-shrink">
     <ul class="button-group opportunity-actions">
       <% if giving_back.hidden? %>
         <li>
