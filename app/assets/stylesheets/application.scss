@@ -66,6 +66,12 @@ body {
 
 .panel {
   box-shadow: $panel-box-shadow;
+  transition: all 200ms ease-in-out;
+
+  &.expanded {
+    box-shadow: $panel-box-shadow-expanded;
+    margin-bottom: $panel-margin-bottom + $panel-expanded-margin;
+  }
 }
 
 .large {
@@ -283,4 +289,8 @@ fieldset {
       margin-left: 0.75em;
     }
   }
+}
+
+input[type="submit"] {
+  margin-top: rem-calc(20);
 }
