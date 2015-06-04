@@ -3,14 +3,14 @@
     <div class="filter-bar">
       <span class="filter-bar-label">Show:</span>
       <ul class="filter-bar-filters">
-        <li class="<%= 'active' if current_page?(admin_giving_back_index_path) %>">
-          <%= link_to 'New', admin_giving_back_index_path %>
+        <li class="<%= 'active' if current_page?(admin_giving_backs_path) %>">
+          <%= link_to 'New', admin_giving_backs_path %>
         </li>
-        <li class="<%= 'active' if current_page?(completed_admin_giving_back_index_path) %>">
-          <%= link_to 'Completed', completed_admin_giving_back_index_path %>
+        <li class="<%= 'active' if current_page?(completed_admin_giving_backs_path) %>">
+          <%= link_to 'Completed', completed_admin_giving_backs_path %>
         </li>
-        <li class="<%= 'active' if current_page?(hidden_admin_giving_back_index_path) %>">
-          <%= link_to 'Hidden', hidden_admin_giving_back_index_path %>
+        <li class="<%= 'active' if current_page?(archived_admin_giving_backs_path) %>">
+          <%= link_to 'Archived', archived_admin_giving_backs_path %>
         </li>
       </ul>
     </div>

@@ -8,7 +8,7 @@ class GivingBacksController < AuthenticatedController
     @opportunity = GivingBack.new(opportunity_params)
 
     if @opportunity.save
-      flash[:success] = "Opportunity submitted!"
+      # flash[:success] = "Opportunity submitted!"
       render 'submitted'
     else
       render 'new'

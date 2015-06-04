@@ -4,8 +4,8 @@
     <li class="<%= 'active' if params[:controller] == 'survey_admin' %>">
       <%= link_to 'Surveys', survey_admin_index_path %>
     </li>
-    <li class="<%= 'active' if current_page?(admin_giving_back_index_path) %>">
-      <%= link_to 'Giving Back', admin_giving_back_index_path %>
+    <li class="<%= 'active' if params[:controller] == 'admin/giving_backs' %>">
+      <%= link_to 'Giving Back', admin_giving_backs_path %>
     </li>
     <li class="<%= 'active' if params[:controller] == 'report' %>">
       <%= link_to 'Reports', report_index_path %>

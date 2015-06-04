@@ -56,9 +56,9 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :giving_back, only: [:index, :update] do
+    resources :giving_backs, only: [:index, :update] do
       get 'completed', on: :collection
-      get 'hidden', on: :collection
+      get 'archived', on: :collection
     end
   end
 
