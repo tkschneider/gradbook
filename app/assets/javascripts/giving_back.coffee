@@ -3,9 +3,10 @@ ready = ->
 
   # Show description on click
   $opportunities.click (event) ->
+    return if $(event.target).is('a') # User probably clicked an action, abort
     event.preventDefault()
 
-    clicked = this
+    clicked = this # Save reference to clicked opportunity
     $opportunities.each ->
       $opportunity = $(this)
       $opportunityDescription = $opportunity.find('.opportunity-description')
