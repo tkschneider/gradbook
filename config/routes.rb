@@ -34,11 +34,15 @@ Rails.application.routes.draw do
   get 'user_profile/edit' => 'user_profile#edit'
   
   get 'survey_admin/new_q' => 'survey_admin#new_q'
+  get 'survey_admin/publish' => 'survey_admin#publish'
+  get 'survey/take' => 'survey#take'
   post 'report/show' => 'report#show'
 
   post 'report/create' => 'report#create'
 
   post 'survey_admin/edit' =>'survey_admin#edit'
+  post 'survey/index' => 'survey#index'
+
 
 
   resources :logins
