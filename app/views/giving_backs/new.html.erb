@@ -1,0 +1,93 @@
+<%= form_for @opportunity do |f| %>
+<%= f.hidden_field :type %>
+<div class="row">
+  <div class="small-8 small-centered columns">
+    <% if @opportunity.needs_subject? %>
+      <div class="row <%= error_class @opportunity, :subject %>">
+        <div class="small-3 columns">
+          <%= f.label :subject, class: 'right inline' %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :subject %>
+          <%= errors @opportunity, :subject %>
+        </div>
+      </div>
+    <% end %>
+    <% if @opportunity.needs_position? %>
+      <div class="row <%= error_class @opportunity, :position %>">
+        <div class="small-3 columns">
+          <%= f.label :position, class: 'right inline' %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :position %>
+          <%= errors @opportunity, :position %>
+        </div>
+      </div>
+    <% end %>
+    <% if @opportunity.needs_company? %>
+      <div class="row <%= error_class @opportunity, :company %>">
+        <div class="small-3 columns">
+          <%= f.label :company_id, 'Company', class: 'right inline' %>
+        </div>
+        <div class="small-9 columns">
+          <%= errors @opportunity, :company %>
+        </div>
+      </div>
+    <% end %>
+    <% if @opportunity.needs_requirements? %>
+      <div class="row <%= error_class @opportunity, :requirements %>">
+        <div class="small-3 columns">
+          <%= f.label :requirements, class: 'right inline' %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_area :requirements, rows: 6 %>
+          <%= errors @opportunity, :requirements %>
+        </div>
+      </div>
+    <% end %>
+    <div class="row <%= error_class @opportunity, :description %>">
+      <div class="small-3 columns">
+        <%= f.label :description, class: 'right inline' %>
+      </div>
+      <div class="small-9 columns">
+        <%= f.text_area :description, rows: 6 %>
+        <%= errors @opportunity, :description %>
+      </div>
+    </div>
+    <fieldset>
+      <legend>Contact</legend>
+      <div class="row">
+        <div class="small-3 columns <%= error_class @opportunity, :contact_first_name, :contact_last_name %>">
+          <%= f.label :contact_first_name, 'Contact name', class: 'right inline' %>
+        </div>
+        <div class="small-9 columns">
+          <div class="row">
+            <div class="small-6 columns <%= error_class @opportunity, :contact_first_name %>">
+              <%= f.text_field :contact_first_name, placeholder: 'First' %>
+              <%= errors @opportunity, :contact_first_name %>
+            </div>
+            <div class="small-6 columns <%= error_class @opportunity, :contact_last_name %>">
+              <%= f.text_field :contact_last_name, placeholder: 'Last' %>
+              <%= errors @opportunity, :contact_last_name %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row <%= error_class @opportunity, :contact_email %>">
+        <div class="small-3 columns">
+          <%= f.label :contact_email, class: 'right inline' %>
+        </div>
+        <div class="small-9 columns">
+          <%= f.text_field :contact_email %>
+          <%= errors @opportunity, :contact_email %>
+        </div>
+      </div>
+    </fieldset>
+    <div class="row">
+      <div class="small-9 small-push-3 columns">
+        <%= f.submit 'Submit opportunity', class: 'success button' %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
