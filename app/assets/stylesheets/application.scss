@@ -70,6 +70,8 @@ body {
 
   &.expanded {
     box-shadow: $panel-box-shadow-expanded;
+    margin-left: -$panel-expanded-margin;
+    margin-right: -$panel-expanded-margin;
     margin-bottom: $panel-margin-bottom + $panel-expanded-margin;
   }
 }
@@ -288,6 +290,20 @@ fieldset {
       left: 100%;
       margin-left: 0.75em;
     }
+  }
+}
+
+[data-expandable] {
+  .js & {
+    cursor: pointer;
+
+    .expand {
+      display: none;
+    }
+  }
+
+  .expand > :last-child {
+    margin-bottom: 0;
   }
 }
 
