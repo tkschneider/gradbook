@@ -91,5 +91,11 @@
       <h6>Requirements</h6>
       <p class="opportunity-requirements"><%= giving_back.requirements %></p>
     <% end %>
+    <hr />
+    <h6>Contact</h6>
+    <p class="opportunity-contact">
+      <%= giving_back.contact_full_name %><br />
+      <%= mail_to giving_back.contact_email %>
+    </p>
   </div>
 </div>

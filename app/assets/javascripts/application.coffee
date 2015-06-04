@@ -39,7 +39,7 @@ ready = ->
 
       shouldExpand = this is clicked && !$expandable.hasClass('expanded')
       $expandable.toggleClass('expanded', shouldExpand)
-      if shouldExpand then $expand.slideDown('fast') else $expand.slideUp('fast')
+      if shouldExpand then $expand.slideDown(200) else $expand.slideUp(200)
 
 $(document).ready ready
 $(document).on 'page:load', ready

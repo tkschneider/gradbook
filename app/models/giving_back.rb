@@ -29,4 +29,8 @@ class GivingBack < ActiveRecord::Base
   def needs_requirements?
     internship?
   end
+
+  def contact_full_name
+    "#{contact_first_name} #{contact_last_name}"
+  end
 end
