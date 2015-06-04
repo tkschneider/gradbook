@@ -29,17 +29,17 @@ ready = ->
   # Expandables
   $expandables = $('[data-expandable]')
   $expandables.click (event) ->
-    return if $(event.target).is('a') # User probably clicked an action, abort
-    event.preventDefault()
+    unless $(event.target).is('a') # User probably clicked an action, abort
+      event.preventDefault()
 
-    clicked = this # Save reference to clicked expandable
-    $expandables.each ->
-      $expandable = $(this)
-      $expand = $expandable.find('.expand')
+      clicked = this # Save reference to clicked expandable
+      $expandables.each ->
+        $expandable = $(this)
+        $expand = $expandable.find('.expand')
 
-      shouldExpand = this is clicked && !$expandable.hasClass('expanded')
-      $expandable.toggleClass('expanded', shouldExpand)
-      if shouldExpand then $expand.slideDown(200) else $expand.slideUp(200)
+        shouldExpand = this is clicked && !$expandable.hasClass('expanded')
+        $expandable.toggleClass('expanded', shouldExpand)
+        if shouldExpand then $expand.slideDown(200) else $expand.slideUp(200)
 
 $(document).ready ready
 $(document).on 'page:load', ready

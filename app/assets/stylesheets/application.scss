@@ -27,6 +27,10 @@ body {
   ~ [role="main"] {
     padding-top: $topbar-height + $topbar-margin-bottom;
     margin-top: -($topbar-height + $topbar-margin-bottom);
+
+    &.vcenter {
+      width: 100%;
+    }
   }
 }
 
