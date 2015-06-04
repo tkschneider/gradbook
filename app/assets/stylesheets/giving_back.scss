@@ -1,9 +1,29 @@
+.opportunity {
+  > :not(.opportunity-description) {
+    user-select: none;
+  }
+  
+  .js & {
+    cursor: pointer;
+  }
+
+  &.expanded {
+    margin-left: -$panel-expanded-margin;
+    margin-right: -$panel-expanded-margin;
+  }
+}
+
 .opportunity-avatar {
   width: 12.5%;
 
   > img {
     border-radius: 100%;
   }
+}
+
+.opportunity-date {
+  color: $jumbo;
+  font-size: rem-calc(14);
 }
 
 .opportunity-actions {
@@ -13,5 +33,36 @@
     &:not(:hover) {
       background-color: $gainsboro;
     }
+  }
+}
+
+.opportunity-type {
+  text-align: center;
+  width: 20%;
+}
+
+  .opportunity-type-icon {
+    color: $iron;
+    line-height: 1;
+    font-size: rem-calc(36);
+  }
+
+  .opportunity-type-label {
+    color: $base;
+    display: block;
+    font-size: rem-calc(12);
+    line-height: 1.15;
+    margin-top: 0.25em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+.opportunity-description {
+  padding-left: $panel-padding;
+  padding-top: $panel-padding / 2;
+  margin-left: 12.5%;
+
+  .js & {
+    display: none;
   }
 }

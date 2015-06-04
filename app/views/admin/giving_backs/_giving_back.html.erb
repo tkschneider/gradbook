@@ -1,66 +1,88 @@
-<div class="opportunity panel radius pack pack-middle">
-  <div class="pack-item opportunity-avatar">
-    <img src="http://placehold.it/300x300" alt="User avatar" />
-  </div>
-  <div class="pack-item pack-full">
-    <h5><%= giving_back.subject %></h5>
-    <span><%= giving_back.position %></span>
-  </div>
-  <div class="pack-item">
-    <ul class="button-group opportunity-actions">
-      <% if giving_back.hidden? %>
-        <li>
-          <%= link_to admin_giving_back_path(
-              giving_back,
-              giving_back: { hidden: false }
-            ),
-            method: :put,
-            title: 'Put back',
-            class: 'tiny button icon' do %>
-            <i class="fi-refresh large"></i>
-          <% end %>
-        </li>
-      <% elsif !giving_back.completed? %>
-        <li>
-          <%= link_to admin_giving_back_path(
-              giving_back,
-              giving_back: { hidden: true }
-            ),
-            method: :put,
-            title: 'Hide',
-            class: 'tiny alert button icon' do %>
-            <i class="fi-x large"></i>
-          <% end %>
-        </li>
-
-        <% if giving_back.internship? && !giving_back.approved? %>
-          <li>
-            <%= link_to admin_giving_back_path(
-                giving_back,
-                giving_back: { approved: true }
-              ),
-              method: :put,
-              data: { confirm: 'Are you sure you want to approve this internship?' },
-              title: 'Approve',
-              class: 'tiny success button icon' do %>
-              <i class="fi-like large"></i>
-            <% end %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to admin_giving_back_path(
-                giving_back,
-                giving_back: { completed: true }
-              ),
-              method: :put,
-              data: { confirm: 'Are you sure you want to mark this opportunity as completed?' },
-              title: 'Mark as complete',
-              class: 'tiny success button icon' do %>
-              <i class="fi-check large"></i>
-            <% end %>
-          </li>
-        <% end %>
+<div class="opportunity panel radius">
+  <div class="pack pack-middle">
+    <div class="pack-item opportunity-avatar">
+      <img src="http://placehold.it/300x300" alt="User avatar" />
+    </div>
+    <div class="pack-item">
+      <% unless giving_back.internship? %>
+        <h5><%= giving_back.subject %></h5>
+      <% else %>
+        <h5><%= giving_back.position %></h5>
       <% end %>
-    </ul>
+      <time pubdate datetime="<%= giving_back.created_at.to_formatted_s(:pubdate) %>" class="opportunity-date"><%= giving_back.created_at.to_formatted_s(:human) %></span>
+    </div>
+    <div class="pack-item opportunity-type">
+      <i class="fi-<%= icon_for_giving_back_type giving_back.type %> opportunity-type-icon"></i>
+      <span class="opportunity-type-label"><%= humanize_giving_back_type giving_back.type %></span>
+    </div>
+    <% unless giving_back.completed? %>
+      <div class="pack-item pack-shrink">
+        <ul class="button-group opportunity-actions">
+          <% if giving_back.hidden? %>
+            <li>
+              <%= link_to admin_giving_back_path(giving_back),
+                method: :delete,
+                title: 'Delete',
+                data: { confirm: 'Are you sure you want to permanently delete this opportunity?' },
+                class: 'tiny alert button icon' do %>
+                <i class="fi-x large"></i>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_giving_back_path(
+                  giving_back,
+                  giving_back: { hidden: false }
+                ),
+                method: :put,
+                title: 'Put back',
+                class: 'tiny button icon' do %>
+                <i class="fi-refresh large"></i>
+              <% end %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to admin_giving_back_path(
+                  giving_back,
+                  giving_back: { hidden: true }
+                ),
+                method: :put,
+                title: 'Archive',
+                class: 'tiny button icon' do %>
+                <i class="fi-archive large"></i>
+              <% end %>
+            </li>
+
+            <% if giving_back.internship? && !giving_back.approved? %>
+              <li>
+                <%= link_to admin_giving_back_path(
+                    giving_back,
+                    giving_back: { approved: true }
+                  ),
+                  method: :put,
+                  data: { confirm: 'Are you sure you want to approve this internship?' },
+                  title: 'Approve',
+                  class: 'tiny success button icon' do %>
+                  <i class="fi-like large"></i>
+                <% end %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to admin_giving_back_path(
+                    giving_back,
+                    giving_back: { completed: true }
+                  ),
+                  method: :put,
+                  data: { confirm: 'Are you sure you want to mark this opportunity as completed?' },
+                  title: 'Mark as complete',
+                  class: 'tiny success button icon' do %>
+                  <i class="fi-check large"></i>
+                <% end %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   </div>
+  <p class="opportunity-description"><%= giving_back.description %></p>
 </div>

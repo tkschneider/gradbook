@@ -19,5 +19,12 @@
 ready = ->
   $(document).foundation()
 
+  # Dismiss auto-close alerts
+  $('[data-timeout]').each ->
+    $timeout = $(this)
+    setTimeout ->
+      if $timeout.is('.alert-box') then $timeout.find("a.close").trigger("click.fndtn.alert") else $timeout.fadeOut()
+    , $timeout.data('timeout') * 1000
+
 $(document).ready ready
 $(document).on 'page:load', ready
