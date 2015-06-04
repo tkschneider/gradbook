@@ -1,8 +1,8 @@
 .opportunity {
-  > :not(.opportunity-description) {
+  :not(.opportunity-description) {
     user-select: none;
   }
-  
+
   .js & {
     cursor: pointer;
   }
