@@ -1,4 +1,4 @@
-<div class="opportunity panel radius">
+<div class="opportunity panel radius" data-expandable>
   <div class="pack pack-middle">
     <div class="pack-item opportunity-avatar">
       <img src="http://placehold.it/300x300" alt="User avatar" />
@@ -84,5 +84,18 @@
       </div>
     <% end %>
   </div>
-  <p class="opportunity-description"><%= giving_back.description %></p>
+  <div class="expand">
+    <p class="opportunity-description"><%= giving_back.description %></p>
+    <% if giving_back.internship? %>
+      <hr />
+      <h6>Requirements</h6>
+      <p class="opportunity-requirements"><%= giving_back.requirements %></p>
+    <% end %>
+    <hr />
+    <h6>Contact</h6>
+    <p class="opportunity-contact">
+      <%= giving_back.contact_full_name %><br />
+      <%= mail_to giving_back.contact_email %>
+    </p>
+  </div>
 </div>

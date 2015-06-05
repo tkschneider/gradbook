@@ -7,7 +7,7 @@
     <li class="<%= 'active' if params[:controller] == 'internships' %>">
       <%= link_to 'Internships', internships_path %>
     </li>
-    <li class="has-dropdown <%= 'active' if params[:controller] == 'giving_back' %>">
+    <li class="has-dropdown <%= 'active' if params[:controller] == 'giving_backs' %>">
       <a href="#">Give Back</a>
       <ul class="dropdown">
         <li><%= link_to 'Internship', new_giving_back_path('internship') %></li>

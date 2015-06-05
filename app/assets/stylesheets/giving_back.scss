@@ -1,15 +1,14 @@
 .opportunity {
-  > :not(.opportunity-description) {
-    user-select: none;
-  }
-  
   .js & {
-    cursor: pointer;
+    > :not(.expand) {
+      user-select: none;
+    }
   }
 
-  &.expanded {
-    margin-left: -$panel-expanded-margin;
-    margin-right: -$panel-expanded-margin;
+  .expand {
+    padding-left: $panel-padding;
+    padding-top: $panel-padding / 2;
+    margin-left: 12.5%;
   }
 }
 
@@ -18,6 +17,7 @@
 
   > img {
     border-radius: 100%;
+    width: 100%;
   }
 }
 
@@ -56,13 +56,3 @@
     text-transform: uppercase;
     white-space: nowrap;
   }
-
-.opportunity-description {
-  padding-left: $panel-padding;
-  padding-top: $panel-padding / 2;
-  margin-left: 12.5%;
-
-  .js & {
-    display: none;
-  }
-}

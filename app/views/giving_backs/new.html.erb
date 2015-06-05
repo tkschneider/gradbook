@@ -2,6 +2,7 @@
 <%= f.hidden_field :type %>
 <div class="row">
   <div class="small-8 small-centered columns">
+    <h1>Submit a <%= header_for_giving_back_type(@opportunity.type).downcase %></h1>
     <% if @opportunity.needs_subject? %>
       <div class="row <%= error_class @opportunity, :subject %>">
         <div class="small-3 columns">
