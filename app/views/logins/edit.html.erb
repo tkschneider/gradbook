@@ -1,60 +1,105 @@
+<!--Brad Bilter -->
+<!--RESTful action EDIT standard route-->
 <div class="row">
   <div class="large-12 columns">
-  <h1>Login Edit</h1><br>
-
-  <strong>Name: </strong><br><span style="margin-left:2em"><%= @login.first_name.camelize%> <%= @login.middle_initial.upcase%> <%= @login.last_name.camelize%></span><br>
-  <strong>Email: </strong><br><span style="margin-left:2em"><%= @login.email.upcase%></span><br>
-  <strong>Address: </strong><br>
-    <%if (defined? @user)%>
-    <span style="margin-left:2em"><%= @user.street.camelize%></span><br>
-    <span style="margin-left:2em"><%= @user.city.camelize%>, <%= @user.state.camelize%>  <%= @user.zip%></span><br><br>
-  <% else %>
-     <span style="margin-left:2em"><strong>Not Found</strong><br><br><br>
-  <% end %>
-
-  <strong>Username: </strong><%= @login.username.upcase%><br>
-  <strong>Type: </strong><%= @login.type.upcase%>  <br><br>
-
-<%= form_for :login, url: login_path(@login), method: :patch do |f| %>
-
-  <% if @login.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@login.errors.count, "error") %> prohibited
-        this login from being saved:
-      </h2>
-      <ul>
-        <% @login.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
+  <h1>Edit Login</h1><br>
+    <div class="small-6 columns">
+      <!--Display current information from LOGIN model-->
+      <strong>Name: </strong><br><span style="margin-left:2em"><%= @login.first_name.camelize%> <%= @login.middle_initial.upcase%> <%= @login.last_name.camelize%></span><br>
+      <strong>Email: </strong><br><span style="margin-left:2em"><%= @login.email.upcase%></span><br>
+      <strong>Address: </strong><br>
+      <!--Check to make sure address is defined for this user since it's from a different MODEL with foreign key-->
+      <%if (defined? @user)%>
+        <span style="margin-left:2em"><%= @user.street.camelize%></span><br>
+        <span style="margin-left:2em"><%= @user.city.camelize%>, <%= @user.state.camelize%>  <%= @user.zip%></span><br><br>
+      <% else %>
+        <!--if not then display "Not Found"-->
+        <span style="margin-left:2em"><strong>Not Found</strong><br><br><br>
+      <% end %>
+      <!--Displays username and user type-->
+      <strong>Username: </strong><%= @login.username.upcase%><br>
+      <strong>Type: </strong><%= @login.type.upcase%>  <br><br>
     </div>
-  <% end %>
- <div class="large-2">
-<p>
-    <%= f.label :First_name %>
-    <%= f.text_field :first_name%>
-
-    <%= f.label :Middle_Initial%>
-    <%= f.text_field :middle_initial%>
-
-    <%= f.label :Last_name %>
-    <%= f.text_field :last_name%>
-
-    <%= f.label :Email %>
-    <%= f.text_field :email%>
-
-    <%=f.label :Password %>
-    <%= f.text_field :password%>
-
-    <%= f.label :Type %>
-    <%= f.select :type, [['User', 'user'], ['Admin', 'admin'], ['Worker', 'worker']]%>
-</p>
- </div>
-  <p>
-    <%= f.submit %>
-  </p>
-
-<% end %>
+    <!--Create panels to edit LOGIN info or RESET PASSWORD-->
+    <div class="medium-6 columns">
+      <div class="panel" >
+      <div class="panel-body" style="min-height: 10; max-height: 10;">
+      <ul class="tabs" data-tab role="tablist">
+      <li class="tab-title active" role="presentational" ><a href="#panel2-1" role="tab" tabindex="0" aria-selected="true" controls="panel2-1">Login</a></li>
+      <li class="tab-title" role="presentational" ><a href="#panel2-2" role="tab" tabindex="0"aria-selected="false" controls="panel2-2">Reset Password</a></li>
+      </ul>			
+      <div class="tabs-content">
+      <br>
+      
+      <!--Edit LOGIN info tab-->
+      <section role="tabpanel" aria-hidden="false" class="content active" id="panel2-1">
+        <div class="large-6 columns">
+          <!--Use form_for to display the edit form for LOGIN-->
+          <%= form_for :login, url: login_path(@login), method: :patch do |f| %>
+            <!--Displays errors with submission if any-->
+            <% if @login.errors.any? %>
+              <div id="error_explanation">
+                <h2> <%= pluralize(@login.errors.count, "error") %> prohibited this login from being saved:</h2>
+                <ul>  <!--Loop through errors-->
+                  <% @login.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+            <!--Diplay form and edit fields for the LOGIN model-->  
+            <p>
+              <%= f.label :First_name %>
+              <%= f.text_field :first_name%>
+              
+              <%= f.label :Middle_Initial%>
+              <%= f.text_field :middle_initial%>
+              
+              <%= f.label :Last_name %>
+              <%= f.text_field :last_name%>
+              
+              <%= f.label :Email %>
+              <%= f.text_field :email%>
+              
+              <!--Type is enumerated at the model level-->
+              <%= f.label :Type %>
+              <%= f.select :type, [['User', 'user'], ['Admin', 'admin'], ['Worker', 'worker']]%>
+            </p>
+            <p>
+              <%= f.submit 'Save', class: 'button' %>    
+            </p>
+          </div>
+        <% end %>
+      </section>
+      
+      <!--Reset Password Tab-->
+      <section role="tabpanel" aria-hidden="true" class="content" id="panel2-2">
+        <!--Use form_for to display the edit form for LOGIN-->
+        <%= form_for :login, url: login_path(@login), method: :patch do |f| %>
+          <!--Displays errors with submission if any-->
+          <% if @login.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@login.errors.count, "error") %> prohibited this login from being saved:</h2>
+              <ul>  <!--Loop through errors-->
+                <% @login.errors.full_messages.each do |msg| %>
+                  <li><%= msg %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+          <!--PASSWORD RESET fields-->    
+          <p>
+            <%= f.label :New_Password %>
+            <%= f.password_field :password, autocomplete: "off" %>
+            
+            <%= f.label :Confirm_Password %>
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </p>
+          <p>
+            <%= f.submit 'Save', class: 'button' %>    
+          </p>
+        <% end %>
+      </section>
+    </div>
   </div>
-  </div>
+</div>

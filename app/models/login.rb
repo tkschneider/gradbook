@@ -10,11 +10,10 @@ class Login < ActiveRecord::Base
 
   enum type: [ :worker, :admin, :user ]
 
-  validates :username,
-    :presence => true,
-    :uniqueness => {
-      :case_sensitive => false
-    }
+  validates :username, :email, :presence => true, :uniqueness => {:case_sensitive => false}
+  #Brad Bilter - added to enforce some rules for adding logins
+  validates :last_name, :first_name, :middle_initial, :presence => true, :on => :update
+
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
