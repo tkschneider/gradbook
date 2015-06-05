@@ -36,7 +36,7 @@ class LoginsController < ApplicationController
      
       if @login.update(login_params)
          flash[:success] = "Login updated"
-          redirect_to :action => 'index'
+          redirect_to :action => 'show'
       else
         flash[:alert] = "Login NOT updated"
       end
@@ -61,7 +61,6 @@ class LoginsController < ApplicationController
 
     private
     def login_params
-        params.require(:login).permit(:first_name, :middle_initial, :last_name, :username, :password, :type)
+        params.require(:login).permit(:first_name, :middle_initial, :last_name, :username, :password, :type, :created_at, :updated_at, :last_sign_in_at, :email, :password_confirmation  )
     end
-
 end

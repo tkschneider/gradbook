@@ -1,5 +1,5 @@
 # author: Maxwell Barvian
-class Admin::GivingBackController < AdminController
+class Admin::GivingBacksController < AdminController
   def index
     @opportunities = GivingBack.pending
   end
@@ -9,8 +9,8 @@ class Admin::GivingBackController < AdminController
     render 'index'
   end
 
-  def hidden
-    @opportunities = GivingBack.hidden
+  def archived
+    @opportunities = GivingBack.archived
     render 'index'
   end
 
@@ -23,7 +23,15 @@ class Admin::GivingBackController < AdminController
       flash[:alert] = "The opportunity could not be updated."
     end
 
-    redirect_to admin_giving_back_index_path
+    redirect_to :back
+  end
+
+  def destroy
+    @opportunity = GivingBack.find(params[:id])
+    @opportunity.destroy()
+
+    flash[:success] = "Opportunity deleted."
+    redirect_to :back
   end
 
   private

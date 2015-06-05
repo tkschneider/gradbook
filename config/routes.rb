@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get 'report/index' => 'report#index'
   get 'survey_admin/edit' => 'survey_admin#edit'
   get 'user_profile' => 'user_profile#index'
+  get 'user_profile/edit' => 'user_profile#edit'
+  
   get 'survey_admin/new_q' => 'survey_admin#new_q'
   get 'survey_admin/publish' => 'survey_admin#publish'
   get 'survey/take' => 'survey#take'
@@ -46,18 +48,19 @@ Rails.application.routes.draw do
   resources :logins
   resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]
 
-  resources :internships, only: [:index]
-  get 'internships/new', to: redirect('giving_back/new/internship')
-  resources :giving_back, only: [:new, :create] do
-    GivingBack.types.each do |type, i|
-      get type, on: :new
+  resources :internships, only: [:index] do
+    get '', to: redirect('/giving_backs/new/internship'), as: '', on: :new
+  end
+  resources :giving_backs, only: [:create] do
+    new do
+      get ':type', to: 'giving_backs#new', as: ''
     end
   end
 
   namespace :admin do
-    resources :giving_back, only: [:index, :update] do
+    resources :giving_backs, only: [:index, :update, :destroy] do
       get 'completed', on: :collection
-      get 'hidden', on: :collection
+      get 'archived', on: :collection
     end
   end
 

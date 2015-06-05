@@ -41,14 +41,11 @@
     <%= f.label :Last_name %>
     <%= f.text_field :last_name%>
 
-    <!DOCTYPE%= f.label :Email %>
-    <!DOCTYPE%= f.text_field :email%>
+    <%= f.label :Email %>
+    <%= f.text_field :email%>
 
-    <!DOCTYPE%= f.label :User_name %>
-    <!DOCTYPE%= f.text_field :username%>
-
-    <!DOCTYPE%= f.label :Password %>
-    <!DOCTYPE%= f.text_field :password%>
+    <%=f.label :Password %>
+    <%= f.text_field :password%>
 
     <%= f.label :Type %>
     <%= f.select :type, [['User', 'user'], ['Admin', 'admin'], ['Worker', 'worker']]%>

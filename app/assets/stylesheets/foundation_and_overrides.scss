@@ -203,12 +203,12 @@ $header-font-weight: $font-weight-medium;
 // $header-font-color: $jet;
 // $header-line-height: 1.4;
 // $header-top-margin: .2rem;
-// $header-bottom-margin: .5rem;
+$header-bottom-margin: 1em;
 // $header-text-rendering: optimizeLegibility;
 
 // We use these to control header font sizes
-// $h1-font-size: rem-calc(44);
-// $h2-font-size: rem-calc(37);
+$h1-font-size: rem-calc(38);
+$h2-font-size: rem-calc(32);
 // $h3-font-size: rem-calc(27);
 // $h4-font-size: rem-calc(23);
 // $h5-font-size: rem-calc(18);
@@ -650,16 +650,18 @@ $form-label-font-color: $jumbo;
 // $input-include-glowing-effect: true;
 
 // We use these to style the fieldset border and spacing.
-// $fieldset-border-style: solid;
-// $fieldset-border-width: 1px;
-// $fieldset-border-color: $gainsboro;
-// $fieldset-padding: rem-calc(20);
+$fieldset-border-style: solid;
+$fieldset-border-width: 1.5px;
+$fieldset-border-color: scale-color($aluminum, $lightness: 50%);
+$fieldset-padding: 0;
 // $fieldset-margin: rem-calc(18 0);
 
 // We use these to style the legends when you use them
-// $legend-bg: $white;
-// $legend-font-weight: $font-weight-bold;
-// $legend-padding: rem-calc(0 3);
+$legend-bg: none;
+$legend-font-weight: $font-weight-bold;
+$legend-text-transform: uppercase;
+$legend-padding: 0;
+$legend-margin-bottom: rem-calc(25);
 
 // We use these to style the prefix and postfix input elements
 // $input-prefix-bg: scale-color($white, $lightness: -5%);
@@ -974,6 +976,7 @@ $panel-bg: scale-color($beige, $lightness: 80%);
 // $panel-border-style: solid;
 $panel-border-size: 0;
 $panel-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+$panel-box-shadow-expanded: 0 3px 6px rgba(0, 0, 0, 0.2);
 
 // We use this % to control how much we darken things on hover
 // $panel-function-factor: -11%;
@@ -981,6 +984,7 @@ $panel-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 
 // We use these to set default inner padding and bottom margin
 // $panel-margin-bottom: rem-calc(20);
+$panel-expanded-margin: rem-calc(10);
 // $panel-padding: rem-calc(20);
 
 // We use these to set default font colors

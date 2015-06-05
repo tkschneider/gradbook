@@ -1,9 +1,23 @@
-<div class="opportunity panel radius pack pack-middle">
-  <div class="pack-item opportunity-avatar">
-    <img src="http://placehold.it/300x300" alt="User avatar" />
+<div class="opportunity panel radius" data-expandable>
+  <div class="pack pack-middle">
+    <div class="pack-item opportunity-avatar">
+      <img src="http://placehold.it/300x300" alt="User avatar" />
+    </div>
+    <div class="pack-item">
+      <h5><%= giving_back.position %></h5>
+      <time pubdate datetime="<%= giving_back.created_at.to_formatted_s(:pubdate) %>" class="opportunity-date"><%= giving_back.created_at.to_formatted_s(:human) %></span>
+    </div>
   </div>
-  <div class="pack-item pack-full">
-    <h5><%= giving_back.subject %></h5>
-    <span><%= giving_back.position %></span>
+  <div class="expand">
+    <p class="opportunity-description"><%= giving_back.description %></p>
+    <hr />
+    <h6>Requirements</h6>
+    <p class="opportunity-requirements"><%= giving_back.requirements %></p>
+    <hr />
+    <h6>Contact</h6>
+    <p class="opportunity-contact">
+      <%= giving_back.contact_full_name %><br />
+      <%= mail_to giving_back.contact_email %>
+    </p>
   </div>
 </div>

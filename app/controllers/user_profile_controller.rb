@@ -7,5 +7,9 @@ class UserProfileController < ApplicationController
 	 @graduate_degree = GraduateDegree.find(@user.id) rescue nil
 	end
 	
+	def edit
+	
+	end
+	
 end
 

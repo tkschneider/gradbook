@@ -27,6 +27,10 @@ body {
   ~ [role="main"] {
     padding-top: $topbar-height + $topbar-margin-bottom;
     margin-top: -($topbar-height + $topbar-margin-bottom);
+
+    &.vcenter {
+      width: 100%;
+    }
   }
 }
 
@@ -66,6 +70,14 @@ body {
 
 .panel {
   box-shadow: $panel-box-shadow;
+  transition: all 200ms ease-in-out;
+
+  &.expanded {
+    box-shadow: $panel-box-shadow-expanded;
+    margin-left: -$panel-expanded-margin;
+    margin-right: -$panel-expanded-margin;
+    margin-bottom: $panel-margin-bottom + $panel-expanded-margin;
+  }
 }
 
 .large {
@@ -98,6 +110,10 @@ body {
 
     &.pack-full {
       width: 100%;
+    }
+
+    &.pack-shrink {
+      width: 1px;
     }
 
     .pack-middle > & {
@@ -242,3 +258,59 @@ body {
       }
     }
   }
+
+fieldset {
+  border: none;
+  overflow: hidden;
+  text-align: center;
+
+  > * {
+    text-align: left;
+  }
+
+  legend {
+    display: inline-block;
+    margin-bottom: $legend-margin-bottom;
+    position: relative;
+    text-align: center;
+    text-transform: $legend-text-transform;
+
+    &::before, &::after {
+      border-top: $fieldset-border-width $fieldset-border-style $fieldset-border-color;
+      content: '';
+      position: absolute;
+      margin-top: -($fieldset-border-width / 2);
+      top: 50%;
+      width: 100em;
+      z-index: -1;
+    }
+
+    &::before {
+      margin-right: 0.75em;
+      right: 100%;
+    }
+
+    &::after {
+      left: 100%;
+      margin-left: 0.75em;
+    }
+  }
+}
+
+[data-expandable] {
+  .js & {
+    cursor: pointer;
+
+    .expand {
+      display: none;
+    }
+  }
+
+  .expand > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+input[type="submit"] {
+  margin-top: rem-calc(20);
+}
