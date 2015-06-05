@@ -1,49 +1,26 @@
 <div class="row">
   <div class="large-12 columns">
-  <h1>Login Create</h1>
-<%= form_for :login, url: logins_path do |f| %>
+  <h1>Login Details</h1>
+<br>
+<p>
+  <strong>Name: </strong><br><span style="margin-left:2em"><%= @login.first_name.camelize%> <%= @login.middle_initial.upcase%> <%= @login.last_name.camelize%></span><br>
+  <strong>Email: </strong><br><span style="margin-left:2em"><%= @login.email.upcase%></span><br>
+  <strong>Address: </strong><br>
+    <%if (defined? @user)%>
+    <span style="margin-left:2em"><%= @user.street.camelize%></span><br>
+    <span style="margin-left:2em"><%= @user.city.camelize%>, <%= @user.state.camelize%>  <%= @user.zip%></span><br><br>
+  <% else %>
+     <span style="margin-left:2em"><strong>Not Found</strong><br><br><br>
+  <% end %>
 
- <div class="large-2">
 
-  <p>
-    <%= f.label :"First Name" %>
-    <%= f.text_field :first_name%>
 
-    <%= f.label :"Middle Initial" %>
-    <%= f.text_field :middle_initial%>
-
-    <%= f.label :"Last Name" %>
-    <%= f.text_field :last_name%>
-
-    <%= f.label :"Email" %>
-    <%= f.text_field :email%>
-
-    <%= f.label :"User Name" %>
-    <%= f.text_field :username%>
-
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %>
-    <%= f.password_field :password, autocomplete: "off" %>
-
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-
-    <%= f.label :"Type" %>
-    <%= f.select :type, [['User', 'user'], ['Admin', 'admin'], ['Worker', 'worker']]%>
-    
-    <%= f.hidden_field :created_at, value: Date.today%>
-    <%= f.hidden_field :updated_at, value: Date.today%>
-    <%= f.hidden_field :last_sign_in_at, value: Date.today%>
-    
-  </p>
-
-  <p>
-    <%= f.submit "Add Login"%>
-  </p>
-</div>
-
-<% end %>
-    </div>
-    </div>
+  <strong>Username: </strong><%= @login.username.upcase%><br>
+  <strong>Type: </strong><%= @login.type.upcase%>  <br>
+  <strong>Account Created: </strong><%= @login.created_at%><br>
+  <strong>Last Updated: </strong><%= @login.updated_at%><br>
+  <strong>Last Logged in: </strong><%= @login.last_sign_in_at%><br>
+  <strong>Number of Logins: </strong><%= @login.sign_in_count%><br>
+</p>
+  </div>
+  </div>

@@ -4,6 +4,23 @@
 
 @import "**/*";
 
+//Brad Bilter
+//Adds sort buttons asc or desc depending on sort order for Login Manager index
+.pretty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.pretty th .asc {
+  background-image: url(/images/up_arrow.png);
+}
+
+.pretty th .desc {
+  background-image: url(/images/down_arrow.png);
+}
+//End Brad Bilter
+
 body {
   -webkit-font-smoothing: $font-smoothing;
   @if $font-smoothing == antialiased {
@@ -314,3 +331,4 @@ fieldset {
 input[type="submit"] {
   margin-top: rem-calc(20);
 }
+

@@ -1,44 +1,45 @@
+<!--Brad Bilter -->
+<!--RESTful action SHOW standard route-->
 <div class="row">
   <div class="large-12 columns">
-  <h1>Login Create</h1>
-<%= form_for :login, url: logins_path do |f| %>
-
- <div class="large-2">
-
-  <p>
-    <%= f.label :"First Name" %>
-    <%= f.text_field :first_name%>
-
-    <%= f.label :"Middle Initial" %>
-    <%= f.text_field :middle_initial%>
-
-    <%= f.label :"Last Name" %>
-    <%= f.text_field :last_name%>
-
-    <%= f.label :"Email" %>
-    <%= f.text_field :email%>
-
-    <%= f.label :"User Name" %>
-    <%= f.text_field :username%>
-
-    <%= f.label :password %>
-    <% if @validatable %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <h1>New Login</h1>
+    <!--Use form_for to render form for adding new login details -->
+    <%= form_for :login, url: logins_path do |f| %>
+      <div class="large-2"> 
+        <p>
+          <%= f.label :"First Name" %>
+          <%= f.text_field :first_name%>
+          
+          <%= f.label :"Middle Initial" %>
+          <%= f.text_field :middle_initial%>
+          
+          <%= f.label :"Last Name" %>
+          <%= f.text_field :last_name%>
+          
+          <%= f.label :"Email" %>
+          <%= f.text_field :email%>
+          
+          <%= f.label :"User Name" %>
+          <%= f.text_field :username%>
+          
+          <%= f.label :password %>
+          <%= f.password_field :password, autocomplete: "off" %>
+          
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          
+          <%= f.label :"Type" %>
+          <%= f.select :type, [['User', 'user'], ['Admin', 'admin'], ['Worker', 'worker']]%>
+          
+          <!--Hidden fields required for Devise helper to add the record-->
+          <%= f.hidden_field :created_at, value: DateTime.now%>
+          <%= f.hidden_field :updated_at, value: DateTime.now%>
+          <%= f.hidden_field :last_sign_in_at, value: DateTime.now%>  
+        </p>
+        <p><!--Submit button-->
+          <%= f.submit "Add Login"%>
+        </p>
+      </div>
     <% end %>
-    <%= f.password_field :password, autocomplete: "off" %>
-
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-
-    <%= f.label :"Type" %>
-    <%= f.select :type, [['User', 'user'], ['Admin', 'admin'], ['Worker', 'worker']]%>
-  </p>
-
-  <p>
-    <%= f.submit "Add Login"%>
-  </p>
+  </div>
 </div>
-
-<% end %>
-    </div>
-    </div>
