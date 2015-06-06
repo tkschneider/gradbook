@@ -10,7 +10,7 @@ module GivingBacksHelper
   end
 
   def header_for_giving_back_type(type)
-    headers = { internship: 'Internship', mentoring: 'Mentoring opportunity', guest_speaking: 'Speaking opportunity', other: 'Opportunity' }
+    headers = { internship: 'an internship', mentoring: 'a mentoring opportunity', guest_speaking: 'a speaking opportunity', other: 'an opportunity' }
     headers[type.to_sym]
   end
 end
