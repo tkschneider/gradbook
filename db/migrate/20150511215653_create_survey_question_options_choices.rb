@@ -1,3 +1,4 @@
+#Created by Tessa
 class CreateSurveyQuestionOptionsChoices < ActiveRecord::Migration
   def change
     create_table :survey_question_options_choices do |t|

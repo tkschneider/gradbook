@@ -1,3 +1,4 @@
+#Created by Tessa
 class CreateGivingBacks < ActiveRecord::Migration
   def change
     create_table :giving_backs do |t|

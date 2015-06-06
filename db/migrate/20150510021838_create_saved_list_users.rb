@@ -1,3 +1,4 @@
+#Created by Victor
 class CreateSavedListUsers < ActiveRecord::Migration
   def change
     create_table :saved_list_users do |t|
