@@ -5,8 +5,13 @@ class UserProfileController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@login = Login.find(params[:id]) rescue nil
+		@user_phone = UserPhone.find(@user.id) rescue nil	
+
 		@company = Company.find(@user.id) rescue nil
 		@company_info = CompanyInfo.find(@company.id) rescue nil
+		
+		@degrees = Degree.find(@user.id) rescue nil
+		@colleges = College.find(@user.id) rescue nil			
 		@undergraduate_degree = UndergraduateDegree.find(@user.id) rescue nil
 		@graduate_degree = GraduateDegree.find(@user.id) rescue nil
 	end
