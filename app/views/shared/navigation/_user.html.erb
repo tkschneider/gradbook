@@ -17,13 +17,13 @@
       </ul>
     </li>
     <li class="has-dropdown <%= 'active' if params[:controller] == 'logins' %>">
-      <%= link_to 'Profile', login_path(current_login) %>
+      <a href="#">Profile</a>
       <ul class="dropdown">
         <li>
-          <%= link_to 'My Profile', controller: '/user_profile' %>
+          <%= link_to 'My Profile', 'user_profile' %>
         </li>
         <li>
-          <%= link_to 'Edit', edit_login_path(current_login) %>
+          <%= link_to 'Edit', 'user_profile/edit' %>
         </li>
         <li>
           <%= link_to "Logout", destroy_login_session_path, method: :delete  %>

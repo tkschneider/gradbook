@@ -1,9 +1,9 @@
-class LoginsController < ApplicationController
+class Admin::LoginsController < AdminController
     #Brad Bilter
-    
+
     #Helper methods for sorting
     helper_method :sort_column, :sort_direction
-    
+
     #index LOGINS but add order by to select for sorting
     def index
         @login = Login.order(sort_column + " " + sort_direction)
@@ -29,7 +29,7 @@ class LoginsController < ApplicationController
             @user = User.find(params[:id])
         end
     end
-    
+
     #Create new user with params hash
     def create
             @login = Login.new(login_params)
@@ -39,7 +39,7 @@ class LoginsController < ApplicationController
           redirect_to :action => 'index'
         else
             flash[:alert] = "Login NOT created"
-            redirect_to :action => 'index'            
+            redirect_to :action => 'index'
         end
     end
 
@@ -77,7 +77,7 @@ class LoginsController < ApplicationController
 
     #Private methods
     private
-    
+
     #Define login params to prevent sql injection
     #Active record has a permit only implementation
     #that means you must explicitly specify records
@@ -88,7 +88,7 @@ class LoginsController < ApplicationController
 
     #sort column method that prevents sql injection
     #by only allowing sort columns to be received
-    #from column headers ***railscast episode 228   
+    #from column headers ***railscast episode 228
     def sort_column
         Login.column_names.include?(params[:sort]) ? params[:sort] : "last_name"
     end
