@@ -1,26 +1,25 @@
 <!-- Created by Brett Bush -->
+<p id="notice"><%= notice %></p>
+
 <div class="row">
   <div class="large-12 columns">
-    <h1><%= @report_header %> Report Results</h1>
+    <h1><%= @saved_list.list_name %></h1>
     <h3 id="print_date"></h3>
     <%= link_to "Excel (.xls)", params.merge(:format => 'xls'), :class => "button small noprint", method: :post %>
     <!--<%= link_to "PDF (.pdf)", params.merge(:format => 'pdf'), :class => "button small noprint", method: :post %>-->
-    <button type="button" class="button small noprint" onclick="report_print_page();">Print</button>
-    <% if @report_id.to_i < 7 %>
-    <%= render partial: 'report/form_new_saved_list' %>
-    <% end %>
+    <button type="button" class="button small noprint" onclick="saved_list_print_page();">Print</button>
     <div class="user_listing" style="overflow-y:scroll;height:400px">
-      <table class="report_results_table" style="width:100%;">
+      <table class="saved_list_table" style="width:100%;">
         <thead>
-        <tr><th class="report_results_td">ID</th><th class="report_results_td">Street</th><th class="report_results_td">City</th></tr>
+        <tr><th class="saved_list_td">ID</th><th class="saved_list_td">Street</th><th class="saved_list_td">City</th></tr>
         </thead>
         <tbody>
           <% if @users != nil %>
           <% @users.each do |user| %>
             <tr>
-              <td class="report_results_td"><%= user.id %></td>
-              <td class="report_results_td"><%= user.street %></td>
-              <td class="report_results_td"><%= user.city %></td>
+              <td class="saved_list_td"><%= user.id %></td>
+              <td class="saved_list_td"><%= user.street %></td>
+              <td class="saved_list_td"><%= user.city %></td>
             </tr>
           <% end %>
           <% end %>

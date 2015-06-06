@@ -1,0 +1,18 @@
+<!-- Created by Brett Bush -->
+<%= form_for(@saved_list) do |f| %>
+  <% if @saved_list.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@saved_list.errors.count, "error") %> prohibited this saved_list from being saved:</h2>
+
+      <ul>
+      <% @saved_list.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

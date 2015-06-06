@@ -83,6 +83,10 @@ class ReportController < ApplicationController
       end
       format.xls do
         @report_id = params[:report_id]
+        @report_name = params[:report_name]
+
+        # Create file name, downcase it, and replace all invalid file name characters with underscores
+        headers["Content-Disposition"] = "attachment; filename=\"" + @report_name.downcase.gsub(/[\x00\/\\:\*\?\"<>\| ]/, '_') + "_report_" + DateTime.now.strftime("%m%d%Y_%I%M%p") + "\""
 
         # Switch case by report_id
         case @report_id

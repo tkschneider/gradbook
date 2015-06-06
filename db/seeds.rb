@@ -22,6 +22,6 @@ User.create!([
 
 GivingBack.destroy_all
 GivingBack.create!([
-  {user_id: nil, company_id: nil, subject: "Guest Speaker", position: "QA", description: "I'd like to be a guest speaker", requirements: nil, approved: nil, completed: nil, type: 2, contact_first_name: nil, contact_last_name: nil, contact_email: nil},
-  {user_id: nil, company_id: nil, subject: "Tutor", position: "Tutor", description: "I'd like to tutor", requirements: nil, approved: nil, completed: nil, type: 0, contact_first_name: nil, contact_last_name: nil, contact_email: nil}
+  {user_id: nil, company_id: nil, subject: "Guest Speaker", position: "QA", description: "I'd like to be a guest speaker", requirements: nil, approved: nil, completed: nil, type: 2, contact_first_name: "Jeremy", contact_last_name: "Jordan", contact_email: "jrjordan@mail.com"},
+  {user_id: nil, company_id: nil, subject: "Tutor", position: "Tutor", description: "I'd like to tutor", requirements: nil, approved: nil, completed: nil, type: 0, contact_first_name: "Isabelle", contact_last_name: "Foster", contact_email: "ilfoster@mail.com"}
 ])
