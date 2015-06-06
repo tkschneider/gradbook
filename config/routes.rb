@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   get 'survey_admin/edit' => 'survey_admin#edit'
   get 'user_profile' => 'user_profile#index'
   get 'user_profile/edit' => 'user_profile#edit'
+  post 'user_profile/update_login' => 'user_profile#update_login'
+  post 'user_profile/update_user' => 'user_profile#update_user'
   
   get 'survey_admin/new_q' => 'survey_admin#new_q'
   get 'survey_admin/publish' => 'survey_admin#publish'
