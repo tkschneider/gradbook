@@ -1,3 +1,4 @@
+# Author: Maxwell Barvian
 class AddDefaultValuesToApprovedAndCompletedInGivingBacksTable < ActiveRecord::Migration
   def change
     change_column :giving_backs, :approved, :boolean, default: false
