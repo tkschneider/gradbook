@@ -20,7 +20,7 @@
       <%= link_to 'Profile', login_path(current_login) %>
       <ul class="dropdown">
         <li>
-          <%= link_to 'My Profile', controller: '/user_profile' %>
+          <%= link_to 'My Profile', {:action => 'show', :controller => 'user_profile', :id => current_login.id} %>
         </li>
         <li>
           <%= link_to 'Edit', edit_login_path(current_login) %>

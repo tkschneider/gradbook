@@ -17,7 +17,7 @@ default: &default
 
 
   #password: password
-  password: csc495
+  password: mypass
   host: localhost
   #port: 3366
   #port: 3606

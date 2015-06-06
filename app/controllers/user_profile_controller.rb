@@ -1,13 +1,23 @@
 class UserProfileController < ApplicationController
 	#Created by Tim Schneider
 	
+	# Show method for the user profile page
+	def show
+		@user = User.find(params[:id])
+		@login = Login.find(params[:id]) rescue nil
+		@company = Company.find(@user.id) rescue nil
+		@company_info = CompanyInfo.find(@company.id) rescue nil
+		@undergraduate_degree = UndergraduateDegree.find(@user.id) rescue nil
+		@graduate_degree = GraduateDegree.find(@user.id) rescue nil
+	end
+	
 	# Index to user profile page
 	def index
-	 @user = User.find(current_login.id) rescue nil
-	 @company = Company.find(@user.id) rescue nil
-	 @company_info = CompanyInfo.find(@company.id) rescue nil
-	 @undergraduate_degree = UndergraduateDegree.find(@user.id) rescue nil
-	 @graduate_degree = GraduateDegree.find(@user.id) rescue nil
+		redirect_to :action => 'show', :controller => 'user_profile', :id => current_login.id
+	end
+	
+	def edit
+	
 	end
 	
 	# Method to update login info
