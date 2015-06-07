@@ -21,7 +21,7 @@
       <tbody>
         <% # Loop through logins %>
         <% @login.each do |f| %>
-          <tr data-clickable="<%= admin_login_path(f) %>">
+          <tr data-clickable="<%= user_path(f.user) %>">
             <td><%= f.first_name.camelize %></td>
             <td><%= f.middle_initial.upcase %></td>
             <td><%= f.last_name.camelize %></td>
