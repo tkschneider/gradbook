@@ -4,6 +4,7 @@
 #= require jquery_ujs
 #= require jquery-ui/autocomplete
 #= require autocomplete-rails
+#= require cocoon
 #= require turbolinks
 #= require foundation
 #= require_tree .

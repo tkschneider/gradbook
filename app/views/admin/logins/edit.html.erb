@@ -2,11 +2,11 @@
 <!--RESTful action EDIT standard route-->
 <div class="row">
   <div class="large-12 columns">
-  <h1>Edit Login</h1><br>
+  <h1>Edit Account</h1><br>
     <div class="small-6 columns">
       <!--Display current information from LOGIN model-->
-      <strong>Name: </strong><br><span style="margin-left:2em"><%= @login.first_name.camelize%> <%= @login.middle_initial.upcase%> <%= @login.last_name.camelize%></span><br>
-      <strong>Email: </strong><br><span style="margin-left:2em"><%= @login.email.upcase%></span><br>
+      <strong>Name: </strong><br><span style="margin-left:2em"><%= @login.first_name.camelize %> <%= @login.middle_initial.upcase %> <%= @login.last_name.camelize %></span><br>
+      <strong>Email: </strong><br><span style="margin-left:2em"><%= @login.email.upcase %></span><br>
       <strong>Address: </strong><br>
       <!--Check to make sure address is defined for this user since it's from a different MODEL with foreign key-->
       <%if (defined? @user)%>
@@ -49,21 +49,21 @@
             <% end %>
             <!--Diplay form and edit fields for the LOGIN model-->
             <p>
-              <%= f.label :First_name %>
+              <%= f.label :first_name %>
               <%= f.text_field :first_name%>
 
-              <%= f.label :Middle_Initial%>
+              <%= f.label :middle_Initial%>
               <%= f.text_field :middle_initial%>
 
-              <%= f.label :Last_name %>
+              <%= f.label :last_name %>
               <%= f.text_field :last_name%>
 
-              <%= f.label :Email %>
+              <%= f.label :email %>
               <%= f.text_field :email%>
 
               <!--Type is enumerated at the model level-->
-              <%= f.label :Type %>
-              <%= f.select :type, [['User', 'user'], ['Admin', 'admin'], ['Worker', 'worker']]%>
+              <%= f.label :type %>
+              <%= f.select :type, Login.types.map { |w,| [w.humanize, w] } %>
             </p>
             <p>
               <%= f.submit 'Save', class: 'button' %>

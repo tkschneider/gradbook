@@ -10,25 +10,20 @@
     <li class="<%= 'active' if params[:controller] == 'report' %>">
       <%= link_to 'Reports', report_index_path %>
     </li>
-
-    <li class="has-dropdown <%= 'active' if params[:controller] == 'admin/logins' %>">
-
     <li class="<%= 'active' if params[:controller] == 'saved_lists' %>">
       <%= link_to 'Saved Lists', saved_lists_index_path %>
     </li>
-    <li class="has-dropdown <%= 'active' if params[:controller] == 'logins' %>">
+    <li class="has-dropdown <%= 'active' if ['admin/logins', 'user'].include? params[:controller] %>">
       <a href="#">Profile</a>
       <ul class="dropdown">
-
         <li>
-          	<%= link_to 'My Profile', controller: '/user_profile' %>
+          	<%= link_to 'My Profile', user_index_path %>
         </li>
-
        <li>
           <%= link_to 'Edit My Profile', edit_admin_login_path(current_login) %>
         </li>
         <li>
-          <%= link_to 'Manage User Profiles', admin_logins_path %>
+          <%= link_to 'Manage Accounts', admin_logins_path %>
         </li>
         <li class="divider"></li>
         <li>

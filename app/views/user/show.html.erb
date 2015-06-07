@@ -1,0 +1,48 @@
+<% # Made by Tim and Joe %>
+<div class="row">
+  <div class="large-3 columns">
+    <div class="panel">
+      <img src="http://placehold.it/500x500&text=Image">
+      <h4><%= @user.login.full_name %></h4>
+      <%= mail_to @user.login.try(:email) %>
+    </div>
+  </div>
+
+  <div class="large-9 columns">
+    <div class="panel">
+      <div class="clearfix">
+        <ul class="left tabs" data-tab role="tablist">
+          <li class="tab-title active" role="presentational"><a href="#information" role="tab" tabindex="0" aria-selected="true" controls="information">Information</a></li>
+          <li class="tab-title" role="presentational"><a href="#employer" role="tab" tabindex="0"aria-selected="false" controls="employer">Employer</a></li>
+          <li class="tab-title" role="presentational"><a href="#survey" role="tab" tabindex="0" aria-selected="false" controls="survey">Survey</a></li>
+        </ul>
+        <% if current_login.authorized_to_edit_profile? @user.id %><%= link_to 'Edit', edit_user_path(@user), class: 'small right button' %><% end %>
+      </div>
+      <div class="tabs-content">
+        <section role="tabpanel" aria-hidden="false" class="content active" id="information">
+          <p>
+          <h3> Alumni of North Central College </h3>
+          <%= @user.login.try(:email) %> <br>
+          <h4>Degrees</h4> <br>
+          <br>
+          Degree Earned <br>
+          Institution <br>
+          Year <br>
+          </p>
+        </section>
+
+        <section role="tabpanel" aria-hidden="true" class="content" id="employer">
+          <p>
+          <h4>Employer info</h4>
+          <strong>Company: </strong><%= @user.try(:company).try(:company_name)%><br>
+          <strong>City, State: </strong><%= @user.try(:company).try(:company_info).try(:city)%><%= @user.try(:company).try(:company_info).try(:state)%> <br>
+          </p>
+        </section>
+
+        <section role="tabpanel" aria-hidden="true" class="content" id="survey">
+          <h2>Surveys</h2>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
