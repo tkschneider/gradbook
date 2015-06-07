@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
 
   # before_action :authenticate_login!
 
+  def unauthorized
+    flash[:alert] = "You are not authorized to view that page."
+    redirect_to '/'
+  end
+
   protected
 
   # Allows sign_up to accept more login fields besides

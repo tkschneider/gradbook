@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :logins
   devise_scope :login do
     authenticated do
-      root to: 'user_profile#index', as: :authenticated_root
+      root to: 'user#index', as: :authenticated_root
     end
 
     unauthenticated do
@@ -31,13 +31,6 @@ Rails.application.routes.draw do
   get 'report/index' => 'report#index'
   get 'survey_admin/edit' => 'survey_admin#edit'
 
-
-  get 'user_profile/edit' => 'user_profile#edit'
-  post 'user_profile/update_login' => 'user_profile#update_login'
-  post 'user_profile/update_user' => 'user_profile#update_user'
-
-  get '/user_profile/:id' => 'user_profile#show'
-
   get 'saved_lists/index' => 'saved_lists#index'
   post 'saved_lists/create' => 'saved_lists#create'
 
@@ -58,7 +51,7 @@ Rails.application.routes.draw do
 
   delete '/saved_lists/:id', to: 'saved_lists#destroy'
 
-  resources :users
+  resources :user
 
   resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]
 

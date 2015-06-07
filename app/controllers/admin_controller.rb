@@ -1,14 +1,11 @@
 # Author: Maxwell Barvian
 class AdminController < AuthenticatedController
-  before_filter :authorized?
+  before_filter :check_privileges!
 
   private
 
-  def authorized?
+  def check_privileges!
     # Redirects to root unless the current user is an admin or worker
-    unless current_login.worker? || current_login.admin?
-      flash[:error] = "You are not authorized to view this page."
-      redirect_to root_path
-    end
+    unauthorized() unless current_login.worker? || current_login.admin?
   end
 end

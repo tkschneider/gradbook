@@ -1,0 +1,184 @@
+<% # Created by Tim Schneider, edited by Maxwell Barvian  %>
+<%= form_for @user do |f|  %>
+<%= submit_tag 'Save', class: 'new success right button' %>
+<h1>Manage Profile</h1>
+<div class="panel">
+  <ul class="tabs" data-tab data-options="deep_linking: true; scroll_to_content: false;" role="tablist">
+    <li class="tab-title active" role="presentational" ><a href="#login" role="tab" tabindex="0" aria-selected="true" controls="login">Login</a></li>
+    <li class="tab-title" role="presentational" ><a href="#personal" role="tab" tabindex="0"aria-selected="false" controls="personal">Personal</a></li>
+    <li class="tab-title" role="presentational"><a href="#education" role="tab" tabindex="0" aria-selected="false" controls="education">Education</a></li>
+    <li class="tab-title" role="presentational"><a href="#career" role="tab" tabindex="0" aria-selected="false" controls="career">Career</a></li>
+  </ul>
+  <div class="tabs-content">
+    <!--  Login Section  -->
+    <section role="tabpanel" aria-hidden="false" class="content active" id="login">
+      <%= f.fields_for :login do |f_login| %>
+        <div class="medium-3 columns">
+          <%= f_login.label :email %>
+          <%= f_login.text_field :email %>
+
+          <%= f_login.label :first_name %>
+          <%= f_login.text_field :first_name %>
+
+          <%= f_login.label :middle_initial %>
+          <%= f_login.text_field :middle_initial, maxlength: 1 %>
+
+          <%= f_login.label :last_name %>
+          <%= f_login.text_field :last_name %>
+
+          <%= f_login.label :username %>
+          <%= f_login.text_field :username %>
+
+          <%= f_login.label :password %>
+          <%= f_login.text_field :password %>
+        </div>
+      <% end %>
+    </section>
+
+    <!-- User Section  -->
+    <section role="tabpanel" aria-hidden="true" class="content" id="personal">
+      <div class="medium-4 columns">
+        <%= f.label :street %>
+        <%= f.text_field :street %>
+
+        <%= f.label :city %>
+        <%= f.text_field :city %>
+
+        <%= f.label :state %>
+        <%= f.text_field :state %>
+
+        <%= f.label :zip %>
+        <%= f.text_field :zip %>
+
+        <%= f.label :spouse_first_name %>
+        <%= f.text_field :spouse_first_name %>
+
+        <%= f.label :spouse_middle_initial %>
+        <%= f.text_field :spouse_middle_initial %>
+
+        <%= f.label :spouse_last_name %>
+        <%= f.text_field :spouse_last_name %>
+        <%= f.label :number_of_children %>
+        <%= f.text_field :number_children %>
+      </div>
+
+      <div class="medium-4 columns">
+        <%= f.label :birth_day %>
+        <%= f.text_field :birth_day %>
+
+        <%= f.label :birth_month %>
+        <%= f.text_field :birth_month %>
+
+        <%= f.label :birth_year %>
+        <%= f.text_field :birth_year %>
+
+        <%= f.label :ethnicity %>
+        <%= f.text_field :ethnicity %>
+
+        <%= f.label :status %>
+        <%= f.select :status, options_for_select(['Currently Enrolled', 'Alumni']) %>
+
+        <%= f.label :salary_range %>
+        <%= f.text_field :salary_range %>
+
+        <%= f.label :job_title %>
+        <%= f.text_field :job_title %>
+
+        <%= f.label :start_date %>
+        <%= f.text_field :start_date %>
+      </div>
+
+      <div class="medium-4 columns">
+        <div id="user_phones">
+          <%= f.fields_for :user_phones do |f_phone| %>
+            <%= render 'user_phone_fields', f: f_phone %>
+            <%= link_to_add_association 'add phone', f, :user_phones %>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section  -->
+    <section role="tabpanel" aria-hidden="true" class="content" id="education">
+      <div class="medium-2 columns">
+        <%= label :colleges, :college %>
+        <%= text_field :colleges, :college_name %>
+        <%= submit_tag("Submit", class: "button") %>
+      </div>
+        <div class="medium-2 columns">
+        <%= label :degree, :major %>
+        <%= text_field :degree, :major_name %>
+      </div>
+
+      <div class="medium-2 columns">
+        <%= label :degree, :Degree_type%>
+        <%= select_tag :degree_type, options_for_select(
+          ['Associate of Arts (A.A)',
+          'Associate of Science (A.S.)',
+          'Bachelor of Arts (B.A.)',
+          'Bachelor of Science (B.S)',
+          'Master of Arts (M.A.)',
+          'Master of Science (M.S.)',
+          'Doctoral (Ph.D.)',
+          'Medical Doctor (M.D.)']
+          ) %>
+      </div>
+
+      <div class="medium-2 columns">
+        <%= label :degree, :major_name %>
+        <%= text_field :degree, :major_name %>
+      </div>
+
+      <div class="medium-2 columns">
+        <%= label :degree, :graduation_date %>
+        <%= text_field :degree, :graduation_date %>
+      </div>
+
+      <div class="medium-2 columns">
+
+      </div>
+
+
+
+    </section>
+
+    <!--  Career Section -->
+    <section role="tabpanel" aria-hidden="true" class="content" id="career">
+      <div class="medium-3 columns">
+        <%= label :companys, :company_name %>
+        <%= text_field :companys, :company_name %>
+
+        <%= label :company_infos, :street %>
+        <%= text_field :company_infos, :company_street %>
+
+        <%= label :company_infos, :city %>
+        <%= text_field :company_infos, :company_city %>
+
+        <%= label :company_infos, :state %>
+        <%= text_field :company_infos, :company_state %>
+
+        <%= label :company_infos, :zip %>
+        <%= text_field :company_infos, :company_zip %>
+
+        <%= submit_tag("Submit", class: "button") %>
+
+        </div>
+        <div class="medium-3 columns">
+        <%= label :company_infos, :county_code %>
+        <%= text_field :company_infos, :company_country_code %>
+
+        <%= label :company_infos, :area_code %>
+        <%= text_field :company_infos, :company_area_code %>
+
+        <%= label :company_infos, :prefix %>
+        <%= text_field :company_infos, :company_prefix %>
+
+        <%= label :company_infos, :suffix %>
+        <%= text_field :company_infos, :company_suffiz %>
+            </div>
+        <div class="medium-9 columns">
+      </div>
+    </section>
+  </div>
+</div>
+<% end %>
