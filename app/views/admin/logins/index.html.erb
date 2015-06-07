@@ -3,14 +3,14 @@
 <div class="row">
   <div class="large-12 columns">
     <div class="clearfix">
-      <%= link_to 'New Login', new_login_path, class: 'new small success right radius button' %>
+      <%= link_to 'New Login', new_admin_login_path, class: 'new small success right radius button' %>
       <h1>Login Manager</h1>
     </div>
     <!--Class pretty pulls sort icons-->
     <table class="sortable">
       <thead>
         <tr><!--Table header - sortable defined in application_helper.rb, allows sortable column headers-->
-          <th><%= sortable  "first_name", "First Name" %></th>
+          <th><%= sortable "first_name", "First Name" %></th>
           <th width="1"><%= sortable "middle_initial", "Middle Initial" %></th>
           <th><%= sortable "last_name", "Last Name" %></th>
           <th><%= sortable "type", "Type" %></th>
@@ -21,7 +21,7 @@
       <tbody>
         <% # Loop through logins %>
         <% @login.each do |f| %>
-          <tr data-clickable="<%= login_path(f) %>">
+          <tr data-clickable="<%= admin_login_path(f) %>">
             <td><%= f.first_name.camelize %></td>
             <td><%= f.middle_initial.upcase %></td>
             <td><%= f.last_name.camelize %></td>
@@ -35,7 +35,7 @@
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to f, method: :delete, title: 'Delete', data: { confirm: "Are you sure?" }, class: 'small alert icon button' do %>
+                  <%= link_to admin_login_path(f), method: :delete, title: 'Delete', data: { confirm: "Are you sure?" }, class: 'small alert icon button' do %>
                     <i class="fi-x"></i>
                   <% end %>
                 </li>
