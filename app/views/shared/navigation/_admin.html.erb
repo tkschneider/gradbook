@@ -13,15 +13,12 @@
     <li class="has-dropdown <%= 'active' if params[:controller] == 'admin/logins' %>">
       <a href="#">Profile</a>
       <ul class="dropdown">
-<!--<<<<<< HEAD
-        <li>
-          	<%= link_to 'My Profile', controller: '/user_profile' %>
-        </li>
-=======-->
+
+
 		<li>
           	<%= link_to 'My Profile', {:action => 'show', :controller => 'user_profile', :id => current_login.id} %>
 		</li>
-<!-->> 3444a4800df1cf87f1cbf803ec68b190c8c5ba8e-->
+
         <li>
           <%= link_to 'Edit My Profile', edit_admin_login_path(current_login) %>
         </li>

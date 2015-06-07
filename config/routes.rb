@@ -48,13 +48,9 @@ Rails.application.routes.draw do
   post 'survey_admin/edit' =>'survey_admin#edit'
   post 'survey/index' => 'survey#index'
 
-
-
-<<<<<<< HEAD
-=======
   resources :logins
   resources :users
->>>>>>> 3444a4800df1cf87f1cbf803ec68b190c8c5ba8e
+
   resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]
 
   resources :internships, only: [:index]
