@@ -11,6 +11,8 @@ class GivingBacksController < AuthenticatedController
 
   def create
     @opportunity = GivingBack.new(opportunity_params)
+    # Assign the user to the current login
+    @opportunity.user = current_login.user
     # Check if a company with the givne name already exists, and if so,
     # use it instead
     @opportunity.company &&= Company.find_by(company_name: @opportunity.company.company_name) || @opportunity.company

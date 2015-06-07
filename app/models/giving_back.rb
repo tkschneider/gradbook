@@ -6,6 +6,7 @@ class GivingBack < ActiveRecord::Base
   scope :completed, -> { where(completed: true) }
   scope :archived, -> { where(hidden: true) }
 
+  belongs_to :user
   belongs_to :company
   enum type: [ :internship, :mentoring, :guest_speaking, :other ]
 
@@ -13,7 +14,7 @@ class GivingBack < ActiveRecord::Base
   validates :position, presence: true, if: :needs_position?
   validates :company, presence: true, if: :needs_company?
   validates :requirements, presence: true, if: :needs_requirements?
-  validates :description, :contact_first_name, :contact_last_name, :contact_email, presence: true
+  validates :user, :description, :contact_first_name, :contact_last_name, :contact_email, presence: true
 
   accepts_nested_attributes_for :company
 

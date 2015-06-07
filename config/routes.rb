@@ -58,7 +58,6 @@ Rails.application.routes.draw do
 
   delete '/saved_lists/:id', to: 'saved_lists#destroy'
 
-  resources :logins
   resources :users
 
   resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]
