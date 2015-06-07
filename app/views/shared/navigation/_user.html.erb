@@ -25,7 +25,7 @@
 
         </li>
         <li>
-          <%= link_to 'Edit', 'user_profile/edit' %>
+          <%= link_to 'Update', {:action => 'edit', :controller => 'user_profile' }%>
         </li>
         <li>
           <%= link_to "Logout", destroy_login_session_path, method: :delete  %>
