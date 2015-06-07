@@ -9,6 +9,7 @@
       <% else %>
         <h5><%= giving_back.position %></h5>
       <% end %>
+      <% if giving_back.internship? %><span class="opportunity-company"><%= giving_back.company.company_name %></span><% end %>
       <time pubdate datetime="<%= giving_back.created_at.to_formatted_s(:pubdate) %>" class="opportunity-date"><%= giving_back.created_at.to_formatted_s(:human) %></span>
     </div>
     <div class="pack-item opportunity-type">

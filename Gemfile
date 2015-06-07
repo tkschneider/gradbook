@@ -19,9 +19,11 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'rails_12factor', group: :production
 #login Authentication
 gem 'devise'
-
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+# jQuery autocomplete
+gem 'rails-jquery-autocomplete'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

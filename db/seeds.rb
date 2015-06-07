@@ -19,7 +19,12 @@ User.create!([
   {login_id: 2, company_id: nil,  street: "345 Circle Dr", city: "Wheaton", state: "IL", zip: 60538,  spouse_first_name: nil, spouse_middle_initial: nil, spouse_last_name: nil, number_children: nil, birth_month: 0, birth_day: nil, birth_year: nil, ethnicity: nil, general_opt_in: nil, email_opt_in: nil, phone_opt_in: nil, badges_opt_in: nil, status: nil, salary_range: nil, job_title: nil, start_date: nil, end_date: nil, searchable: nil, subscription_type: nil},
   {login_id: 3, company_id: nil,  street: "11212 Jefferson", city: "Sugar Grove", state: "IL", zip: 60554,  spouse_first_name: nil, spouse_middle_initial: nil, spouse_last_name: nil, number_children: nil, birth_month: 0, birth_day: nil, birth_year: nil, ethnicity: nil, general_opt_in: nil, email_opt_in: nil, phone_opt_in: nil, badges_opt_in: nil, status: nil, salary_range: nil, job_title: nil, start_date: nil, end_date: nil, searchable: nil, subscription_type: nil}
 ])
-
+Company.destroy_all
+Company.create!([
+  { name: "Google" },
+  { name: "Facebook" },
+  { name: "Yahoo" }
+])
 GivingBack.destroy_all
 GivingBack.create!([
   {user_id: nil, company_id: nil, subject: "Guest Speaker", position: "QA", description: "I'd like to be a guest speaker", requirements: nil, approved: false, completed: false, type: 2, contact_first_name: "John", contact_last_name: "Doe", contact_email: "johndoe@gmail.com", hidden: false},

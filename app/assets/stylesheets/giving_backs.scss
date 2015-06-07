@@ -21,9 +21,18 @@
   }
 }
 
+.opportunity-company,
 .opportunity-date {
   color: $jumbo;
   font-size: rem-calc(14);
+}
+
+.opportunity-company {
+  font-weight: $font-weight-medium;
+
+  &::after {
+    content: " \00b7 "; /* middot */
+  }
 }
 
 .opportunity-actions {

@@ -49,8 +49,10 @@ Rails.application.routes.draw do
 
   resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]
 
+  resources :companies, only: [:index]
   resources :internships, only: [:index]
   resources :giving_backs, only: [:create] do
+    get :autocomplete_company_name, :on => :collection
     new do
       get ':type', to: 'giving_backs#new', as: ''
     end
