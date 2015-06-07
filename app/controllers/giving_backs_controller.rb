@@ -4,7 +4,7 @@ class GivingBacksController < AuthenticatedController
 
   def new
     @opportunity = GivingBack.new(type: GivingBack.types.has_key?(params[:type]) ? params[:type] : 'other')
-    @opportunity.build_company
+    @opportunity.build_company if @opportunity.needs_company?
   end
 
   def create
