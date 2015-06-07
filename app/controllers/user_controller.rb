@@ -1,6 +1,7 @@
 # Created by Tim Schneider
 class UserController < AuthenticatedController
-  before_filter :check_privileges!, only: [:show, :edit]
+  before_filter lambda{ unauthorized() unless current_login.authorized_to_show_profile? params[:id].to_i }, only: :show
+  before_filter lambda{ unauthorized() unless current_login.authorized_to_edit_profile? params[:id].to_i }, only: [:edit, :update]
 
   # Index to user profile page
   def index
@@ -21,10 +22,9 @@ class UserController < AuthenticatedController
   def update
     @user = User.find(params[:id])
 
-    if @user.update(user_params)
+    if @user.update(user_params.to_h.deep_reject { |k, v| ['password', 'password_confirmation'].include?(k) && v.blank? })
       flash[:success] = "Profile updated."
     else
-      Rails.logger.info(@user.errors.messages.inspect)
       flash[:alert] = "Your profile could not be updated."
     end
 
@@ -33,18 +33,17 @@ class UserController < AuthenticatedController
 
   private
 
-  def check_privileges!
-    unauthorized() unless params[:id].to_i == current_login.user.id || current_login.admin? || current_login.worker?
-  end
-
   def user_params
     params.require(:user).permit(
       :street, :city, :state, :zip, :spouse_first_name, :spouse_middle_initial,
       :spouse_last_name, :number_children, :birth_date, :ethnicity,
       :general_opt_in, :email_opt_in, :phone_opt_in, :searchable,
       :status, :salary_range, :job_title, :start_date, :end_date,
-      login_attributes: [:id, :first_name, :middle_initial, :last_name, :username, :email],
-      user_phones_attributes: [:id, :country_code, :area_code, :prefix, :suffix, :extension, :type]
+      login_attributes: [
+        :id, :first_name, :middle_initial, :last_name,
+        :username, :email, :password, :password_confirmation
+      ],
+      user_phones_attributes: [:id, :country_code, :area_code, :prefix, :suffix, :extension, :type, :_destroy]
     )
   end
 

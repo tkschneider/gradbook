@@ -4,14 +4,14 @@
 <h1>Manage Profile</h1>
 <div class="panel">
   <ul class="tabs" data-tab data-options="deep_linking: true; scroll_to_content: false;" role="tablist">
-    <li class="tab-title active" role="presentational" ><a href="#login" role="tab" tabindex="0" aria-selected="true" controls="login">Login</a></li>
+    <li class="tab-title active" role="presentational" ><a href="#account" role="tab" tabindex="0" aria-selected="true" controls="account">Account</a></li>
     <li class="tab-title" role="presentational" ><a href="#personal" role="tab" tabindex="0"aria-selected="false" controls="personal">Personal</a></li>
     <li class="tab-title" role="presentational"><a href="#education" role="tab" tabindex="0" aria-selected="false" controls="education">Education</a></li>
     <li class="tab-title" role="presentational"><a href="#career" role="tab" tabindex="0" aria-selected="false" controls="career">Career</a></li>
   </ul>
   <div class="tabs-content">
     <!--  Login Section  -->
-    <section role="tabpanel" aria-hidden="false" class="content active" id="login">
+    <section role="tabpanel" aria-hidden="false" class="content active" id="account">
       <%= f.fields_for :login do |f_login| %>
         <div class="medium-3 columns">
           <%= f_login.label :email %>
@@ -29,8 +29,12 @@
           <%= f_login.label :username %>
           <%= f_login.text_field :username %>
 
-          <%= f_login.label :password %>
-          <%= f_login.text_field :password %>
+          <%= f_login.label :New_Password %>
+          <%= f_login.password_field :password, autocomplete: "off" %>
+
+          <%= f_login.label :Confirm_Password %>
+          <%= f_login.password_field :password_confirmation, autocomplete: "off" %>
+        </p>
         </div>
       <% end %>
     </section>

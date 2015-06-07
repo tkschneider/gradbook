@@ -27,6 +27,14 @@ class Login < ActiveRecord::Base
     end
   end
 
+  def authorized_to_show_profile?(id)
+    id == user.id || admin? || worker?
+  end
+
+  def authorized_to_edit_profile?(id)
+    id == user.id
+  end
+
   def full_name
     "#{first_name}#{' ' + middle_initial.upcase + '.' if middle_initial} #{last_name}"
   end
