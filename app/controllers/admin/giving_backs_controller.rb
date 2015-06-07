@@ -1,4 +1,4 @@
-# author: Maxwell Barvian
+# Author: Maxwell Barvian
 class Admin::GivingBacksController < AdminController
   def index
     @opportunities = GivingBack.pending

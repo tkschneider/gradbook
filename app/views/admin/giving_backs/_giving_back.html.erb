@@ -1,8 +1,9 @@
+<% # Author: Maxwell Barvian %>
 <div class="opportunity panel radius" data-expandable>
   <div class="pack pack-middle">
-    <div class="pack-item opportunity-avatar">
+    <%= link_to giving_back.user, class: 'pack-item opportunity-avatar' do %>
       <img src="http://placehold.it/300x300" alt="User avatar" />
-    </div>
+    <% end %>
     <div class="pack-item">
       <% unless giving_back.internship? %>
         <h5><%= giving_back.subject %></h5>
