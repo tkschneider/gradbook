@@ -94,6 +94,7 @@
 
       <div class="medium-4 columns">
         <div id="user_phones">
+          <% @user.user_phones.build if @user.user_phones.empty? %>
           <%= f.fields_for :user_phones do |f_phone| %>
             <%= render 'user_phone_fields', f: f_phone %>
             <%= link_to_add_association 'add phone', f, :user_phones %>
@@ -107,6 +108,7 @@
         <fieldset>
           <legend>Undergraduate Degrees</legend>
           <div id="undergraduate_degrees">
+            <% @user.undergraduate_degrees.build if @user.undergraduate_degrees.empty? %>
             <%= f.fields_for :undergraduate_degrees do |f_undergrad_degree| %>
               <%= render 'undergraduate_degree_fields', f: f_undergrad_degree %>
               <%= link_to_add_association 'add degree', f, :undergraduate_degrees %>
@@ -116,6 +118,7 @@
         <fieldset>
           <legend>Graduate Degrees</legend>
           <div id="undergraduate_degrees">
+            <% @user.graduate_degrees.build if @user.graduate_degrees.empty? %>
             <%= f.fields_for :graduate_degrees do |f_grad_degree| %>
               <%= render 'graduate_degree_fields', f: f_grad_degree %>
               <%= link_to_add_association 'add degree', f, :graduate_degrees %>
@@ -126,6 +129,8 @@
 
     <!--  Career Section -->
     <section role="tabpanel" aria-hidden="true" class="content" id="career">
+      <% @user.build_company unless @user.company %>
+      <% @user.company.build_company_info unless @user.company.company_info %>
       <%= f.fields_for :company do |f_company| %>
         <div class="medium-3 columns">
           <%= f_company.label :company_name %>

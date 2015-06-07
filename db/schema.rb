@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607150523) do
+ActiveRecord::Schema.define(version: 20150607151450) do
 
   create_table "colleges", force: :cascade do |t|
     t.string   "college_name", limit: 255
@@ -74,9 +74,9 @@ ActiveRecord::Schema.define(version: 20150607150523) do
     t.integer  "degree_id",       limit: 4
     t.integer  "college_id",      limit: 4
     t.date     "graduation_date"
-    t.string   "status",          limit: 255
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "status",          limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "graduate_degrees", ["college_id"], name: "index_graduate_degrees_on_college_id", using: :btree
@@ -195,10 +195,10 @@ ActiveRecord::Schema.define(version: 20150607150523) do
     t.integer  "prefix",       limit: 4
     t.integer  "suffix",       limit: 4
     t.integer  "extension",    limit: 4
-    t.string   "type",         limit: 255
+    t.integer  "type",         limit: 4
     t.integer  "user_id",      limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "user_phones", ["user_id"], name: "index_user_phones_on_user_id", using: :btree

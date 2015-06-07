@@ -28,6 +28,7 @@
     <% end %>
     <% if @opportunity.needs_company? %>
       <div class="row <%= error_class @opportunity.company, :company_name %>">
+        <% @opportunity.build_company if @opportunity.needs_company? %>
         <%= f.fields_for :company do |f_company| %>
           <div class="small-3 columns">
             <%= f_company.label :company_name, 'Company', class: 'right inline' %>

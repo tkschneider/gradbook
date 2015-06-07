@@ -19,30 +19,24 @@ class UserController < AuthenticatedController
 
   def edit
     @user = User.find(params[:id])
-
-    @user.build_company unless @user.company
-    @user.company.build_company_info unless @user.company.company_info
-
-    @user.user_phones.build if @user.user_phones.empty?
-
-    @user.undergraduate_degrees.build if @user.undergraduate_degrees.empty?
-
-    @user.graduate_degrees.build if @user.graduate_degrees.empty?
   end
 
   def update
     @user = User.find(params[:id])
     profile = user_params.to_h
 
-    # Check if a company with the givne name already exists, and if so,
-    # use it instead
-    if (company_name = profile['company_attributes']['company_name']) && (company = Company.find_by(company_name: company_name))
-      # Re-link previous info if already configured
-      @user.company.company_info.company = company if @user.company.company_info
-      # Link new company
-      @user.company = company
-      # Update params accordingly
-      profile['company_attributes']['id'] = company.id
+    company_name = profile['company_attributes']['company_name']
+    if company_name.empty?
+      profile.delete('company_attributes')
+    else
+      if company = Company.find_by(company_name: company_name)
+        # Re-link previous info if already configured
+        @user.company.company_info.company = company if @user.company.company_info
+        # Link new company
+        @user.company = company
+        # Update params accordingly
+        profile['company_attributes']['id'] = company.id
+      end
     end
 
     if @user.update(profile.deep_reject { |k, v| ['password', 'password_confirmation'].include?(k) && v.blank? })
