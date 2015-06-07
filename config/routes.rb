@@ -30,10 +30,13 @@ Rails.application.routes.draw do
   get 'survey/index' => 'survey#index'
   get 'report/index' => 'report#index'
   get 'survey_admin/edit' => 'survey_admin#edit'
-  get 'user_profile' => 'user_profile#index'
+  
+  
   get 'user_profile/edit' => 'user_profile#edit'
   post 'user_profile/update_login' => 'user_profile#update_login'
   post 'user_profile/update_user' => 'user_profile#update_user'
+  
+  get '/user_profile/:id' => 'user_profile#show'
 
   get 'survey_admin/new_q' => 'survey_admin#new_q'
   get 'survey_admin/publish' => 'survey_admin#publish'
@@ -47,6 +50,11 @@ Rails.application.routes.draw do
 
 
 
+<<<<<<< HEAD
+=======
+  resources :logins
+  resources :users
+>>>>>>> 3444a4800df1cf87f1cbf803ec68b190c8c5ba8e
   resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]
 
   resources :internships, only: [:index]

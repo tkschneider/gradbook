@@ -20,7 +20,11 @@
       <a href="#">Profile</a>
       <ul class="dropdown">
         <li>
+<!--<<<<<< HEAD
           <%= link_to 'My Profile', 'user_profile' %>
+=======-->
+          <%= link_to 'My Profile', {:action => 'show', :controller => 'user_profile', :id => current_login.id} %>
+<!-->>>>>>> 3444a4800df1cf87f1cbf803ec68b190c8c5ba8e-->
         </li>
         <li>
           <%= link_to 'Edit', 'user_profile/edit' %>
