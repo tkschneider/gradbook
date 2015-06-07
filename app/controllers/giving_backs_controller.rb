@@ -9,7 +9,7 @@ class GivingBacksController < AuthenticatedController
 
   def create
     @opportunity = GivingBack.new(opportunity_params)
-    if company = Company.find_by(company_name: @opportunity.company.company_name)
+    if @opportunity.company && company = Company.find_by(company_name: @opportunity.company.company_name)
       @opportunity.company = company
     end
 
