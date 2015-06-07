@@ -104,43 +104,24 @@
 
     <!-- Education Section  -->
     <section role="tabpanel" aria-hidden="true" class="content" id="education">
-      <div class="medium-2 columns">
-        <%= label :colleges, :college %>
-        <%= text_field :colleges, :college_name %>
-        <%= submit_tag("Submit", class: "button") %>
-      </div>
-        <div class="medium-2 columns">
-        <%= label :degree, :major %>
-        <%= text_field :degree, :major_name %>
-      </div>
-
-      <div class="medium-2 columns">
-        <%= label :degree, :Degree_type%>
-        <%= select_tag :degree_type, options_for_select(
-          ['Associate of Arts (A.A)',
-          'Associate of Science (A.S.)',
-          'Bachelor of Arts (B.A.)',
-          'Bachelor of Science (B.S)',
-          'Master of Arts (M.A.)',
-          'Master of Science (M.S.)',
-          'Doctoral (Ph.D.)',
-          'Medical Doctor (M.D.)']
-          ) %>
-      </div>
-
-      <div class="medium-2 columns">
-        <%= label :degree, :major_name %>
-        <%= text_field :degree, :major_name %>
-      </div>
-
-      <div class="medium-2 columns">
-        <%= label :degree, :graduation_date %>
-        <%= text_field :degree, :graduation_date %>
-      </div>
-
-      <div class="medium-2 columns">
-
-      </div>
+        <fieldset>
+          <legend>Undergraduate Degrees</legend>
+          <div id="undergraduate_degrees">
+            <%= f.fields_for :undergraduate_degrees do |f_undergrad_degree| %>
+              <%= render 'undergraduate_degree_fields', f: f_undergrad_degree %>
+              <%= link_to_add_association 'add degree', f, :undergraduate_degrees %>
+            <% end %>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Graduate Degrees</legend>
+          <div id="undergraduate_degrees">
+            <%= f.fields_for :graduate_degrees do |f_grad_degree| %>
+              <%= render 'graduate_degree_fields', f: f_grad_degree %>
+              <%= link_to_add_association 'add degree', f, :graduate_degrees %>
+            <% end %>
+          </div>
+        </fieldset>
     </section>
 
     <!--  Career Section -->

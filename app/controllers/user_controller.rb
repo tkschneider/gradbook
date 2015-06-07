@@ -19,9 +19,15 @@ class UserController < AuthenticatedController
 
   def edit
     @user = User.find(params[:id])
+
     @user.build_company unless @user.company
     @user.company.build_company_info unless @user.company.company_info
+
     @user.user_phones.build if @user.user_phones.empty?
+
+    @user.undergraduate_degrees.build if @user.undergraduate_degrees.empty?
+
+    @user.graduate_degrees.build if @user.graduate_degrees.empty?
   end
 
   def update
@@ -40,6 +46,7 @@ class UserController < AuthenticatedController
     end
 
     if @user.update(profile.deep_reject { |k, v| ['password', 'password_confirmation'].include?(k) && v.blank? })
+      Rails.logger.info(profile.inspect)
       flash[:success] = "Profile updated."
     else
       Rails.logger.info(@user.errors.inspect)
@@ -52,6 +59,7 @@ class UserController < AuthenticatedController
   private
 
   def user_params
+    # Lord give me strength
     params.require(:user).permit(
       :street, :city, :state, :zip, :spouse_first_name, :spouse_middle_initial,
       :spouse_last_name, :number_children, :birth_day, :birth_month, :birth_year, :ethnicity,
@@ -62,13 +70,17 @@ class UserController < AuthenticatedController
         :username, :email, :password, :password_confirmation
       ],
       user_phones_attributes: [:id, :country_code, :area_code, :prefix, :suffix, :extension, :type, :_destroy],
+      undergraduate_degrees_attributes: [:id, :graduation_date, :_destroy,
+        degree_attributes: [:id, :major_name, :type],
+        college_attributes: [:id, :college_name]
+      ],
+      graduate_degrees_attributes: [:id, :graduation_date, :status, :_destroy,
+        degree_attributes: [:id, :major_name, :type],
+        college_attributes: [:id, :college_name]
+      ],
       company_attributes: [:id, :company_name,
         company_info_attributes: [:id, :street, :city, :state, :zip, :country_code, :area_code, :prefix, :suffix]
       ]
     )
-  end
-
-  def phone_params
-    params.require(:user_phone).permit( :area_code, :prefix, :suffix, :extension, :type)
   end
 end
