@@ -13,9 +13,7 @@ class GivingBacksController < AuthenticatedController
     @opportunity = GivingBack.new(opportunity_params)
     # Check if a company with the givne name already exists, and if so,
     # use it instead
-    if @opportunity.company && company = Company.find_by(company_name: @opportunity.company.company_name)
-      @opportunity.company = company
-    end
+    @opportunity.company &&= Company.find_by(company_name: @opportunity.company.company_name) || @opportunity.company
 
     if @opportunity.save
       # flash[:success] = "Opportunity submitted!"
