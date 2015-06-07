@@ -23,9 +23,9 @@ User.create!([
 ])
 Company.destroy_all
 Company.create!([
-  { name: "Google" },
-  { name: "Facebook" },
-  { name: "Yahoo" }
+  { company_name: "Google" },
+  { company_name: "Facebook" },
+  { company_name: "Yahoo" }
 ])
 GivingBack.destroy_all
 GivingBack.create!([
