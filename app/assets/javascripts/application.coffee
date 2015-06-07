@@ -9,14 +9,16 @@
 #= require_tree .
 
 ready = ->
+  # Initialize all foundation components
   $(document).foundation()
 
   # Non-link links
   $('[data-clickable]').click (event) ->
-    unless $(event.target).is('a') || $(event.target).closest('a').length # User probably clicked an action, abort
-      event.preventDefault()
+    return if $(event.target).is('a') || $(event.target).closest('a').length # User probably clicked an action, abort
+    event.preventDefault()
 
-      document.location = $(this).data('clickable')
+    # Go to URL
+    document.location = $(this).data('clickable')
 
   # Dismiss auto-close alerts
   $('[data-timeout]').each ->
@@ -28,17 +30,17 @@ ready = ->
   # Expandables
   $expandables = $('[data-expandable]')
   $expandables.click (event) ->
-    unless $(event.target).is('a') || $(event.target).closest('a').length # User probably clicked an action, abort
-      event.preventDefault()
+    return if $(event.target).is('a') || $(event.target).closest('a').length # User probably clicked an action, abort
+    event.preventDefault()
 
-      clicked = this # Save reference to clicked expandable
-      $expandables.each ->
-        $expandable = $(this)
-        $expand = $expandable.find('.expand')
+    clicked = this # Save reference to clicked expandable
+    $expandables.each ->
+      $expandable = $(this)
+      $expand = $expandable.find('.expand')
 
-        shouldExpand = this is clicked && !$expandable.hasClass('expanded')
-        $expandable.toggleClass('expanded', shouldExpand)
-        if shouldExpand then $expand.slideDown(200) else $expand.slideUp(200)
+      shouldExpand = this is clicked && !$expandable.hasClass('expanded')
+      $expandable.toggleClass('expanded', shouldExpand)
+      if shouldExpand then $expand.slideDown(200) else $expand.slideUp(200)
 
-$(document).ready ready
-$(document).on 'page:load', ready
+$(document).ready ready # DOM ready
+$(document).on 'page:load', ready # Turbolinks ready

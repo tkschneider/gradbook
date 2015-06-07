@@ -1,7 +1,7 @@
 # Author: Maxwell Barvian
 class GivingBack < ActiveRecord::Base
-  self.inheritance_column = nil
-  default_scope { order('created_at DESC') }
+  self.inheritance_column = nil # Allows the type column to be used without interfering with Rails' conventions
+  default_scope { order('created_at DESC') } # Sort by date created in descending order by default
   scope :pending, -> { where(hidden: false, completed: false) }
   scope :completed, -> { where(completed: true) }
   scope :archived, -> { where(hidden: true) }
