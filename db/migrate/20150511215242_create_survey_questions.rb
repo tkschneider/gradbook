@@ -1,3 +1,4 @@
+#Created by Tessa
 class CreateSurveyQuestions < ActiveRecord::Migration
   def change
     create_table :survey_questions do |t|

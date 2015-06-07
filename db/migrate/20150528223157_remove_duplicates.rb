@@ -1,3 +1,4 @@
+#Created by Victor
 class RemoveDuplicates < ActiveRecord::Migration
   def change
     remove_column :Users, :first_name
