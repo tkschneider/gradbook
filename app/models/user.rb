@@ -1,5 +1,5 @@
 #Created by Victor
-#Modified by 
+#Modified by Leiyang Guo
 
 class User < ActiveRecord::Base
 
@@ -21,4 +21,4 @@ class User < ActiveRecord::Base
   has_many :user_phones
   has_many :graduate_degrees
   has_many :undergraduate_degrees
-end # added by Leiyang Guo
+end 

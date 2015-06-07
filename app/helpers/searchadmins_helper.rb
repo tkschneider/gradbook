@@ -34,12 +34,21 @@ module SearchadminsHelper
   end
   
   def display_search_results_row(object)
+    fieldCount = 0
     model_fields.each_with_object('') do |field, string|
-      string << content_tag(:td, object.send(field))
+      if fieldCount == 0
+        string << content_tag(:td, link_to(object.send(field), logins_path + '/' + object.id.to_s))#code
+      else
+        string << content_tag(:td, object.send(field))
+      end
+      
+      fieldCount += 1
       # button to link to profile link_to
     end
     .html_safe
   end
 end
+
+# http://stackoverflow.com/questions/14531426/how-can-i-save-ransack-searches-to-the-database
 
 
