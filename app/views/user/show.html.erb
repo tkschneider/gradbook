@@ -16,7 +16,7 @@
           <li class="tab-title" role="presentational"><a href="#employer" role="tab" tabindex="0"aria-selected="false" controls="employer">Employer</a></li>
           <li class="tab-title" role="presentational"><a href="#survey" role="tab" tabindex="0" aria-selected="false" controls="survey">Survey</a></li>
         </ul>
-        <% unless current_login.authorized_to_edit_profile? params[:id] %><%= link_to 'Edit', edit_user_path(@user), class: 'small right button' %><% end %>
+        <% if current_login.authorized_to_edit_profile? @user.id %><%= link_to 'Edit', edit_user_path(@user), class: 'small right button' %><% end %>
       </div>
       <div class="tabs-content">
         <section role="tabpanel" aria-hidden="false" class="content active" id="information">

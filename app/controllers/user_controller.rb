@@ -1,4 +1,4 @@
-# Created by Tim Schneider
+# Created by Tim Schneider and Maxwell Barvian
 class UserController < AuthenticatedController
   before_filter lambda{ unauthorized() unless current_login.authorized_to_show_profile? params[:id].to_i }, only: :show
   before_filter lambda{ unauthorized() unless current_login.authorized_to_edit_profile? params[:id].to_i }, only: [:edit, :update]
