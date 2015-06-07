@@ -11,7 +11,7 @@ ready = ->
 
   # Non-link links
   $('[data-clickable]').click (event) ->
-    unless $(event.target).is('a') # User probably clicked an action, abort
+    unless $(event.target).is('a') || $(event.target).closest('a').length # User probably clicked an action, abort
       event.preventDefault()
 
       document.location = $(this).data('clickable')
@@ -26,7 +26,7 @@ ready = ->
   # Expandables
   $expandables = $('[data-expandable]')
   $expandables.click (event) ->
-    unless $(event.target).is('a') # User probably clicked an action, abort
+    unless $(event.target).is('a') || $(event.target).closest('a').length # User probably clicked an action, abort
       event.preventDefault()
 
       clicked = this # Save reference to clicked expandable

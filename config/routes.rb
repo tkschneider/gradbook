@@ -34,7 +34,7 @@ Rails.application.routes.draw do
   get 'user_profile/edit' => 'user_profile#edit'
   post 'user_profile/update_login' => 'user_profile#update_login'
   post 'user_profile/update_user' => 'user_profile#update_user'
-  
+
   get 'survey_admin/new_q' => 'survey_admin#new_q'
   get 'survey_admin/publish' => 'survey_admin#publish'
   get 'survey/take' => 'survey#take'
@@ -47,12 +47,9 @@ Rails.application.routes.draw do
 
 
 
-  resources :logins
   resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]
 
-  resources :internships, only: [:index] do
-    get '', to: redirect('/giving_backs/new/internship'), as: '', on: :new
-  end
+  resources :internships, only: [:index]
   resources :giving_backs, only: [:create] do
     new do
       get ':type', to: 'giving_backs#new', as: ''
@@ -64,6 +61,7 @@ Rails.application.routes.draw do
       get 'completed', on: :collection
       get 'archived', on: :collection
     end
+    resources :logins
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
