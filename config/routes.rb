@@ -30,12 +30,12 @@ Rails.application.routes.draw do
   get 'survey/index' => 'survey#index'
   get 'report/index' => 'report#index'
   get 'survey_admin/edit' => 'survey_admin#edit'
-  
-  
+
+
   get 'user_profile/edit' => 'user_profile#edit'
   post 'user_profile/update_login' => 'user_profile#update_login'
   post 'user_profile/update_user' => 'user_profile#update_user'
-  
+
   get '/user_profile/:id' => 'user_profile#show'
 
   get 'saved_lists/index' => 'saved_lists#index'
@@ -63,7 +63,6 @@ Rails.application.routes.draw do
 
   resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]
 
-  resources :companies, only: [:index]
   resources :internships, only: [:index]
   resources :giving_backs, only: [:create] do
     get :autocomplete_company_name, :on => :collection
