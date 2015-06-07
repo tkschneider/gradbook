@@ -80,7 +80,7 @@
         <%= f.text_field :ethnicity %>
 
         <%= f.label :status %>
-        <%= f.select :status, options_for_select(['Currently Enrolled', 'Alumni']) %>
+        <%= f.select :status, User.statuses.map { |w,| [w.humanize, w] } %>
 
         <%= f.label :salary_range %>
         <%= f.text_field :salary_range %>
@@ -141,47 +141,43 @@
       <div class="medium-2 columns">
 
       </div>
-
-
-
     </section>
 
     <!--  Career Section -->
     <section role="tabpanel" aria-hidden="true" class="content" id="career">
-      <div class="medium-3 columns">
-        <%= label :companys, :company_name %>
-        <%= text_field :companys, :company_name %>
+      <%= f.fields_for :company do |f_company| %>
+        <div class="medium-3 columns">
+          <%= f_company.label :company_name %>
+          <%= f_company.autocomplete_field :company_name, autocomplete_company_name_user_index_path %>
 
-        <%= label :company_infos, :street %>
-        <%= text_field :company_infos, :company_street %>
+            <%= f_company.fields_for :company_info do |f_company_info| %>
+              <%= f_company_info.label :street %>
+              <%= f_company_info.text_field :street %>
 
-        <%= label :company_infos, :city %>
-        <%= text_field :company_infos, :company_city %>
+              <%= f_company_info.label :city %>
+              <%= f_company_info.text_field :city %>
 
-        <%= label :company_infos, :state %>
-        <%= text_field :company_infos, :company_state %>
+              <%= f_company_info.label :state %>
+              <%= f_company_info.text_field :state %>
 
-        <%= label :company_infos, :zip %>
-        <%= text_field :company_infos, :company_zip %>
-
-        <%= submit_tag("Submit", class: "button") %>
-
+              <%= f_company_info.label :zip %>
+              <%= f_company_info.text_field :zip %>
         </div>
         <div class="medium-3 columns">
-        <%= label :company_infos, :county_code %>
-        <%= text_field :company_infos, :company_country_code %>
+              <%= f_company_info.label :county_code %>
+              <%= f_company_info.text_field :country_code %>
 
-        <%= label :company_infos, :area_code %>
-        <%= text_field :company_infos, :company_area_code %>
+              <%= f_company_info.label :area_code %>
+              <%= f_company_info.text_field :area_code %>
 
-        <%= label :company_infos, :prefix %>
-        <%= text_field :company_infos, :company_prefix %>
+              <%= f_company_info.label :prefix %>
+              <%= f_company_info.text_field :prefix %>
 
-        <%= label :company_infos, :suffix %>
-        <%= text_field :company_infos, :company_suffiz %>
-            </div>
-        <div class="medium-9 columns">
-      </div>
+              <%= f_company_info.label :suffix %>
+              <%= f_company_info.text_field :suffix %>
+            <% end %>
+        </div>
+      <% end %>
     </section>
   </div>
 </div>
