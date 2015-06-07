@@ -14,6 +14,10 @@
       <a href="#">Profile</a>
       <ul class="dropdown">
 
+        <li>
+          	<%= link_to 'My Profile', controller: '/user_profile' %>
+        </li>
+		
        <li>
           <%= link_to 'Edit My Profile', edit_admin_login_path(current_login) %>
         </li>
