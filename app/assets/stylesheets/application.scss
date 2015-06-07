@@ -1,6 +1,8 @@
 //
 // Author: Maxwell Barvian
 //
+//= require jquery-ui
+//
 
 @import "**/*";
 
@@ -357,7 +359,7 @@ input[type="submit"] {
   > li .button {
     margin-bottom: 0;
 
-    &:not(:hover) {
+    &:not(:hover):not(:active) {
       background-color: $gainsboro;
     }
   }
