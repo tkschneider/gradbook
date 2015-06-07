@@ -30,10 +30,17 @@ Rails.application.routes.draw do
   get 'survey/index' => 'survey#index'
   get 'report/index' => 'report#index'
   get 'survey_admin/edit' => 'survey_admin#edit'
-  get 'user_profile' => 'user_profile#index'
+  
+  
   get 'user_profile/edit' => 'user_profile#edit'
   post 'user_profile/update_login' => 'user_profile#update_login'
   post 'user_profile/update_user' => 'user_profile#update_user'
+  
+  get '/user_profile/:id' => 'user_profile#show'
+
+  get 'saved_lists/index' => 'saved_lists#index'
+  post 'saved_lists/create' => 'saved_lists#create'
+
 
   get 'survey_admin/new_q' => 'survey_admin#new_q'
   get 'survey_admin/publish' => 'survey_admin#publish'
@@ -46,6 +53,13 @@ Rails.application.routes.draw do
   post 'survey/index' => 'survey#index'
 
 
+  get '/saved_lists/:id', to: 'saved_lists#show', as: 'saved_list'
+  post '/saved_lists/:id', to: 'saved_lists#show'
+
+  delete '/saved_lists/:id', to: 'saved_lists#destroy'
+
+  resources :logins
+  resources :users
 
   resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]
 

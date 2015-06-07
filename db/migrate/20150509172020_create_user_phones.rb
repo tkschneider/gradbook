@@ -1,3 +1,4 @@
+#Created by Victor
 class CreateUserPhones < ActiveRecord::Migration
   def change
     create_table :user_phones do |t|

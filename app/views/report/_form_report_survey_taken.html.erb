@@ -7,6 +7,6 @@
   <%= label_tag(:survey_select, 'Select a survey: ') %>
   <%= select_tag(:survey_select, options_from_collection_for_select(Survey.all, :id, :survey_name)) %>
   <%= label_tag(:saved_list_type, 'Run report on: ') %>
-  <%= select_tag(:saved_list_type, (options_from_collection_for_select(SavedList.where("login_id = ?", session[:user_id]), :id, :list_name)), {:include_blank => 'All Users'}) %>
+  <%= select_tag(:saved_list_type, (options_from_collection_for_select(SavedList.where("login_id = ?", current_login.id), :id, :list_name)), {:include_blank => 'All Users'}) %>
   <%= submit_tag('Submit', :class => 'button') %>
 <% end %>

@@ -1,3 +1,4 @@
+#Created by Victor
 class AddForeignKeys < ActiveRecord::Migration
   def change
     #adds the foreign keys for all models
