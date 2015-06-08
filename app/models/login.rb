@@ -1,9 +1,11 @@
 #Created by Victor
-#Modified by
+#Modified by Joe Sortino
 
 class Login < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable :registerable,
+
+  #Joe Sortino - added for allowing devise to login with username
   attr_accessor :logon
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable,
@@ -13,11 +15,12 @@ class Login < ActiveRecord::Base
 
   enum type: [ :worker, :admin, :user ]
 
+  #Joe Sortino - use username for validation when logging in
   validates :username, :email, :presence => true, :uniqueness => {:case_sensitive => false}
   #Brad Bilter - added to enforce some rules for adding logins
   validates :last_name, :first_name, :middle_initial, :presence => true, :on => :update
 
-
+  #Joe Sortino - change authentication_keys to allow for username login
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
     if logon = conditions.delete(:logon)

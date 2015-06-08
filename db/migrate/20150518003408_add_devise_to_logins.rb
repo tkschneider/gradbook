@@ -1,3 +1,4 @@
+#created by Joe Sortino for use of devise and edited to remove unnecessary fields
 class AddDeviseToLogins < ActiveRecord::Migration
   def self.up
     change_table(:logins) do |t|
