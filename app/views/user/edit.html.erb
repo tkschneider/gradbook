@@ -1,0 +1,170 @@
+<% # Created by Tim Schneider, edited by Maxwell Barvian  %>
+<%= form_for @user do |f|  %>
+<%= submit_tag 'Save', class: 'new success right button' %>
+<h1>Manage Profile</h1>
+<div class="panel">
+  <ul class="tabs" data-tab data-options="deep_linking: true; scroll_to_content: false;" role="tablist">
+    <li class="tab-title active" role="presentational" ><a href="#account" role="tab" tabindex="0" aria-selected="true" controls="account">Account</a></li>
+    <li class="tab-title" role="presentational" ><a href="#personal" role="tab" tabindex="0"aria-selected="false" controls="personal">Personal</a></li>
+    <li class="tab-title" role="presentational"><a href="#education" role="tab" tabindex="0" aria-selected="false" controls="education">Education</a></li>
+    <li class="tab-title" role="presentational"><a href="#career" role="tab" tabindex="0" aria-selected="false" controls="career">Career</a></li>
+  </ul>
+  <div class="tabs-content">
+    <!--  Login Section  -->
+    <section role="tabpanel" aria-hidden="false" class="content active" id="account">
+      <%= f.fields_for :login do |f_login| %>
+        <div class="medium-3 columns">
+          <%= f_login.label :email %>
+          <%= f_login.text_field :email %>
+
+          <%= f_login.label :first_name %>
+          <%= f_login.text_field :first_name %>
+
+          <%= f_login.label :middle_initial %>
+          <%= f_login.text_field :middle_initial, maxlength: 1 %>
+
+          <%= f_login.label :last_name %>
+          <%= f_login.text_field :last_name %>
+
+          <%= f_login.label :username %>
+          <%= f_login.text_field :username %>
+
+          <%= f_login.label :New_Password %>
+          <%= f_login.password_field :password, autocomplete: "off" %>
+
+          <%= f_login.label :Confirm_Password %>
+          <%= f_login.password_field :password_confirmation, autocomplete: "off" %>
+        </p>
+        </div>
+      <% end %>
+    </section>
+
+    <!-- User Section  -->
+    <section role="tabpanel" aria-hidden="true" class="content" id="personal">
+      <div class="medium-4 columns">
+        <%= f.label :street %>
+        <%= f.text_field :street %>
+
+        <%= f.label :city %>
+        <%= f.text_field :city %>
+
+        <%= f.label :state %>
+        <%= f.text_field :state %>
+
+        <%= f.label :zip %>
+        <%= f.text_field :zip %>
+
+        <%= f.label :spouse_first_name %>
+        <%= f.text_field :spouse_first_name %>
+
+        <%= f.label :spouse_middle_initial %>
+        <%= f.text_field :spouse_middle_initial %>
+
+        <%= f.label :spouse_last_name %>
+        <%= f.text_field :spouse_last_name %>
+        <%= f.label :number_of_children %>
+        <%= f.text_field :number_children %>
+      </div>
+
+      <div class="medium-4 columns">
+        <%= f.label :birth_day %>
+        <%= f.text_field :birth_day %>
+
+        <%= f.label :birth_month %>
+        <%= f.text_field :birth_month %>
+
+        <%= f.label :birth_year %>
+        <%= f.text_field :birth_year %>
+
+        <%= f.label :ethnicity %>
+        <%= f.text_field :ethnicity %>
+
+        <%= f.label :status %>
+        <%= f.select :status, User.statuses.map { |w,| [w.humanize, w] } %>
+
+        <%= f.label :salary_range %>
+        <%= f.text_field :salary_range %>
+
+        <%= f.label :job_title %>
+        <%= f.text_field :job_title %>
+
+        <%= f.label :start_date %>
+        <%= f.text_field :start_date %>
+      </div>
+
+      <div class="medium-4 columns">
+        <div id="user_phones">
+          <% @user.user_phones.build if @user.user_phones.empty? %>
+          <%= f.fields_for :user_phones do |f_phone| %>
+            <%= render 'user_phone_fields', f: f_phone %>
+            <%= link_to_add_association 'add phone', f, :user_phones %>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section  -->
+    <section role="tabpanel" aria-hidden="true" class="content" id="education">
+        <fieldset>
+          <legend>Undergraduate Degrees</legend>
+          <div id="undergraduate_degrees">
+            <% @user.undergraduate_degrees.build if @user.undergraduate_degrees.empty? %>
+            <%= f.fields_for :undergraduate_degrees do |f_undergrad_degree| %>
+              <%= render 'undergraduate_degree_fields', f: f_undergrad_degree %>
+              <%= link_to_add_association 'add degree', f, :undergraduate_degrees %>
+            <% end %>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Graduate Degrees</legend>
+          <div id="undergraduate_degrees">
+            <% @user.graduate_degrees.build if @user.graduate_degrees.empty? %>
+            <%= f.fields_for :graduate_degrees do |f_grad_degree| %>
+              <%= render 'graduate_degree_fields', f: f_grad_degree %>
+              <%= link_to_add_association 'add degree', f, :graduate_degrees %>
+            <% end %>
+          </div>
+        </fieldset>
+    </section>
+
+    <!--  Career Section -->
+    <section role="tabpanel" aria-hidden="true" class="content" id="career">
+      <% @user.build_company unless @user.company %>
+      <% @user.company.build_company_info unless @user.company.company_info %>
+      <%= f.fields_for :company do |f_company| %>
+        <div class="medium-3 columns">
+          <%= f_company.label :company_name %>
+          <%= f_company.autocomplete_field :company_name, autocomplete_company_name_user_index_path %>
+
+            <%= f_company.fields_for :company_info do |f_company_info| %>
+              <%= f_company_info.label :street %>
+              <%= f_company_info.text_field :street %>
+
+              <%= f_company_info.label :city %>
+              <%= f_company_info.text_field :city %>
+
+              <%= f_company_info.label :state %>
+              <%= f_company_info.text_field :state %>
+
+              <%= f_company_info.label :zip %>
+              <%= f_company_info.text_field :zip %>
+        </div>
+        <div class="medium-3 columns">
+              <%= f_company_info.label :county_code %>
+              <%= f_company_info.text_field :country_code %>
+
+              <%= f_company_info.label :area_code %>
+              <%= f_company_info.text_field :area_code %>
+
+              <%= f_company_info.label :prefix %>
+              <%= f_company_info.text_field :prefix %>
+
+              <%= f_company_info.label :suffix %>
+              <%= f_company_info.text_field :suffix %>
+            <% end %>
+        </div>
+      <% end %>
+    </section>
+  </div>
+</div>
+<% end %>

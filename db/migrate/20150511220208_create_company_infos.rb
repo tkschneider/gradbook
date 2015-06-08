@@ -1,3 +1,4 @@
+#Created by Tessa
 class CreateCompanyInfos < ActiveRecord::Migration
   def change
     create_table :company_infos do |t|

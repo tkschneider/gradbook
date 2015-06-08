@@ -1,3 +1,7 @@
+//
+// Author: Maxwell Barvian
+//
+
 .opportunity {
   .js & {
     > :not(.expand) {
@@ -16,24 +20,28 @@
   width: 12.5%;
 
   > img {
+    border: none;
     border-radius: 100%;
     width: 100%;
   }
 }
 
+.opportunity-company,
 .opportunity-date {
   color: $jumbo;
   font-size: rem-calc(14);
 }
 
-.opportunity-actions {
-  > li .button {
-    margin-bottom: 0;
+.opportunity-company {
+  font-weight: $font-weight-medium;
 
-    &:not(:hover) {
-      background-color: $gainsboro;
-    }
+  &::after {
+    content: " \00b7 "; /* middot */
   }
+}
+
+.opportunity-actions {
+  @extend .actions;
 }
 
 .opportunity-type {

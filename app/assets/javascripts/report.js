@@ -44,14 +44,14 @@ function toggle_saved_list_form()
   */
 }
 
-function print_page()
+function report_print_page()
 {
   var saved_list_form_visible = $('#saved_list_form').is(':visible');
-  to_print_layout();
+  to_report_print_layout();
   $('.noprint').hide();
   window.print();
   $('.noprint').show();
-  undo_print_layout();
+  undo_report_print_layout();
 
   if(saved_list_form_visible != $('#saved_list_form').is(':visible'))
   {
@@ -59,7 +59,7 @@ function print_page()
   }
 }
 
-function to_print_layout()
+function to_report_print_layout()
 {
   var table = document.getElementsByClassName("report_results_table");
   table[0].style.border = "1px solid black";
@@ -74,7 +74,7 @@ function to_print_layout()
   document.getElementById("print_date").innerHTML = Date();
 }
 
-function undo_print_layout()
+function undo_report_print_layout()
 {
   var table = document.getElementsByClassName("report_results_table");
   table[0].style.border = "none";

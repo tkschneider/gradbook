@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :logins
   devise_scope :login do
     authenticated do
-      root to: 'user_profile#index', as: :authenticated_root
+      root to: 'user#index', as: :authenticated_root
     end
 
     unauthenticated do
@@ -30,9 +30,11 @@ Rails.application.routes.draw do
   get 'survey/index' => 'survey#index'
   get 'report/index' => 'report#index'
   get 'survey_admin/edit' => 'survey_admin#edit'
-  get 'user_profile' => 'user_profile#index'
-  get 'user_profile/edit' => 'user_profile#edit'
-  
+
+  get 'saved_lists/index' => 'saved_lists#index'
+  post 'saved_lists/create' => 'saved_lists#create'
+
+
   get 'survey_admin/new_q' => 'survey_admin#new_q'
   get 'survey_admin/publish' => 'survey_admin#publish'
   get 'survey/take' => 'survey#take'
@@ -44,14 +46,20 @@ Rails.application.routes.draw do
   post 'survey/index' => 'survey#index'
 
 
+  get '/saved_lists/:id', to: 'saved_lists#show', as: 'saved_list'
+  post '/saved_lists/:id', to: 'saved_lists#show'
 
-  resources :logins
+  delete '/saved_lists/:id', to: 'saved_lists#destroy'
+
+  resources :user do
+    get :autocomplete_company_name, :on => :collection
+  end
+
   resources :survey_admin, only: [:new,:new_q, :add, :create, :edit, :index]
 
-  resources :internships, only: [:index] do
-    get '', to: redirect('/giving_backs/new/internship'), as: '', on: :new
-  end
+  resources :internships, only: [:index]
   resources :giving_backs, only: [:create] do
+    get :autocomplete_company_name, :on => :collection
     new do
       get ':type', to: 'giving_backs#new', as: ''
     end
@@ -62,6 +70,7 @@ Rails.application.routes.draw do
       get 'completed', on: :collection
       get 'archived', on: :collection
     end
+    resources :logins
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

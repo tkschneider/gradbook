@@ -1,25 +1,35 @@
 //
 // Author: Maxwell Barvian
 //
+//= require jquery-ui/autocomplete
+//
 
 @import "**/*";
 
-//Brad Bilter
-//Adds sort buttons asc or desc depending on sort order for Login Manager index
-.pretty th .current {
+// Brad Bilter
+// Adds sort buttons asc or desc depending on sort order for Login Manager index
+table {
+  width: 100%;
+
+  tr[data-clickable]:hover {
+    background: $silver;
+  }
+}
+
+.sortable th .current {
   padding-right: 12px;
   background-repeat: no-repeat;
   background-position: right center;
 }
 
-.pretty th .asc {
-  background-image: url(/images/up_arrow.png);
+.sortable th .asc {
+  background-image: image-url('up_arrow.png');
 }
 
-.pretty th .desc {
-  background-image: url(/images/down_arrow.png);
+.sortable th .desc {
+  background-image: image-url('down_arrow.png');
 }
-//End Brad Bilter
+// End Brad Bilter
 
 body {
   -webkit-font-smoothing: $font-smoothing;
@@ -111,6 +121,15 @@ body {
 
 .button.icon {
   padding: rem-calc(8) rem-calc(14);
+}
+
+.button.new {
+  margin-top: rem-calc(7);
+}
+
+.tabs dd > a, .tabs .tab-title > a {
+  font-weight: $tabs-navigation-font-weight;
+  outline: none;
 }
 
 .pack {
@@ -299,7 +318,6 @@ fieldset {
       margin-top: -($fieldset-border-width / 2);
       top: 50%;
       width: 100em;
-      z-index: -1;
     }
 
     &::before {
@@ -328,7 +346,20 @@ fieldset {
   }
 }
 
+[data-clickable] {
+  cursor: pointer;
+}
+
 input[type="submit"] {
   margin-top: rem-calc(20);
 }
 
+.actions {
+  > li .button {
+    margin-bottom: 0;
+
+    &:not(:hover):not(:active) {
+      background-color: $gainsboro;
+    }
+  }
+}

@@ -5,11 +5,10 @@
     <h3 id="print_date"></h3>
     <%= link_to "Excel (.xls)", params.merge(:format => 'xls'), :class => "button small noprint", method: :post %>
     <!--<%= link_to "PDF (.pdf)", params.merge(:format => 'pdf'), :class => "button small noprint", method: :post %>-->
-    <button type="button" class="button small noprint" onclick="print_page();">Print</button>
-    <button type="button" class="button small noprint" onclick="toggle_saved_list_form();">Save List</button>
-    <div id="saved_list_form" class="noprint" style="display: none;">
-      <%= render partial: 'report/form_new_saved_list' %>
-    </div>
+    <button type="button" class="button small noprint" onclick="report_print_page();">Print</button>
+    <% if @report_id.to_i < 7 %>
+    <%= render partial: 'report/form_new_saved_list' %>
+    <% end %>
     <div class="user_listing" style="overflow-y:scroll;height:400px">
       <table class="report_results_table" style="width:100%;">
         <thead>

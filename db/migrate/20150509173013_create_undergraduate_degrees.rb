@@ -1,3 +1,4 @@
+#Created by Victor
 class CreateUndergraduateDegrees < ActiveRecord::Migration
   def change
     create_table :undergraduate_degrees do |t|

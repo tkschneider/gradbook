@@ -1,3 +1,5 @@
+#Created by Tessa
+
 Login.create!([
   {username: "wwworker", first_name: "Johnny", middle_initial: "W", last_name: "Appleseed", type: 2, email: "worker@mail.com", encrypted_password: "$2a$10$ENH/39txtGu1bp9p8lNfu.NlVluvqfNG38Wa.jJa.l2MIM7vEG4sO", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 3, current_sign_in_at: "2015-05-27 11:40:21", last_sign_in_at: "2015-05-27 11:36:55", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"},
   {username: "aaadmin", first_name: "admin", middle_initial: "a", last_name: "admin", type: 1, email: "admin@mail.com", encrypted_password: "$2a$10$ENH/39txtGu1bp9p8lNfu.NlVluvqfNG38Wa.jJa.l2MIM7vEG4sO", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 5, current_sign_in_at: "2015-05-27 14:54:49", last_sign_in_at: "2015-05-27 11:39:50", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"},

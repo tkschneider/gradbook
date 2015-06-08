@@ -1,0 +1,31 @@
+<!-- Created by Brett Bush -->
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="large-12 columns">
+    <h1><%= current_login.first_name %>'s Saved Lists</h1>
+
+    <table style="width:100%;">
+      <thead>
+        <tr>
+          <th>Saved List Name</th>
+          <th>Date Saved</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @saved_lists.each do |saved_list| %>
+          <tr>
+            <td><%= saved_list.list_name %></td>
+            <td><%= saved_list.date_saved %></td>
+            <td><%= link_to 'Show', saved_list %></td>
+            <td><%= link_to 'Delete', saved_list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="nested-fields">
+  <%= f.label :area_code %>
+  <%= f.text_field :area_code %>
+
+  <%= f.label :prefix %>
+  <%= f.text_field :prefix %>
+
+  <%= f.label :suffix %>
+  <%= f.text_field :suffix %>
+
+  <%= f.label :extension %>
+  <%= f.text_field :extension %>
+
+  <%= f.label :type %>
+  <%= f.select :type, UserPhone.types.map { |w,| [w.humanize, w] } %>
+
+  <%= link_to_remove_association 'remove phone', f %>
+</div>

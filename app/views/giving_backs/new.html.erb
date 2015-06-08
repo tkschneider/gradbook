@@ -1,8 +1,9 @@
+<% # Author: Maxwell Barvian %>
 <%= form_for @opportunity do |f| %>
 <%= f.hidden_field :type %>
 <div class="row">
   <div class="small-8 small-centered columns">
-    <h1>Submit a <%= header_for_giving_back_type(@opportunity.type).downcase %></h1>
+    <h1>Submit <%= header_for_giving_back_type(@opportunity.type) %></h1>
     <% if @opportunity.needs_subject? %>
       <div class="row <%= error_class @opportunity, :subject %>">
         <div class="small-3 columns">
@@ -26,13 +27,17 @@
       </div>
     <% end %>
     <% if @opportunity.needs_company? %>
-      <div class="row <%= error_class @opportunity, :company %>">
-        <div class="small-3 columns">
-          <%= f.label :company_id, 'Company', class: 'right inline' %>
-        </div>
-        <div class="small-9 columns">
-          <%= errors @opportunity, :company %>
-        </div>
+      <div class="row <%= error_class @opportunity.company, :company_name %>">
+        <% @opportunity.build_company if @opportunity.needs_company? %>
+        <%= f.fields_for :company do |f_company| %>
+          <div class="small-3 columns">
+            <%= f_company.label :company_name, 'Company', class: 'right inline' %>
+          </div>
+          <div class="small-9 columns">
+            <%= f_company.autocomplete_field :company_name, autocomplete_company_name_giving_backs_path %>
+            <%= errors @opportunity.company, :company_name %>
+          </div>
+        <% end %>
       </div>
     <% end %>
     <% if @opportunity.needs_requirements? %>
